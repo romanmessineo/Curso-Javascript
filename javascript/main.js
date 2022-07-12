@@ -49,14 +49,15 @@ function igresarRtos() {
 
 //VER DONDE DESCARGA CADA PROVEEDOR
 function zonaDescarga() {
-  var operacion = prompt(`Que proveedor trae? 
+  let operacion = prompt(`Que proveedor trae? 
         FAMMA 
         COZZUOL
         TENNECO
         EZEIZA`);
 
-  var numero1 = Number(prompt("Ingrese el número de viaje"));
-  console.log("Viaje numero:" + numero1);
+  let numero1 = Number(prompt("Ingrese el número de viaje"));
+  console.log(operacion+" Viaje numero:" + numero1);
+
   /* const numero2 = Number(prompt("Ingrese otro número")); */
 
   if (isNaN(numero1)) {
