@@ -5,23 +5,21 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-decoration: none;
   list-style: none;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 body {
   padding-top: 1px;
-  background-image: url("/imagenes/fondo.jpg");
+  background-image: url("/imagenes/fondo.png");
   background-size: 100% 100%;
   background-attachment: fixed;
- 
+  margin: 10px;
 }
 
-.descarga {
-  
-  border-radius: 10%;
-  margin-left: 200px;
-  margin-top: 80px;
- display: flex;
- align-self: flex-end ;
- padding: 50px;
- 
+.container {
+  margin-top: 10%;
+}
+
+.col-4 {
+  padding-bottom: 10px;
 }
