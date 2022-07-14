@@ -3,7 +3,6 @@ console.log("Usuario: usuario1", "Contraseña: password1");
 
 function logIn() {
   let preguntaUsuario = prompt("Usted tiene usuario? si - no");
-  console.log("Usuario: usuario1", "Contraseña: password1");
 
   if (preguntaUsuario === "si") {
     pedirDatos();
@@ -56,9 +55,7 @@ function zonaDescarga() {
         EZEIZA`);
 
   let numero1 = Number(prompt("Ingrese el número de viaje"));
-  console.log(operacion+" Viaje numero:" + numero1);
-
-  /* const numero2 = Number(prompt("Ingrese otro número")); */
+  console.log(operacion + " Viaje numero:" + numero1);
 
   if (isNaN(numero1)) {
     alert("NUMEROS NO VALIDOS");
@@ -91,3 +88,22 @@ function zonaDescarga() {
     }
   }
 }
+
+//SEGURIDAD
+function elementoSeguridadPersonal() {
+  let seguridadPersonal =
+    prompt(`Usted posee los siguientes elementos de seguridad? "si" - "no"
+        Calzado de seg
+        Chaleco naranja
+        Casco
+        Gafas
+        Guantes`);
+
+  if (seguridadPersonal === "si") {
+    alert("Gracias! Esta autorizado para ingresar");
+  } else {
+    alert("Comuniquese con personal de trafico");
+    console.log("No cumple con normas de seguridad");
+  }
+}
+
