@@ -10,7 +10,7 @@ const proveedores = [
 
 const menuProveedores = new MenuProveedores(proveedores);
 console.log("Lista de Proveedores originales", menuProveedores.proveedores)
-mostrarMenu()
+//mostrarMenu()
 
 
 function mostrarMenu() {
@@ -93,6 +93,7 @@ console.log("Usuario: usuario1", "Contraseña: password1");
 function logIn() {
   let preguntaUsuario = prompt("Usted tiene usuario? si - no");
 
+
   if (preguntaUsuario === "si") {
     pedirDatos();
     let esValido = validarDatos(nombreUsuario, contra);
@@ -122,7 +123,9 @@ function logIn() {
       alert("LOGIN EXITOSO - esta funcion estara disponible proximamente");
     }
   }
-}
+
+} 
+
 
 //FUNCION PARA IGRESAR REMITOS
 function igresarRtos() {

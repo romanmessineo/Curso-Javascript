@@ -2,15 +2,15 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
 }
-
+ 
 body {
   padding-top: 1px;
-  background: url("https://i.ytimg.com/vi/xNJvesMwjUc/maxresdefault.jpg");
+  background: url("https://i.im.ge/2022/07/24/F7KV08.jpg");
   background-size: 100% 100%;
   background-attachment: fixed;
   margin: 10px;
@@ -27,5 +27,18 @@ p {
   font-size: 2vh;
   font-family: sans-serif;
   margin: auto;
-  border: solid 1px;
+  transition: 1.5s;
+  }
+
+p:hover{
+  font-size: 28px;
+  
+}  
+
+.btnred{
+  background-color: rgba(176, 10, 10, 0.879);
+}
+
+.row {
+  height: 120px;
 }
