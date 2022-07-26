@@ -18,12 +18,12 @@ class MenuProveedores {
             let proveedoresHTML =`
             <div>
             <div class="card" style="width: 18rem;">
-            <img src="./imagenes/logceva.png" class="card-img-top" alt="...">
+            <img src="https://img.youtube.com/vi/vmTUZCzg4bk/0.jpg" alt="...">
            <div class="card-body">
            <p class="card-text">
-            Nombre: ${proveedor.nombre} <br>
-            Direccion: ${proveedor.direccion} <br>
-            Ubicacion GM: ${proveedor.locacion}</p>
+           <b>Nombre:</b> ${proveedor.nombre} <br>
+           <b>Direccion:</b> ${proveedor.direccion} <br>
+           <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
            
            
   </div>

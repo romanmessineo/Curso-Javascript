@@ -25,12 +25,14 @@
 
 .body{
   width: 100%;
+    
 }
 
 
 .container>*{
-  border: solid 4px purple;
+  border: solid 4px rgb(43, 6, 192);
   border-radius: 5px;
+  background-image: url("https://i.im.ge/2022/07/24/F7KV08.jpg");
   }
 
 .header, .footer{
@@ -38,14 +40,14 @@
 } 
 
 .pantalla {
-  background-color: rgba(0, 0, 0, 0.23);
+  background-color: aquamarine;
+    
 }
 
 .menu{
   display: flex;
   flex-direction: column;
-  width: 70%;
-  
+    
   
   }
 
@@ -54,7 +56,10 @@
     height: 64px;
   }
 
-
+  .card{
+    margin: 4px;
+    width: 100px;
+      }
 
 
 
