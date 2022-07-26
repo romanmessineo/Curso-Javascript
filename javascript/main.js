@@ -1,60 +1,93 @@
 const proveedores = [
-  { id: 1, nombre: "Famma", direccion: "Av Circunvalacion KM 4,5", locacion: "Body" },
-  { id: 3, nombre: "Tenneco", direccion: "Calle 98 N° 1241", locacion: "Mecànica" },
-  { id: 4, nombre: "Treves", direccion: "Camino de la tradicion 140", locacion: "Patio Central" },
-  { id: 5, nombre: "Siderar", direccion: "Cno Gral. Belgrano km 31,5", locacion: "Prensas" },
-  { id: 6, nombre: "Lequipe", direccion: "El Salvador 346", locacion: "Patio Central" },
-  { id: 7, nombre: "Cozzuol Pco", direccion: "Av. Constituyentes 5099", locacion: "Patio Central" },
-]
-
+  {
+    id: 1,
+    nombre: "Famma",
+    direccion: "Av Circunvalacion KM 4,5",
+    locacion: "Body",
+  },
+  {
+    id: 3,
+    nombre: "Tenneco",
+    direccion: "Calle 98 N° 1241",
+    locacion: "Mecànica",
+  },
+  {
+    id: 4,
+    nombre: "Treves",
+    direccion: "Camino de la tradicion 140",
+    locacion: "Patio Central",
+  },
+  {
+    id: 5,
+    nombre: "Siderar",
+    direccion: "Cno Gral. Belgrano km 31,5",
+    locacion: "Prensas",
+  },
+  {
+    id: 6,
+    nombre: "Lequipe",
+    direccion: "El Salvador 346",
+    locacion: "Patio Central",
+  },
+  {
+    id: 7,
+    nombre: "Cozzuol Pco",
+    direccion: "Av. Constituyentes 5099",
+    locacion: "Patio Central",
+  },
+];
 
 const menuProveedores = new MenuProveedores(proveedores);
-console.log("Lista de Proveedores originales", menuProveedores.proveedores)
+console.log("Lista de Proveedores originales", menuProveedores.proveedores);
 //mostrarMenu()
-
 
 function mostrarMenu() {
   let opcion = "";
   while (opcion !== "6") {
-      opcion = prompt(`Ingrese una opción:
+    opcion = prompt(`Ingrese una opción:
                       1. Ingrese un Proveedor
                       2. Listar Proveedores
                       3. Buscar Proveedor
                       4. Actualizar Proveedor
                       5. Ordenar Proveedores
-                      6. Terminar`)
-      switch (opcion) {
-          case "1": 
-              agregarProveedor()
-              break;
-          case "2":
-              listarProveedores()
-              break;
-          case "3": 
-              buscarProveedor()
-              break;
-          case "4": 
-              actualizarProveedor()
-              break;
-          case "5": 
-              ordenarProveedores()
-              break;
-          case "6":
-              alert("Gracias")
-              break;
-          default:
-              alert("Opción Inválida")
-              break;
-      }
+                      6. Terminar`);
+    switch (opcion) {
+      case "1":
+        agregarProveedor();
+        break;
+      case "2":
+        listarProveedores();
+        break;
+      case "3":
+        buscarProveedor();
+        break;
+      case "4":
+        actualizarProveedor();
+        break;
+      case "5":
+        ordenarProveedores();
+        break;
+      case "6":
+        alert("Gracias");
+        break;
+      default:
+        alert("Opción Inválida");
+        break;
+    }
   }
 }
 
 function agregarProveedor() {
-  let nombre = prompt("Ingrese nombre o razon social")
-  let direccion = prompt("Ingrese direccion")
-  let locacion = prompt("Ingrese locacion GM")
+  let nombre = prompt("Ingrese nombre o razon social");
+  let direccion = prompt("Ingrese direccion");
+  let locacion = prompt("Ingrese locacion GM");
 
-  let proveedor = new Proveedor(menuProveedores.darCantidad() + 1, nombre, direccion, locacion);
+  let proveedor = new Proveedor(
+    menuProveedores.darCantidad() + 1,
+    nombre,
+    direccion,
+    locacion
+  );
   menuProveedores.agregarProveedor(proveedor);
 
   console.log("Menu Proveedores", menuProveedores);
@@ -64,26 +97,26 @@ function listarProveedores() {
   menuProveedores.listarProveedores();
 }
 
-
 function buscarProveedor() {
   let nombreABuscar = prompt("Ingrese el nombre del Proveedor");
   menuProveedores.buscar(nombreABuscar);
-
 }
 
 function actualizarProveedor() {
-
   let nombreABuscar = prompt("Ingrese nombre del Proveedor a modificar");
-  let nombre = prompt("Ingrese un nombre")
-  let direccion = prompt("Ingrese direccion")
-  let locacion = prompt("Ingrese locacion GM")
+  let nombre = prompt("Ingrese un nombre");
+  let direccion = prompt("Ingrese direccion");
+  let locacion = prompt("Ingrese locacion GM");
 
-  menuProveedores.modificarProveedor(nombreABuscar, nombre, direccion, locacion);
-
+  menuProveedores.modificarProveedor(
+    nombreABuscar,
+    nombre,
+    direccion,
+    locacion
+  );
 }
 
-function ordenarProveedores()
-{
+function ordenarProveedores() {
   menuProveedores.ordenarProveedores();
 }
 
@@ -92,7 +125,6 @@ console.log("Usuario: usuario1", "Contraseña: password1");
 
 function logIn() {
   let preguntaUsuario = prompt("Usted tiene usuario? si - no");
-
 
   if (preguntaUsuario === "si") {
     pedirDatos();
@@ -123,9 +155,7 @@ function logIn() {
       alert("LOGIN EXITOSO - esta funcion estara disponible proximamente");
     }
   }
-
-} 
-
+}
 
 //FUNCION PARA IGRESAR REMITOS
 function igresarRtos() {
@@ -140,7 +170,7 @@ function igresarRtos() {
 
 //VER DONDE DESCARGA CADA PROVEEDOR
 function zonaDescarga() {
-  let operacion = prompt(`Que proveedor trae? 
+  let operacion = prompt(`Que proveedor trae?  
         FAMMA 
         COZZUOL
         TENNECO

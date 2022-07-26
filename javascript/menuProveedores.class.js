@@ -11,15 +11,33 @@ class MenuProveedores {
         return this.proveedores.length;
     }
 
-    listarProveedores() {
-        /*for (let i = 0; i < this.darCantidad(); i++) {
-            console.log(this.proveedores[i])
-        }*/
 
-        this.proveedores.forEach((proveedor) => {
-            console.log("LISTADO", proveedor);
-        })
-    }
+    listarProveedores() {
+        screen = document.getElementById("screen");
+        proveedores.forEach((proveedor) =>{
+            let proveedoresHTML =`
+            <div>
+            <div class="card" style="width: 18rem;">
+            <img src="./imagenes/logceva.png" class="card-img-top" alt="...">
+           <div class="card-body">
+           <p class="card-text">
+            Nombre: ${proveedor.nombre} <br>
+            Direccion: ${proveedor.direccion} <br>
+            Ubicacion GM: ${proveedor.locacion}</p>
+           
+           
+  </div>
+`
+         
+        screen.innerHTML+= proveedoresHTML    
+            
+        });
+    } 
+
+   
+
+
+
     buscar(nombreABuscar) {
         let esta = this.proveedores.some((proveedor) =>
         proveedor.nombre.includes(nombreABuscar)
