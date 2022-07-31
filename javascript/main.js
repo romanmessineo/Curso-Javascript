@@ -37,6 +37,8 @@ const proveedores = [
   },
 ];
 
+
+
 const menuProveedores = new MenuProveedores(proveedores);
 console.log("Lista de Proveedores originales", menuProveedores.proveedores);
 //mostrarMenu()
@@ -228,3 +230,10 @@ function elementoSeguridadPersonal() {
     console.log("No cumple con normas de seguridad");
   }
 }
+
+
+
+
+
+
+
