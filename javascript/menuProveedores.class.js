@@ -16,26 +16,19 @@ class MenuProveedores {
         screen = document.getElementById("screen");
         screen.innerHTML = ``;
         proveedores.forEach((proveedor) => {
-            let proveedoresHTML = `
-            
+            let proveedoresHTML = `            
             <div class="card">
-            <img src="https://img.youtube.com/vi/vmTUZCzg4bk/0.jpg" width="350" alt="...">
+            <img src=${proveedor.img}  alt="...">
            <div class="card-body">
            <p class="card-text">
            <b>Nombre:</b> ${proveedor.nombre} <br>
            <b>Direccion:</b> ${proveedor.direccion} <br>
            <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
            </div>
-           <br>
-           `
-
+            `
             screen.innerHTML += proveedoresHTML
-
         });
     }
-
-
-
 
 
     buscar(nombreABuscar) {

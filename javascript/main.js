@@ -4,36 +4,42 @@ const proveedores = [
     nombre: "Famma",
     direccion: "Av Circunvalacion KM 4,5",
     locacion: "Body",
+    img: "https://img.youtube.com/vi/vmTUZCzg4bk/0.jpg",
   },
   {
     id: 3,
     nombre: "Tenneco",
     direccion: "Calle 98 N° 1241",
     locacion: "Mecànica",
+    img: "https://img.youtube.com/vi/vmTUZCzg4bk/0.jpg",
   },
   {
     id: 4,
     nombre: "Treves",
     direccion: "Camino de la tradicion 140",
     locacion: "Patio Central",
+    img: "https://img.youtube.com/vi/vmTUZCzg4bk/0.jpg",
   },
   {
     id: 5,
     nombre: "Siderar",
     direccion: "Cno Gral. Belgrano km 31,5",
     locacion: "Prensas",
+    img: "https://img.youtube.com/vi/vmTUZCzg4bk/0.jpg",
   },
   {
     id: 6,
     nombre: "Lequipe",
     direccion: "El Salvador 346",
     locacion: "Patio Central",
+    img: "https://img.youtube.com/vi/vmTUZCzg4bk/0.jpg",
   },
   {
     id: 7,
     nombre: "Cozzuol Pco",
     direccion: "Av. Constituyentes 5099",
     locacion: "Patio Central",
+    img: "https://img.youtube.com/vi/vmTUZCzg4bk/0.jpg",
   },
 ];
 
@@ -47,7 +53,7 @@ function mostrarMenu() {
   let opcion = "";
   while (opcion !== "6") {
     opcion = prompt(`Ingrese una opción:
-                      1. Ingrese un Proveedor
+                      1. Ingrese nuevo Proveedor
                       2. Listar Proveedores
                       3. Buscar Proveedor
                       4. Actualizar Proveedor
@@ -83,15 +89,21 @@ function agregarProveedor() {
   let nombre = prompt("Ingrese nombre o razon social");
   let direccion = prompt("Ingrese direccion");
   let locacion = prompt("Ingrese locacion GM");
+  let img = prompt("adjunte imagen");
 
   let proveedor = new Proveedor(
     menuProveedores.darCantidad() + 1,
     nombre,
     direccion,
-    locacion
+    locacion,
+    img
   );
   menuProveedores.agregarProveedor(proveedor);
-
+  
+  localStorage.setItem("newprov", JSON.stringify(proveedor));
+  JSON.parse(localStorage.getItem("newprov")); 
+     
+  
   console.log("Menu Proveedores", menuProveedores);
 }
 
@@ -109,12 +121,14 @@ function actualizarProveedor() {
   let nombre = prompt("Ingrese un nombre");
   let direccion = prompt("Ingrese direccion");
   let locacion = prompt("Ingrese locacion GM");
+  let img = prompt("adjunte imagen");
 
   menuProveedores.modificarProveedor(
     nombreABuscar,
     nombre,
     direccion,
-    locacion
+    locacion,
+    img
   );
 }
 

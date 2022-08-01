@@ -58,6 +58,9 @@
   border: 5px solid #292929;
   outline: 2px solid #e3e3e3;
   margin: 10px 0px 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
 }
 
 .menu {
@@ -75,11 +78,9 @@
   border-radius: 20px;
 }
 
-/*   .card{
-    border: solid rgb(8, 222, 65) 5px;
-    width: 200px;
-    height: 300px;
-    } */
+ .card{
+    border: solid rgba(55, 104, 68, 0.507) 2px;
+    } 
 .card-text {
   /* background-color: rgba(0, 0, 0, 0.265);
       padding: 2%;
@@ -93,9 +94,9 @@
 
 .card img {
   display: flex;
-
   border: solid 1px;
   padding-bottom: 0;
+  max-width: 150px;
 }
 
 /* DARK MODE */
@@ -132,6 +133,7 @@ h4 {
 .card {
   background-color: var(--color-fondo);
   color: var(--color-fuente);
+
   /* text-decoration: none;
       text-transform: uppercase;
       padding-top:1rem;
