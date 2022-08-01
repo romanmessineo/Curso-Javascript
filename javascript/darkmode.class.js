@@ -12,6 +12,9 @@ colorSwitch.addEventListener("change", cambiaTema);
 
 if (localStorage.getItem(`modo`) === `true`) {
   document.documentElement.setAttribute("tema", "light");
+  
+
+  
 } else {
   document.documentElement.setAttribute("tema", "dark");
 }
