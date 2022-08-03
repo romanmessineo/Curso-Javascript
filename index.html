@@ -26,10 +26,42 @@
 
 <body class="container">
     <div class="header">
-        <div class="logo">
+        <!-- <div class="logo">
             <img src="https://i.imgur.com/BSwOcKp.png" />
+        </div> -->
+        <div class="menu-adm">
+                <h2>Funciones Adm</h2>
+                <button type="button" class="btnadm" onclick="mostrarMenu()">
+                    <h4>Menu Proveedores</h4>
+                </button>
         </div>
+        
+        <div class="menu-user">
+            <h2>Menu de Usuario</h2>
+            <div class="btnuser" >
+                <button type="button" class="btn" onclick="logIn()">
+                    <h4> Iniciar sesion</h4>
+                </button>
+        
+        
+                <button type="button" class="btn" onclick="zonaDescarga()">
+                    <h4>Donde descargo</h4>
+                </button>
+        
+        
+                <button type="button" class="btn" onclick="igresarRtos()">
+                    <h4>Ingresar Remitos</h4>
+                </button>
+        
+        
+                <button type="button" class="btn" onclick="elementoSeguridadPersonal()">
+                    <h4>Seguridad</h4>
+                </button>
+            </div>
+           
 
+        </div>
+        
         <div class="row darkmode">
             <div class="col text-center">
                 <label id="switch">
@@ -42,40 +74,17 @@
         </div>
 
     </div>
-    <div class="menu">
 
-        <button type="button" class="btn btn-danger btn-rounded" onclick="mostrarMenu()">
-            <h4>Menu Proveedores</h4>
-        </button>
-
-        <button type="button" class="btn btn-primary btn-rounded" onclick="logIn()">
-            <h4> Iniciar sesion</h4>
-        </button>
-
-
-        <button type="button" class="btn btn-primary btn-rounded" onclick="zonaDescarga()">
-            <h4>Donde descargo</h4>
-        </button>
-
-
-        <button type="button" class="btn btn-primary btn-rounded" onclick="igresarRtos()">
-            <h4>Ingresar Remitos</h4>
-        </button>
-
-
-        <button type="button" class="btn btn-primary btn-rounded" onclick="elementoSeguridadPersonal()">
-            <h4>Seguridad</h4>
-        </button>
-
-
-
-
-
+    <div class="nav">
+        <h2>Visualizador de Eventos</h2>
+       
     </div>
     <div id="screen" class="pantalla">
 
     </div>
-    <div class="footer"></div>
+    <div class="footer">
+
+    </div>
 
 
 

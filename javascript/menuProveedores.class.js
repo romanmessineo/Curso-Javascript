@@ -19,12 +19,12 @@ class MenuProveedores {
             let proveedoresHTML = `            
             <div class="card">
             <img src=${proveedor.img}  alt="...">
-           <div class="card-body">
-           <p class="card-text">
-           <b>Nombre:</b> ${proveedor.nombre} <br>
-           <b>Direccion:</b> ${proveedor.direccion} <br>
-           <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
-           </div>
+            <div class="card-body">
+            <p class="card-text">
+            <b>Nombre:</b> ${proveedor.nombre} <br>
+            <b>Direccion:</b> ${proveedor.direccion} <br>
+            <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
+            </div>
             `
             screen.innerHTML += proveedoresHTML
         });
