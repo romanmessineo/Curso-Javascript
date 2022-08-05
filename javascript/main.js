@@ -43,29 +43,9 @@ const proveedores = [
   },
 ];
 
-
-
 const menuProveedores = new MenuProveedores(proveedores);
 console.log("Lista de Proveedores originales", menuProveedores.proveedores);
 //mostrarMenu()
-
-/* function mostrarMenu(){
-  screen = document.getElementById("screen");
-  screen.innerHTML = ``;
-  proveedores.forEach((proveedor) => {
-      let proveedoresHTML = `            
-      <div class="card">
-      <img src=${proveedor.img}  alt="...">
-      <div class="card-body">
-      <p class="card-text">
-      <b>Nombre:</b> ${proveedor.nombre} <br>
-      <b>Direccion:</b> ${proveedor.direccion} <br>
-      <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
-      </div>
-      `
-      screen.innerHTML += proveedoresHTML
-  });
-} */
 
 /* function mostrarMenu() { */
 /*   let opcion = "";
@@ -116,15 +96,13 @@ function agregarProveedor() {
     locacion,
     img
   );
-  
+
   menuProveedores.agregarProveedor(proveedor);
-  
-  localStorage.setItem("newprov", JSON.stringify(proveedor));
-  JSON.parse(localStorage.getItem("newprov")); 
-  
-     
-  
-  console.log("Menu Proveedores", menuProveedores);
+  menuProveedores.guardarNuevoProveedor(proveedor);
+  menuProveedores.listarNuevoProv(proveedor);
+
+  //menuProveedores.listarNuevoProv(proveedor);
+  console.log("Nuevo proveedor", proveedor);
 }
 
 function listarProveedores() {
@@ -264,10 +242,3 @@ function elementoSeguridadPersonal() {
     console.log("No cumple con normas de seguridad");
   }
 }
-
-
-
-
-
-
-

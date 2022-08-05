@@ -5,21 +5,10 @@ class MenuProveedores {
 
   agregarProveedor(proveedor) {
     this.proveedores.push(proveedor);
-    localStorage.setItem("NewProv", `proveedor`);
-    console.log()
-    /* proveedor = document.getElementById("screen");
-    proveedor.innerHTML = `            
-    <div class="card">
-    <img src=${proveedor}  alt="...">
-    <div class="card-body">
-    <p class="card-text">
-    <b>Nombre:</b> ${proveedor.nombre} <br>
-    <b>Direccion:</b> ${proveedor.direccion} <br>
-    <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
-    </div>
-    `; */
-    
-    
+  }
+
+  guardarNuevoProveedor() {
+    localStorage.setItem("nuevoProv", "prov");
   }
 
   darCantidad() {
@@ -44,9 +33,27 @@ class MenuProveedores {
     });
   }
 
+  listarNuevoProv(e) {
+    screen = document.getElementById("screen");
+    screen.innerHTML = `<P>Nuevo Proveedor</P>`;
+
+    let nuevProvHTML = `            
+    <div class="card">
+    <img src=${e.img}  alt="...">
+    <div class="card-body">
+    <p class="card-text">
+    <b>Nombre:</b> ${e.nombre} <br>
+    <b>Direccion:</b> ${e.direccion} <br>
+    <b>Ubicacion GM:</b> ${e.locacion}</p>
+    </div>
+    `;
+
+    screen.innerHTML += nuevProvHTML;
+  }
+
   buscar(nombreABuscar) {
     let esta = this.proveedores.some((proveedor) =>
-    proveedor.nombre.includes(nombreABuscar)
+      proveedor.nombre.includes(nombreABuscar)
     );
 
     if (esta) {
@@ -87,6 +94,7 @@ class MenuProveedores {
       proveedorEncontrado.nombre = nombre;
       proveedorEncontrado.direccion = direccion;
       proveedorEncontrado.locacion = locacion;
+      proveedorEncontrado.img = img;
       console.log("Proveedor Modificado con exito", this.proveedores);
     } else {
       alert("No se pudo modificar");

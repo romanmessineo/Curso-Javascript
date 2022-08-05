@@ -1,3 +1,14 @@
+:root {
+  --color-fuente: #ffffff;
+  --color-fondo: #000;
+}
+
+[tema="light"] {
+  --color-fuente: #000;
+  --color-fondo: rgb(237, 238, 234);
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -128,7 +139,7 @@
   min-height: 300px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
   padding: 10px;
   border: solid 2px;
@@ -138,6 +149,7 @@
   border: solid rgba(55, 104, 68, 0.507) 2px;
   text-decoration: none;
   width: 350px;
+  margin: 8px;
 }
 
 .card-text {
@@ -159,15 +171,7 @@
 
 /* DARK MODE */
 
-:root {
-  --color-fuente: #ffffff;
-  --color-fondo: #000;
-}
 
-[tema="light"] {
-  --color-fuente: #000;
-  --color-fondo: rgb(237, 238, 234);
-}
 
 body {
   background-color: var(--color-fondo);
