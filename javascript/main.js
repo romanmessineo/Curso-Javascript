@@ -46,6 +46,7 @@ const proveedores = [
 const menuProveedores = new MenuProveedores(proveedores);
 console.log("Lista de Proveedores originales", menuProveedores.proveedores);
 
+//Trae los proveedores storage y los pushea
 document.addEventListener("DOMContentLoaded", function (event) {
   let newsProvArray = JSON.parse(localStorage.getItem("nuevoProv"));
   newsProvArray.forEach(function (arrayProv) {
@@ -109,7 +110,9 @@ function agregarProveedor() {
 
   menuProveedores.agregarProveedor(proveedor);
   menuProveedores.guardarNuevoProveedor(proveedor);
+  alert("El proveedor " + nombre + " se agrego exitosamente " );
   menuProveedores.listarNuevoProv(proveedor);
+  
 }
 
 function listarProveedores() {
