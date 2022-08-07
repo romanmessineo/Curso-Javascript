@@ -1,3 +1,10 @@
+/* document.addEventListener("DOMContentLoaded", function (event){
+  let newProvArray = JSON.parse(localStorage.getItem("nuevoProv"));
+ menuProveedores.proveedores.push(newProvArray);
+  
+  console.log("Prov cargados antes", newProvArray);
+});   */
+
 const proveedores = [
   {
     id: 1,
@@ -45,6 +52,7 @@ const proveedores = [
 
 const menuProveedores = new MenuProveedores(proveedores);
 console.log("Lista de Proveedores originales", menuProveedores.proveedores);
+
 //mostrarMenu()
 
 /* function mostrarMenu() { */
@@ -100,9 +108,6 @@ function agregarProveedor() {
   menuProveedores.agregarProveedor(proveedor);
   menuProveedores.guardarNuevoProveedor(proveedor);
   menuProveedores.listarNuevoProv(proveedor);
-
-  //menuProveedores.listarNuevoProv(proveedor);
-  console.log("Nuevo proveedor", proveedor);
 }
 
 function listarProveedores() {
@@ -126,9 +131,10 @@ function actualizarProveedor() {
     nombre,
     direccion,
     locacion,
-    img
+    img,
   );
-}
+
+  }
 
 function ordenarProveedores() {
   menuProveedores.ordenarProveedores();
@@ -184,7 +190,10 @@ function igresarRtos() {
 
 //VER DONDE DESCARGA CADA PROVEEDOR
 function zonaDescarga() {
-  let operacion = prompt(`Que proveedor trae?  
+  let nombreABuscar = prompt("Ingrese el nombre del Proveedor");
+  menuProveedores.zona(nombreABuscar);
+
+  /* let operacion = prompt(`Que proveedor trae?  
         FAMMA 
         COZZUOL
         TENNECO
@@ -222,7 +231,7 @@ function zonaDescarga() {
         break;
       }
     }
-  }
+  } */
 }
 
 //SEGURIDAD
