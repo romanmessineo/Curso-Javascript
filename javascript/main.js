@@ -1,9 +1,4 @@
-/* document.addEventListener("DOMContentLoaded", function (event){
-  let newProvArray = JSON.parse(localStorage.getItem("nuevoProv"));
- menuProveedores.proveedores.push(newProvArray);
-  
-  console.log("Prov cargados antes", newProvArray);
-});   */
+ 
 
 const proveedores = [
   {
@@ -52,6 +47,13 @@ const proveedores = [
 
 const menuProveedores = new MenuProveedores(proveedores);
 console.log("Lista de Proveedores originales", menuProveedores.proveedores);
+
+document.addEventListener("DOMContentLoaded", function (event){
+  let newProvArray = JSON.parse(localStorage.getItem("nuevoProv"));
+  menuProveedores.proveedores.push(newProvArray);
+  
+  console.log("Prov cargados antes", newProvArray);
+}); 
 
 //mostrarMenu()
 

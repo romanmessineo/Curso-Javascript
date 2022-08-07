@@ -5,21 +5,30 @@ class MenuProveedores {
 
   agregarProveedor(proveedor) {
     this.proveedores.push(proveedor);
+
   }
 
   guardarNuevoProveedor(e) {
-    let newProvArray = JSON.parse(localStorage.getItem("nuevoProv")) || [];
-    this.proveedores.push(newProvArray);
+    let proveArray = JSON.parse(localStorage.getItem("nuevoProv"));
+    proveArray.push(e) ;
+
+    let newProveeStrign = JSON.stringify(proveArray);
+    localStorage.setItem("nuevoProv",newProveeStrign);
+    //let proArraJson = JSON.stringify(e);
+    //localStorage.setItem("nuevoProv",proArraJson )
+
+    /* let newProvArray = JSON.parse(localStorage.getItem("nuevoProv")) || [];
+    this.proveedores.push(newProvArray); */
 
     //provJson.push(newProvArray);
 
-    let provJson = JSON.stringify(e);
+    /* let provJson = JSON.stringify(e);
     localStorage.setItem("nuevoProv", provJson);
     let provReinsert = JSON.stringify(newProvArray);
-    localStorage.setItem("nuevoProv",provReinsert);
+    localStorage.setItem("nuevoProv",provReinsert); */
     
-    console.log("mi objeto local", newProvArray);
-    console.log("mi strims locales", provJson);
+    console.log("mi array local", (proveArray), "mi nuevo strn", (newProveeStrign));
+   // console.log("mi strims locales", provJson);
   }
 
   darCantidad() {
