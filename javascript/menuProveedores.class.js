@@ -104,7 +104,7 @@ class MenuProveedores {
       proveedorEncontrado.img = img;
 
       screen = document.getElementById("screen");
-      screen.innerHTML = `<P>Proveedor Modificado</P>`;
+      screen.innerHTML = `<P>Proveedor Modificado: ${nombreABuscar} </P>`;
 
       let nuevProvHTML = `            
     <div class="card">
