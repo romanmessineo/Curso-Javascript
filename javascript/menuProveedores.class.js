@@ -5,30 +5,16 @@ class MenuProveedores {
 
   agregarProveedor(proveedor) {
     this.proveedores.push(proveedor);
-
   }
 
   guardarNuevoProveedor(e) {
-    let proveArray = JSON.parse(localStorage.getItem("nuevoProv"));
-    proveArray.push(e) ;
+    let proveArray = JSON.parse(localStorage.getItem("nuevoProv")) || [];
+    proveArray.push(e);
 
     let newProveeStrign = JSON.stringify(proveArray);
-    localStorage.setItem("nuevoProv",newProveeStrign);
-    //let proArraJson = JSON.stringify(e);
-    //localStorage.setItem("nuevoProv",proArraJson )
+    localStorage.setItem("nuevoProv", newProveeStrign);
 
-    /* let newProvArray = JSON.parse(localStorage.getItem("nuevoProv")) || [];
-    this.proveedores.push(newProvArray); */
-
-    //provJson.push(newProvArray);
-
-    /* let provJson = JSON.stringify(e);
-    localStorage.setItem("nuevoProv", provJson);
-    let provReinsert = JSON.stringify(newProvArray);
-    localStorage.setItem("nuevoProv",provReinsert); */
-    
-    console.log("mi array local", (proveArray), "mi nuevo strn", (newProveeStrign));
-   // console.log("mi strims locales", provJson);
+    console.log("mi array local", proveArray, "mi nuevo strn", newProveeStrign);
   }
 
   darCantidad() {
@@ -106,7 +92,7 @@ class MenuProveedores {
       alert("No se encuentra el Proveedor");
     }
   }
-  
+
   modificarProveedor(nombreABuscar, nombre, direccion, locacion, img) {
     let proveedorEncontrado = this.proveedores.find((proveedor) =>
       proveedor.nombre.includes(nombreABuscar)
@@ -118,9 +104,9 @@ class MenuProveedores {
       proveedorEncontrado.img = img;
 
       screen = document.getElementById("screen");
-    screen.innerHTML = `<P>Proveedor Modificado</P>`;
+      screen.innerHTML = `<P>Proveedor Modificado</P>`;
 
-    let nuevProvHTML = `            
+      let nuevProvHTML = `            
     <div class="card">
     <img src=${proveedorEncontrado.img}  alt="...">
     <div class="card-body">
@@ -131,10 +117,7 @@ class MenuProveedores {
     </div>
     `;
 
-    screen.innerHTML += nuevProvHTML;
-      
-
-      
+      screen.innerHTML += nuevProvHTML;
 
       console.log("Proveedor Modificado con exito", proveedorEncontrado);
     } else {
@@ -152,23 +135,23 @@ class MenuProveedores {
     listarProveedores();
   }
 
-  zona(nombreABuscar){
-      let esta = this.proveedores.some((proveedor) =>
+  zona(nombreABuscar) {
+    let esta = this.proveedores.some((proveedor) =>
+      proveedor.nombre.includes(nombreABuscar)
+    );
+
+    if (esta) {
+      alert("Proveedor encontrado");
+
+      let filtrado = this.proveedores.filter((proveedor) =>
         proveedor.nombre.includes(nombreABuscar)
       );
-  
-      if (esta) {
-        alert("Proveedor encontrado");
-  
-        let filtrado = this.proveedores.filter((proveedor) =>
-          proveedor.nombre.includes(nombreABuscar)
-        );
-        console.table("Proveedores encontrados", filtrado);
+      console.table("Proveedores encontrados", filtrado);
 
-        screen = document.getElementById("screen");
-        screen.innerHTML = ``;
-        filtrado.forEach((proveedor) => {
-          let proveedoresHTML = `            
+      screen = document.getElementById("screen");
+      screen.innerHTML = ``;
+      filtrado.forEach((proveedor) => {
+        let proveedoresHTML = `            
               <div class="card">
               <img src=${proveedor.img}  alt="...">
               <div class="card-body">
@@ -178,17 +161,14 @@ class MenuProveedores {
               <b>"ACA DEBE IR MAPA DE ZONA DESCARGA"<br>
               </div>
               `;
-          screen.innerHTML += proveedoresHTML;
-        });
-  
-        //
-   
-  
-        //
-      } else {
-        alert("No se encuentra el Proveedor");
-      }
-    }
-  
+        screen.innerHTML += proveedoresHTML;
+      });
 
+      //
+
+      //
+    } else {
+      alert("No se encuentra el Proveedor");
+    }
+  }
 }

@@ -1,5 +1,3 @@
- 
-
 const proveedores = [
   {
     id: 1,
@@ -48,16 +46,14 @@ const proveedores = [
 const menuProveedores = new MenuProveedores(proveedores);
 console.log("Lista de Proveedores originales", menuProveedores.proveedores);
 
-document.addEventListener("DOMContentLoaded", function (event){
-  let newsProvArray = JSON.parse(localStorage.getItem("nuevoProv"))
-  newsProvArray.forEach(
-    function (arrayProv){
-    proveedores.push(arrayProv)}
-  )
-  
-  
+document.addEventListener("DOMContentLoaded", function (event) {
+  let newsProvArray = JSON.parse(localStorage.getItem("nuevoProv"));
+  newsProvArray.forEach(function (arrayProv) {
+    proveedores.push(arrayProv);
+  });
+
   console.log("Prov cargados antes", newsProvArray);
-}); 
+});
 
 //mostrarMenu()
 
@@ -137,16 +133,16 @@ function actualizarProveedor() {
     nombre,
     direccion,
     locacion,
-    img,
+    img
   );
-
-  }
+}
 
 function ordenarProveedores() {
   menuProveedores.ordenarProveedores();
 }
 
 //INICIAR SESION
+
 console.log("Usuario: usuario1", "Contraseña: password1");
 
 function logIn() {
@@ -184,6 +180,7 @@ function logIn() {
 }
 
 //FUNCION PARA IGRESAR REMITOS
+
 function igresarRtos() {
   let cantRtos = Number(prompt("Cuantos remitos trajo?"));
   let contador = 0;
@@ -198,46 +195,6 @@ function igresarRtos() {
 function zonaDescarga() {
   let nombreABuscar = prompt("Ingrese el nombre del Proveedor");
   menuProveedores.zona(nombreABuscar);
-
-  /* let operacion = prompt(`Que proveedor trae?  
-        FAMMA 
-        COZZUOL
-        TENNECO
-        EZEIZA`);
-
-  let numero1 = Number(prompt("Ingrese el número de viaje"));
-  console.log(operacion + " Viaje numero:" + numero1);
-
-  if (isNaN(numero1)) {
-    alert("NUMEROS NO VALIDOS");
-  } else {
-    switch (operacion) {
-      case "FAMMA": {
-        const resultado = "Boddy";
-        alert(`Usted descarga en ${resultado}`);
-        break;
-      }
-      case "COZZUOL": {
-        const resultado = "No Produtivo";
-        alert(`Usted descarga en ${resultado}`);
-        break;
-      }
-      case "TENNECO": {
-        const resultado = "Mecanica";
-        alert(`Usted descarga en ${resultado}`);
-        break;
-      }
-      case "EZEIZA": {
-        const resultado = "WhereHouse";
-        alert(`Usted descarga en ${resultado}`);
-        break;
-      }
-      default: {
-        alert("Comuniquese con un operador de trafico");
-        break;
-      }
-    }
-  } */
 }
 
 //SEGURIDAD
