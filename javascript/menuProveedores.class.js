@@ -26,7 +26,7 @@ class MenuProveedores {
     screen.innerHTML = ``;
     proveedores.forEach((proveedor) => {
       let proveedoresHTML = `            
-            <div class="card">
+            <div class="card"> 
             <img src=${proveedor.img}  alt="...">
             <div class="card-body">
             <p class="card-text">
@@ -57,16 +57,16 @@ class MenuProveedores {
     screen.innerHTML += nuevProvHTML;
   }
 
-  buscar(nombreABuscar) {
+  buscar(nombreBuscado) {
     let esta = this.proveedores.some((proveedor) =>
-      proveedor.nombre.includes(nombreABuscar)
+      proveedor.nombre.toLowerCase().includes(nombreBuscado)
     );
 
     if (esta) {
       alert("Proveedor encontrado");
 
       let filtrado = this.proveedores.filter((proveedor) =>
-        proveedor.nombre.includes(nombreABuscar)
+        proveedor.nombre.toLowerCase().includes(nombreBuscado)
       );
       console.table("Proveedores encontrados", filtrado);
 

@@ -120,8 +120,28 @@ function listarProveedores() {
 }
 
 function buscarProveedor() {
-  let nombreABuscar = prompt("Ingrese el nombre del Proveedor");
-  menuProveedores.buscar(nombreABuscar);
+  screen = document.getElementById("screen");
+      screen.innerHTML = `
+        <div>
+        <input  type="text" id="formulario">
+        <button class="btn btn-info" id="botonBuscar"> Buscar </button>
+    </div>
+      `;
+  const buscarPov = document.querySelector(`#formulario`);
+  const botonBuscar = document.querySelector(`#botonBuscar`);
+  
+  const filtrar = () =>{
+
+    let nombreBuscado = buscarPov.value.toLowerCase();
+    console.log(nombreBuscado);
+    menuProveedores.buscar(nombreBuscado);
+  }
+
+  botonBuscar.addEventListener(`click`, filtrar);
+
+
+  //let nombreABuscar = prompt("Ingrese el nombre del Proveedor");
+  
 }
 
 function actualizarProveedor() {
