@@ -49,10 +49,14 @@ const menuProveedores = new MenuProveedores(proveedores);
 console.log("Lista de Proveedores originales", menuProveedores.proveedores);
 
 document.addEventListener("DOMContentLoaded", function (event){
-  let newProvArray = JSON.parse(localStorage.getItem("nuevoProv"));
-  menuProveedores.proveedores.push(newProvArray);
+  let newsProvArray = JSON.parse(localStorage.getItem("nuevoProv"))
+  newsProvArray.forEach(
+    function (arrayProv){
+    proveedores.push(arrayProv)}
+  )
   
-  console.log("Prov cargados antes", newProvArray);
+  
+  console.log("Prov cargados antes", newsProvArray);
 }); 
 
 //mostrarMenu()
