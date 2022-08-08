@@ -1,8 +1,10 @@
+//Funciones de Administrador
+
 class MenuProveedores {
   constructor(proveedores) {
     this.proveedores = proveedores;
   }
-
+  
   agregarProveedor(proveedor) {
     this.proveedores.push(proveedor);
   }
@@ -135,16 +137,19 @@ class MenuProveedores {
     listarProveedores();
   }
 
+  //Menu de Usuario
+
+  //Boton "Donde descargo" devuelve mapa de zona descarga
   zona(nombreABuscar) {
     let esta = this.proveedores.some((proveedor) =>
-      proveedor.nombre.includes(nombreABuscar)
+      proveedor.nombre.toLowerCase().includes(nombreABuscar)
     );
 
     if (esta) {
       alert("Proveedor encontrado");
 
       let filtrado = this.proveedores.filter((proveedor) =>
-        proveedor.nombre.includes(nombreABuscar)
+        proveedor.nombre.toLowerCase().includes(nombreABuscar)
       );
       console.table("Proveedores encontrados", filtrado);
 
@@ -160,6 +165,7 @@ class MenuProveedores {
               <b>DESCARGA EN:</h4> "${proveedor.locacion}"</h4><br>
               <b>"ACA DEBE IR MAPA DE ZONA DESCARGA"<br>
               </div>
+              <div><img src="https://www.on24.com.ar/wp-content/uploads/2019/09/GM-Alvear.png"><div>
               `;
         screen.innerHTML += proveedoresHTML;
       });
@@ -170,5 +176,72 @@ class MenuProveedores {
     } else {
       alert("No se encuentra el Proveedor");
     }
+  }
+}
+
+//SEGURIDAD
+function elementoSeguridadPersonal() {
+  let seguridadPersonal =
+    prompt(`Usted posee los siguientes elementos de seguridad? "si" - "no"
+        Calzado de seg
+        Chaleco naranja
+        Casco
+        Gafas
+        Guantes`);
+
+  if (seguridadPersonal === "si") {
+    alert("Gracias! Esta autorizado para ingresar");
+  } else {
+    alert("Comuniquese con personal de trafico");
+    console.log("No cumple con normas de seguridad");
+  }
+}
+
+//Usuario y contraseña
+console.log("Usuario: usuario1", "Contraseña: password1");
+
+//INICIAR SESION
+function logIn() {
+  let preguntaUsuario = prompt("Usted tiene usuario? si - no");
+
+  if (preguntaUsuario === "si") {
+    pedirDatos();
+    let esValido = validarDatos(nombreUsuario, contra);
+    validarLogin(esValido);
+  } else {
+    alert("Igualmente puede accededer");
+  }
+
+  function pedirDatos() {
+    nombreUsuario = prompt("Inrgese nombre usuario");
+    contra = prompt("Ingrese Contraseña");
+  }
+
+  function validarDatos(username, pwd) {
+    let esValido = false;
+    if (username === "usuario1" && pwd === "password1") {
+      esValido = true;
+    }
+    return esValido;
+  }
+
+  function validarLogin(isValid) {
+    if (!isValid) {
+      alert("ERROR");
+      init();
+    } else {
+      alert("LOGIN EXITOSO - esta funcion estara disponible proximamente");
+    }
+  }
+}
+
+//FUNCION PARA IGRESAR REMITOS
+function igresarRtos() {
+  let cantRtos = Number(prompt("Cuantos remitos trajo?"));
+  let contador = 0;
+  while (contador < cantRtos) {
+    let numRto = Number(prompt(`Ingrese el numero del remito ${contador + 1}`));
+    console.log(`Numero Rto: ${numRto}`);
+    contador++;
   }
 }

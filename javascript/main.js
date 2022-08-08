@@ -56,9 +56,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   console.log("Prov cargados antes", newsProvArray);
 });
 
-//mostrarMenu()
-
-/* function mostrarMenu() { */
+//este swuitch se esta reemplazando con botones
 /*   let opcion = "";
   while (opcion !== "6") {
     opcion = prompt(`Ingrese una opción:
@@ -110,9 +108,8 @@ function agregarProveedor() {
 
   menuProveedores.agregarProveedor(proveedor);
   menuProveedores.guardarNuevoProveedor(proveedor);
-  alert("El proveedor " + nombre + " se agrego exitosamente " );
+  alert("El proveedor " + nombre + " se agrego exitosamente ");
   menuProveedores.listarNuevoProv(proveedor);
-  
 }
 
 function listarProveedores() {
@@ -121,7 +118,7 @@ function listarProveedores() {
 
 function buscarProveedor() {
   screen = document.getElementById("screen");
-      screen.innerHTML = `
+  screen.innerHTML = `
         <div>
         <input  type="text" id="formulario">
         <button class="btn btn-info" id="botonBuscar"> Buscar </button>
@@ -129,19 +126,14 @@ function buscarProveedor() {
       `;
   const buscarPov = document.querySelector(`#formulario`);
   const botonBuscar = document.querySelector(`#botonBuscar`);
-  
-  const filtrar = () =>{
 
+  const filtrar = () => {
     let nombreBuscado = buscarPov.value.toLowerCase();
     console.log(nombreBuscado);
     menuProveedores.buscar(nombreBuscado);
-  }
+  };
 
   botonBuscar.addEventListener(`click`, filtrar);
-
-
-  //let nombreABuscar = prompt("Ingrese el nombre del Proveedor");
-  
 }
 
 function actualizarProveedor() {
@@ -164,76 +156,10 @@ function ordenarProveedores() {
   menuProveedores.ordenarProveedores();
 }
 
-//INICIAR SESION
-
-console.log("Usuario: usuario1", "Contraseña: password1");
-
-function logIn() {
-  let preguntaUsuario = prompt("Usted tiene usuario? si - no");
-
-  if (preguntaUsuario === "si") {
-    pedirDatos();
-    let esValido = validarDatos(nombreUsuario, contra);
-    validarLogin(esValido);
-  } else {
-    alert("Igualmente puede accededer");
-  }
-
-  function pedirDatos() {
-    nombreUsuario = prompt("Inrgese nombre usuario");
-    contra = prompt("Ingrese Contraseña");
-  }
-
-  function validarDatos(username, pwd) {
-    let esValido = false;
-    if (username === "usuario1" && pwd === "password1") {
-      esValido = true;
-    }
-    return esValido;
-  }
-
-  function validarLogin(isValid) {
-    if (!isValid) {
-      alert("ERROR");
-      init();
-    } else {
-      alert("LOGIN EXITOSO - esta funcion estara disponible proximamente");
-    }
-  }
-}
-
-//FUNCION PARA IGRESAR REMITOS
-
-function igresarRtos() {
-  let cantRtos = Number(prompt("Cuantos remitos trajo?"));
-  let contador = 0;
-  while (contador < cantRtos) {
-    let numRto = Number(prompt(`Ingrese el numero del remito ${contador + 1}`));
-    console.log(`Numero Rto: ${numRto}`);
-    contador++;
-  }
-}
+//Menu de Usuario
 
 //VER DONDE DESCARGA CADA PROVEEDOR
 function zonaDescarga() {
   let nombreABuscar = prompt("Ingrese el nombre del Proveedor");
-  menuProveedores.zona(nombreABuscar);
-}
-
-//SEGURIDAD
-function elementoSeguridadPersonal() {
-  let seguridadPersonal =
-    prompt(`Usted posee los siguientes elementos de seguridad? "si" - "no"
-        Calzado de seg
-        Chaleco naranja
-        Casco
-        Gafas
-        Guantes`);
-
-  if (seguridadPersonal === "si") {
-    alert("Gracias! Esta autorizado para ingresar");
-  } else {
-    alert("Comuniquese con personal de trafico");
-    console.log("No cumple con normas de seguridad");
-  }
+  menuProveedores.zona(nombreABuscar.toLowerCase());
 }
