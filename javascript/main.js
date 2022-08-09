@@ -93,23 +93,53 @@ document.addEventListener("DOMContentLoaded", function (event) {
 } */
 
 function agregarProveedor() {
-  let nombre = prompt("Ingrese nombre o razon social");
-  let direccion = prompt("Ingrese direccion");
-  let locacion = prompt("Ingrese locacion GM");
-  let img = prompt("adjunte imagen");
+  screen = document.getElementById("screen");
+  screen.innerHTML = ``;
+  let agreProvHTML = `            
+    <section id="forProv" class="forAgreProv">
+            <h2>Complete todos los campos</h2>  
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" placeholder="Ingrese nombre o razon social">
+            <label for="direccion">Direccion:</label>
+            <input type="text" name="ireccion" id="direccion" placeholder="Ingrese direccion">
+            <label for="locacion">Locacion:</label>
+            <input type="text" name="locacion" id="locacion" placeholder="Ingrese locacion GM">
+            <label for="img">Imagen:</label>
+            <input type="text" name="img" id="img" placeholder="adjunte imagen">
+        
+            <button class="btn btn-primary btnAgreNuevProv" type="button" value="Agregar" id="btnAgregarProv"><span> AGREGAR </span></button>
+     </section>         
+            `;
+  screen.innerHTML += agreProvHTML;
+  const nombre = document.getElementById("nombre");
+  const direccion = document.getElementById("direccion");
+  const locacion = document.getElementById("locacion");
+  const img = document.getElementById("img");
+  const button = document.getElementById("btnAgregarProv");
 
-  let proveedor = new Proveedor(
-    menuProveedores.darCantidad() + 1,
-    nombre,
-    direccion,
-    locacion,
-    img
-  );
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    let data = {
+      nombre: nombre.value,
+      direccion: direccion.value,
+      locacion: locacion.value,
+      img: img.value,
+    };
+    console.log("Nuevo Proveedor", data);
 
-  menuProveedores.agregarProveedor(proveedor);
-  menuProveedores.guardarNuevoProveedor(proveedor);
-  alert("El proveedor " + nombre + " se agrego exitosamente ");
-  menuProveedores.listarNuevoProv(proveedor);
+    let proveedor = new Proveedor(
+      menuProveedores.darCantidad() + 1,
+      data.nombre,
+      data.direccion,
+      data.locacion,
+      data.img
+    );
+
+    menuProveedores.agregarProveedor(proveedor);
+    menuProveedores.listarNuevoProv(proveedor);
+    alert("El proveedor " + data.nombre + " se agrego exitosamente ");
+    menuProveedores.guardarNuevoProveedor(proveedor);
+  });
 }
 
 function listarProveedores() {
@@ -121,7 +151,7 @@ function buscarProveedor() {
   screen.innerHTML = `
         <div>
         <input  type="text" id="formulario">
-        <button class="btn btn-info" id="botonBuscar"> Buscar </button>
+        <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
     </div>
       `;
   const buscarPov = document.querySelector(`#formulario`);
@@ -137,6 +167,18 @@ function buscarProveedor() {
 }
 
 function actualizarProveedor() {
+  /*   screen = document.getElementById("screen");
+      screen.innerHTML = ``;
+      let loginHTML = `            
+        <section>
+        <input type="email" name="email" id="email" placeholder="Ingrese su mail">
+        <input type="text" name="pass" id="pass" placeholder="Ingrese su contaseña">
+        <input type="button" value="Ingresar" id="login">
+        </section>
+            `;
+        screen.innerHTML += loginHTML;
+      ; */
+
   let nombreABuscar = prompt("Ingrese nombre del Proveedor a modificar");
   let nombre = prompt("Ingrese un nombre");
   let direccion = prompt("Ingrese direccion");

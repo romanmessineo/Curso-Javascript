@@ -4,7 +4,7 @@ class MenuProveedores {
   constructor(proveedores) {
     this.proveedores = proveedores;
   }
-  
+
   agregarProveedor(proveedor) {
     this.proveedores.push(proveedor);
   }
@@ -16,7 +16,7 @@ class MenuProveedores {
     let newProveeStrign = JSON.stringify(proveArray);
     localStorage.setItem("nuevoProv", newProveeStrign);
 
-    console.log("mi array local", proveArray, "mi nuevo strn", newProveeStrign);
+    console.log("mi array local Storage", proveArray);
   }
 
   darCantidad() {
@@ -28,14 +28,15 @@ class MenuProveedores {
     screen.innerHTML = ``;
     proveedores.forEach((proveedor) => {
       let proveedoresHTML = `            
-            <div class="card"> 
-            <img src=${proveedor.img}  alt="...">
-            <div class="card-body">
-            <p class="card-text">
-            <b>Nombre:</b> ${proveedor.nombre} <br>
-            <b>Direccion:</b> ${proveedor.direccion} <br>
-            <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
-            </div>
+      <div class="card"> 
+      <img src=${proveedor.img}  alt="...">
+      <div class="card-body">
+      <p class="card-text">
+      <b>Nombre:</b> ${proveedor.nombre} <br>
+      <b>Direccion:</b> ${proveedor.direccion} <br>
+      <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
+      </div>
+      </div>  
             `;
       screen.innerHTML += proveedoresHTML;
     });
@@ -72,7 +73,7 @@ class MenuProveedores {
       );
       console.table("Proveedores encontrados", filtrado);
 
-      //
+      
       screen = document.getElementById("screen");
       screen.innerHTML = ``;
       filtrado.forEach((proveedor) => {
@@ -109,16 +110,16 @@ class MenuProveedores {
       screen.innerHTML = `<P>Proveedor Modificado: ${nombreABuscar} </P>`;
 
       let nuevProvHTML = `            
-    <div class="card">
-    <img src=${proveedorEncontrado.img}  alt="...">
-    <div class="card-body">
-    <p class="card-text">
-    <b>Nombre:</b> ${proveedorEncontrado.nombre} <br>
-    <b>Direccion:</b> ${proveedorEncontrado.direccion} <br>
-    <b>Ubicacion GM:</b> ${proveedorEncontrado.locacion}</p>
-    </div>
+      <div class="card">
+      <img src=${proveedorEncontrado.img}  alt="...">
+      <div class="card-body">
+      <p class="card-text">
+      <b>Nombre:</b> ${proveedorEncontrado.nombre} <br>
+      <b>Direccion:</b> ${proveedorEncontrado.direccion} <br>
+      <b>Ubicacion GM:</b> ${proveedorEncontrado.locacion}</p>
+      </div>
+      </div>
     `;
-
       screen.innerHTML += nuevProvHTML;
 
       console.log("Proveedor Modificado con exito", proveedorEncontrado);
@@ -126,6 +127,7 @@ class MenuProveedores {
       alert("No se pudo modificar");
     }
   }
+
   ordenarProveedores() {
     this.proveedores.sort((proveedorA, proveedorB) => {
       if (proveedorA.nombre < proveedorB.nombre) {
@@ -157,15 +159,19 @@ class MenuProveedores {
       screen.innerHTML = ``;
       filtrado.forEach((proveedor) => {
         let proveedoresHTML = `            
-              <div class="card">
-              <img src=${proveedor.img}  alt="...">
-              <div class="card-body">
-              <p class="card-text">
-              <b>Nombre:</b> ${proveedor.nombre} <br>
-              <b>DESCARGA EN:</h4> "${proveedor.locacion}"</h4><br>
-              <b>"ACA DEBE IR MAPA DE ZONA DESCARGA"<br>
-              </div>
-              <div><img src="https://www.on24.com.ar/wp-content/uploads/2019/09/GM-Alvear.png"><div>
+        <div class="card">
+            <img src=${proveedor.img} alt="...">
+            <div class="card-body">
+                <p class="card-text">
+                    <b>Nombre:</b> ${proveedor.nombre} <br>
+                    <b>DESCARGA EN:</h4> "${proveedor.locacion}"</h4><br>
+                </p>
+            </div>
+        </div>
+        <div class="container-fluid">
+        <p><b>"ACA DEBE IR MAPA DE ZONA DESCARGA"</p>
+                <img src="https://www.on24.com.ar/wp-content/uploads/2019/09/GM-Alvear.png">
+        </div>
               `;
         screen.innerHTML += proveedoresHTML;
       });
