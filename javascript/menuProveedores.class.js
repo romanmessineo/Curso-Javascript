@@ -58,6 +58,7 @@ class MenuProveedores {
     `;
 
     screen.innerHTML += nuevProvHTML;
+    Swal.fire("Se agrego", e.nombre, "", "success");
   }
 
   buscar(nombreBuscado) {
@@ -101,7 +102,7 @@ class MenuProveedores {
 
   modificarProveedor(nombreABuscar, nombre, direccion, locacion, img) {
     let proveedorEncontrado = this.proveedores.find((proveedor) =>
-      proveedor.nombre.includes(nombreABuscar)
+      proveedor.nombre.toLowerCase().includes(nombreABuscar)
     );
     if (proveedorEncontrado) {
       proveedorEncontrado.nombre = nombre;
@@ -206,16 +207,13 @@ function elementoSeguridadPersonal() {
   }
 }
 
-//Usuario y contraseña
-console.log("Usuario: usuario1", "Contraseña: password1");
-
 //INICIAR SESION
 
 function logIn() {
   Swal.fire({
     title: "Inicie sesión",
-    html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
-  <input type="password" id="password" class="swal2-input" placeholder="Password">`,
+    html: `<input type="text" id="login" class="swal2-input" placeholder="Cualquier nombre">
+  <input type="password" id="password" class="swal2-input" placeholder="Cualquier Password">`,
     confirmButtonText: "Login",
     focusConfirm: false,
     preConfirm: () => {
@@ -235,40 +233,6 @@ function logIn() {
     );
   });
 }
-
-/* function logIn() {
-  let preguntaUsuario = prompt("Usted tiene usuario? si - no");
-
-  if (preguntaUsuario === "si") {
-    pedirDatos();
-    let esValido = validarDatos(nombreUsuario, contra);
-    validarLogin(esValido);
-  } else {
-    alert("Igualmente puede accededer");
-  }
-
-  function pedirDatos() {
-    nombreUsuario = prompt("Inrgese nombre usuario");
-    contra = prompt("Ingrese Contraseña");
-  }
-
-  function validarDatos(username, pwd) {
-    let esValido = false;
-    if (username === "usuario1" && pwd === "password1") {
-      esValido = true;
-    }
-    return esValido;
-  }
-
-  function validarLogin(isValid) {
-    if (!isValid) {
-      alert("ERROR");
-      init();
-    } else {
-      alert("LOGIN EXITOSO - esta funcion estara disponible proximamente");
-    }
-  }
-} */
 
 //FUNCION PARA IGRESAR REMITOS
 function igresarRtos() {
