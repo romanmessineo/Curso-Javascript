@@ -66,14 +66,12 @@ class MenuProveedores {
     );
 
     if (esta) {
-      alert("Proveedor encontrado");
-
+      Swal.fire("Proveedor encontrado", "", "success");
       let filtrado = this.proveedores.filter((proveedor) =>
         proveedor.nombre.toLowerCase().includes(nombreBuscado)
       );
       console.table("Proveedores encontrados", filtrado);
 
-      
       screen = document.getElementById("screen");
       screen.innerHTML = ``;
       filtrado.forEach((proveedor) => {
@@ -92,7 +90,12 @@ class MenuProveedores {
 
       //
     } else {
-      alert("No se encuentra el Proveedor");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No se encuentra el Proveedor!",
+      });
+      //alert("No se encuentra el Proveedor");
     }
   }
 
@@ -207,7 +210,33 @@ function elementoSeguridadPersonal() {
 console.log("Usuario: usuario1", "Contraseña: password1");
 
 //INICIAR SESION
+
 function logIn() {
+  Swal.fire({
+    title: "Inicie sesión",
+    html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
+  <input type="password" id="password" class="swal2-input" placeholder="Password">`,
+    confirmButtonText: "Login",
+    focusConfirm: false,
+    preConfirm: () => {
+      const login = Swal.getPopup().querySelector("#login").value;
+      const password = Swal.getPopup().querySelector("#password").value;
+
+      if (!login || !password) {
+        Swal.showValidationMessage(`Ingrese usuario contraseña por favor`);
+      }
+      return { login: login, password: password };
+    },
+  }).then((result) => {
+    Swal.fire(
+      `
+    Bienvenido ${result.value.login}!
+    `.trim()
+    );
+  });
+}
+
+/* function logIn() {
   let preguntaUsuario = prompt("Usted tiene usuario? si - no");
 
   if (preguntaUsuario === "si") {
@@ -239,7 +268,7 @@ function logIn() {
       alert("LOGIN EXITOSO - esta funcion estara disponible proximamente");
     }
   }
-}
+} */
 
 //FUNCION PARA IGRESAR REMITOS
 function igresarRtos() {

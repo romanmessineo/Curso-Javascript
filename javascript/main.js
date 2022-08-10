@@ -88,9 +88,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
       default:
         alert("Opción Inválida");
         break;
-    }
-  }
-} */
+    }*/
+
 
 function agregarProveedor() {
   screen = document.getElementById("screen");
@@ -137,7 +136,7 @@ function agregarProveedor() {
 
     menuProveedores.agregarProveedor(proveedor);
     menuProveedores.listarNuevoProv(proveedor);
-    alert("El proveedor " + data.nombre + " se agrego exitosamente ");
+    swal("Bien hecho!", "El proveedor " + data.nombre + " se agrego exitosamente ", "success");
     menuProveedores.guardarNuevoProveedor(proveedor);
   });
 }
