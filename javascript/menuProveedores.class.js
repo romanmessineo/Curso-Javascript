@@ -40,6 +40,8 @@ class MenuProveedores {
             `;
       screen.innerHTML += proveedoresHTML;
     });
+   
+
   }
 
   listarNuevoProv(e) {
@@ -56,9 +58,30 @@ class MenuProveedores {
     <b>Ubicacion GM:</b> ${e.locacion}</p>
     </div>
     `;
-
     screen.innerHTML += nuevProvHTML;
-    Swal.fire("Se agrego", e.nombre, "", "success");
+    let timerInterval;
+    Swal.fire({
+      title: `Cargando Proveedor ${e.nombre}`.trim(),
+      html: "Este cuadro se cerrara en <b></b> milisegundos.",
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+        const b = Swal.getHtmlContainer().querySelector("b");
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft();
+        }, 100);
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+      },
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log("I was closed by the timer");
+      }
+    });
+    //Swal.fire("Se agrego", e.nombre, "", "success");
   }
 
   buscar(nombreBuscado) {
@@ -104,14 +127,15 @@ class MenuProveedores {
     let proveedorEncontrado = this.proveedores.find((proveedor) =>
       proveedor.nombre.toLowerCase().includes(nombreABuscar)
     );
-    if (proveedorEncontrado) {
+     const proveedorModificado = proveedorEncontrado.nombre;
+    if (proveedorEncontrado.nombre) {
       proveedorEncontrado.nombre = nombre;
       proveedorEncontrado.direccion = direccion;
       proveedorEncontrado.locacion = locacion;
       proveedorEncontrado.img = img;
 
       screen = document.getElementById("screen");
-      screen.innerHTML = `<P>Proveedor Modificado: ${nombreABuscar} </P>`;
+      screen.innerHTML = `<h5>Proveedor Modificado: <b> ${proveedorModificado}</b> </h5>`;
 
       let nuevProvHTML = `            
       <div class="card">
@@ -125,6 +149,28 @@ class MenuProveedores {
       </div>
     `;
       screen.innerHTML += nuevProvHTML;
+      let timerInterval;
+      Swal.fire({
+        title: `Actualizando Proveedor ${proveedorModificado}`.trim(),
+        html: "Este cuadro se cerrara en <b></b> milisegundos.",
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading();
+          const b = Swal.getHtmlContainer().querySelector("b");
+          timerInterval = setInterval(() => {
+            b.textContent = Swal.getTimerLeft();
+          }, 100);
+        },
+        willClose: () => {
+          clearInterval(timerInterval);
+        },
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          console.log("I was closed by the timer");
+        }
+      })
 
       console.log("Proveedor Modificado con exito", proveedorEncontrado);
     } else {
@@ -146,13 +192,14 @@ class MenuProveedores {
   //Menu de Usuario
 
   //Boton "Donde descargo" devuelve mapa de zona descarga
+
   zona(nombreABuscar) {
     let esta = this.proveedores.some((proveedor) =>
       proveedor.nombre.toLowerCase().includes(nombreABuscar)
     );
 
     if (esta) {
-      alert("Proveedor encontrado");
+      Swal.fire("Proveedor encontrado", "", "success");
 
       let filtrado = this.proveedores.filter((proveedor) =>
         proveedor.nombre.toLowerCase().includes(nombreABuscar)
@@ -184,7 +231,11 @@ class MenuProveedores {
 
       //
     } else {
-      alert("No se encuentra el Proveedor");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No se encuentra el Proveedor!",
+      });
     }
   }
 }

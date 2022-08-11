@@ -43,6 +43,8 @@ const proveedores = [
   },
 ];
 
+ 
+
 const menuProveedores = new MenuProveedores(proveedores);
 console.log("Lista de Proveedores originales", menuProveedores.proveedores);
 
@@ -107,6 +109,17 @@ function agregarProveedor() {
 
 function listarProveedores() {
   menuProveedores.listarProveedores();
+  Toastify({
+    text: "Listados OK",
+    duration: 3000,
+    close: true,
+    /* className: "info", */
+    gravity: "top", // `top` or `bottom`
+    position: "left", // `left`, `center` or `right`
+    style: {
+      background: "linear-gradient(to right, #0093b0, #3db4c9)",
+    },
+  }).showToast();
 }
 
 function buscarProveedor() {
@@ -185,12 +198,53 @@ function actualizarProveedor() {
 
 function ordenarProveedores() {
   menuProveedores.ordenarProveedores();
+  Toastify({
+    text: "Ordenados OK",
+    duration: 3000,
+    close: true,
+    /* className: "info", */
+    gravity: "top", // `top` or `bottom`
+    position: "left", // `left`, `center` or `right`
+    style: {
+      background: "linear-gradient(to right, #0093b0, #3db4c9)",
+    },
+  }).showToast();
 }
 
 //Menu de Usuario
 
 //VER DONDE DESCARGA CADA PROVEEDOR
-function zonaDescarga() {
-  let nombreABuscar = prompt("Ingrese el nombre del Proveedor");
-  menuProveedores.zona(nombreABuscar.toLowerCase());
+function zonaDescarga() 
+{
+  screen = document.getElementById("screen");
+  screen.innerHTML = `
+      <div class="divBuscar">
+            <h5><b>Ingrese Proveedor</b><h5>
+            <input  type="text" id="formulario" placeholder="Nombre o Razon social">
+            <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
+        </div>
+      `;
+  const buscarPov = document.querySelector(`#formulario`);
+  const botonBuscar = document.querySelector(`#botonBuscar`);
+
+  const filtrar = () => {
+    let nombreBuscado = buscarPov.value.toLowerCase();
+    console.log(nombreBuscado);
+    menuProveedores.zona(nombreBuscado);
+  };
+
+  botonBuscar.addEventListener(`click`, filtrar);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
