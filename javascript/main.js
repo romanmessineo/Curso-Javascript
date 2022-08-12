@@ -134,13 +134,25 @@ function buscarProveedor() {
   const buscarPov = document.querySelector(`#formulario`);
   const botonBuscar = document.querySelector(`#botonBuscar`);
 
+ const prefiltrar = () => {
+    let nombreTipiado = buscarPov.value;
+    //menuProveedores.buscarTex(nombreTipiado);
+    menuProveedores.buscarTex(nombreTipiado)
+    console.table("lETRAS TIPIADAS 2",buscarPov.value);
+  
+  }; 
+  
+  buscarPov.addEventListener(`keydown`, prefiltrar); 
+  
   const filtrar = () => {
-    let nombreBuscado = buscarPov.value.toLowerCase();
+    let nombreBuscado = buscarPov.value;
     console.log(nombreBuscado);
     menuProveedores.buscar(nombreBuscado);
   };
 
-  botonBuscar.addEventListener(`click`, filtrar);
+ 
+
+  botonBuscar.addEventListener(`click`, filtrar); 
 }
 
 function actualizarProveedor() {

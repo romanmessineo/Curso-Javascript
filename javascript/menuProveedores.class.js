@@ -85,8 +85,8 @@ class MenuProveedores {
   }
 
   buscar(nombreBuscado) {
-    let esta = this.proveedores.some((proveedor) =>
-      proveedor.nombre.toLowerCase().includes(nombreBuscado)
+    let esta = this.proveedores.filter((proveedor) =>
+      proveedor.nombre.indexOf(nombreBuscado.toLowerCase()) !==-1
     );
 
     if (esta) {
@@ -110,6 +110,9 @@ class MenuProveedores {
             </div>
             `;
         screen.innerHTML += proveedoresHTML;
+        let vaciar =``
+        screenFooter.innerHTML = vaciar;
+        
       });
 
       //
@@ -121,6 +124,52 @@ class MenuProveedores {
       });
       //alert("No se encuentra el Proveedor");
     }
+  }
+
+  buscarTex(nombreTipiado) {
+   /*  let esta = this.proveedores.some((proveedor) =>
+      proveedor.nombre.includes(nombreTipiado.toLowerCase()) !==-1
+    ); */
+
+    
+      //Swal.fire("Proveedor encontrado", "", "success");
+      let filtrado = this.proveedores.filter((proveedor) =>
+        proveedor.nombre.toLowerCase().indexOf(nombreTipiado.toLowerCase())!==-1
+        
+      );
+      console.table("lETRAS TIPIADAS", nombreTipiado);
+      console.table("VER ESTO", filtrado);
+      
+      if (nombreTipiado.length  !== 0) { 
+      /* newDiv = document.createElement("div"); */
+      nombreTipiado = document.getElementById("screenFooter");/* .appendChild(newDiv); */
+
+      //creen.innerHTML = ``;
+      filtrado.map((proveedor) => {
+        let proveedoresHTML = `            
+            <div class="card">
+            <img src=${proveedor.img}  alt="...">
+            <div class="card-body">
+            <p class="card-text">
+            <b>Nombre:</b> ${proveedor.nombre} <br>
+            <b>Direccion:</b> ${proveedor.direccion} <br>
+            <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
+            </div>
+            `;
+            screenFooter.innerHTML = proveedoresHTML;
+            
+            //console.log("xxxxxxxxx" ,proveedoresHTML );
+       } );
+      
+   
+   } 
+    else {
+      let vaciar =``
+      screenFooter.innerHTML = vaciar;
+      
+      }
+      
+     
   }
 
   modificarProveedor(nombreABuscar, nombre, direccion, locacion, img) {
