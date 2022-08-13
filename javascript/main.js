@@ -59,6 +59,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function agregarProveedor() {
+  buscador.innerHTML = ``;
+  buscZonaDescarga.innerHTML = ``;
   screen = document.getElementById("screen");
   screen.innerHTML = ``;
   let agreProvHTML = `            
@@ -108,6 +110,10 @@ function agregarProveedor() {
 }
 
 function listarProveedores() {
+  /* document.innerHTML = `` */
+  /* buscador = document.getElementById("buscador"); */
+  buscador.innerHTML = ``
+  buscZonaDescarga.innerHTML = ``;
   menuProveedores.listarProveedores();
   Toastify({
     text: "Listados OK",
@@ -123,22 +129,25 @@ function listarProveedores() {
 }
 
 function buscarProveedor() {
-  screen = document.getElementById("screen");
-  screen.innerHTML = `
+  screen.innerHTML = ``;
+  buscZonaDescarga.innerHTML = ``; 
+  screenBsc = document.getElementById("buscador");
+  screenBsc.innerHTML = ``;
+  screenBsc.innerHTML = `
       <div class="divBuscar">
-            <h5><b>Ingrese Proveedor</b><h5>
+            <h5><b>Nombre a buscar</b><h5>
             <input  type="text" id="formulario" placeholder="Nombre o Razon social">
             <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
         </div>
       `;
+      
   const buscarPov = document.querySelector(`#formulario`);
   const botonBuscar = document.querySelector(`#botonBuscar`);
 
  const prefiltrar = () => {
     let nombreTipiado = buscarPov.value;
-    //menuProveedores.buscarTex(nombreTipiado);
-    menuProveedores.buscarTex(nombreTipiado)
-    console.table("lETRAS TIPIADAS 2",buscarPov.value);
+    menuProveedores.buscarTex(nombreTipiado);
+    console.table("LETRAS TIPIADAS en primer imput",buscarPov.value);
   
   }; 
   
@@ -146,8 +155,11 @@ function buscarProveedor() {
   
   const filtrar = () => {
     let nombreBuscado = buscarPov.value;
-    console.log(nombreBuscado);
+    console.log("este es nombreBuscado",nombreBuscado);
     menuProveedores.buscar(nombreBuscado);
+    /* document.getElementById("buscador").style.display = `none`; */
+    
+
   };
 
  
@@ -157,6 +169,8 @@ function buscarProveedor() {
 
 function actualizarProveedor() {
   logIn();
+  buscador.innerHTML = ``
+  buscZonaDescarga.innerHTML = ``;
   screen = document.getElementById("screen");
   screen.innerHTML = ``;
   let agreProvHTML = `            
@@ -227,11 +241,13 @@ function ordenarProveedores() {
 
 //VER DONDE DESCARGA CADA PROVEEDOR
 function zonaDescarga() 
-{
-  screen = document.getElementById("screen");
-  screen.innerHTML = `
+{  
+  screen.innerHTML = ``;
+  buscador.innerHTML = ``;  
+  buscZonaDescarga = document.getElementById("buscZonaDescarga");
+  buscZonaDescarga.innerHTML = `
       <div class="divBuscar">
-            <h5><b>Ingrese Proveedor</b><h5>
+            <h5><b>Que Proveedor debe descargar?</b><h5>
             <input  type="text" id="formulario" placeholder="Nombre o Razon social">
             <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
         </div>
@@ -239,12 +255,21 @@ function zonaDescarga()
   const buscarPov = document.querySelector(`#formulario`);
   const botonBuscar = document.querySelector(`#botonBuscar`);
 
+  const prefiltrar = () => {
+    let nombreTipiado = buscarPov.value;
+    menuProveedores.buscarTex(nombreTipiado);
+    console.table("LETRAS TIPIADAS en primer imput",buscarPov.value);
+  
+  }; 
+
   const filtrar = () => {
     let nombreBuscado = buscarPov.value.toLowerCase();
     console.log(nombreBuscado);
     menuProveedores.zona(nombreBuscado);
+    /* document.getElementById("buscZonaDescarga").style.display = `none`; */
   };
 
+  buscarPov.addEventListener(`keydown`, prefiltrar);
   botonBuscar.addEventListener(`click`, filtrar);
 }
 

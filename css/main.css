@@ -129,6 +129,7 @@
 
 }
 
+
 .pantalla {
   min-height: 300px;
   display: flex;
@@ -144,19 +145,23 @@
   border: solid 2px rgba(24, 22, 22, 0.737);
   border-bottom: solid 4px black;
   border-radius: 8px;
-  align-items: center;
-  text-align: center;
+  align-items:flex-start;
+  text-align:left;
   padding: 8px;
-  width: 60%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  /* width: 60%; */
   background-color: #39c0ed7b;
-  justify-content: center;
-  position: absolute;
+ /*  justify-content: center;
+  position: absolute; */
+
 }
 
 .divBuscar input {
   border: solid 2px black;
   border-radius: 4px;
-  text-align: center;
+  /* text-align: center; */
   margin-top: 10px;
 }
 

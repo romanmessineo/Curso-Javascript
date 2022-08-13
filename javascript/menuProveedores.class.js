@@ -85,6 +85,7 @@ class MenuProveedores {
   }
 
   buscar(nombreBuscado) {
+    
     let esta = this.proveedores.filter((proveedor) =>
       proveedor.nombre.indexOf(nombreBuscado.toLowerCase()) !==-1
     );
@@ -95,7 +96,7 @@ class MenuProveedores {
         proveedor.nombre.toLowerCase().includes(nombreBuscado)
       );
       console.table("Proveedores encontrados", filtrado);
-
+      screenBsc.innerHTML = ``;
       screen = document.getElementById("screen");
       screen.innerHTML = ``;
       filtrado.forEach((proveedor) => {
@@ -110,8 +111,8 @@ class MenuProveedores {
             </div>
             `;
         screen.innerHTML += proveedoresHTML;
-        let vaciar =``
-        screenFooter.innerHTML = vaciar;
+        /* let vaciar =``
+        screenFooter.innerHTML = vaciar; */
         
       });
 
@@ -137,13 +138,13 @@ class MenuProveedores {
         proveedor.nombre.toLowerCase().indexOf(nombreTipiado.toLowerCase())!==-1
         
       );
-      console.table("lETRAS TIPIADAS", nombreTipiado);
+      console.table("letra en menuProv", nombreTipiado);
       console.table("VER ESTO", filtrado);
       
       if (nombreTipiado.length  !== 0) { 
       /* newDiv = document.createElement("div"); */
-      nombreTipiado = document.getElementById("screenFooter");/* .appendChild(newDiv); */
-
+      screen = document.getElementById("screen");/* .appendChild(newDiv); */
+        
       //creen.innerHTML = ``;
       filtrado.map((proveedor) => {
         let proveedoresHTML = `            
@@ -156,7 +157,7 @@ class MenuProveedores {
             <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
             </div>
             `;
-            screenFooter.innerHTML = proveedoresHTML;
+            screen.innerHTML = proveedoresHTML;
             
             //console.log("xxxxxxxxx" ,proveedoresHTML );
        } );
@@ -165,7 +166,7 @@ class MenuProveedores {
    } 
     else {
       let vaciar =``
-      screenFooter.innerHTML = vaciar;
+      screen.innerHTML = vaciar;
       
       }
       
@@ -254,7 +255,7 @@ class MenuProveedores {
         proveedor.nombre.toLowerCase().includes(nombreABuscar)
       );
       console.table("Proveedores encontrados", filtrado);
-
+      buscZonaDescarga.innerHTML = ``;
       screen = document.getElementById("screen");
       screen.innerHTML = ``;
       filtrado.forEach((proveedor) => {
