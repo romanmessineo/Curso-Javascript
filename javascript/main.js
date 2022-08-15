@@ -43,8 +43,6 @@ const proveedores = [
   },
 ];
 
- 
-
 const menuProveedores = new MenuProveedores(proveedores);
 console.log("Lista de Proveedores originales", menuProveedores.proveedores);
 
@@ -61,7 +59,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 function agregarProveedor() {
   buscador.innerHTML = ``;
   buscZonaDescarga.innerHTML = ``;
+ 
   screen = document.getElementById("screen");
+  screenForm.innerHTML = ``;
+  formPreview.innerHTML = ``; 
   screen.innerHTML = ``;
   let agreProvHTML = `            
     <section id="forProv" class="forAgreProv">
@@ -110,10 +111,10 @@ function agregarProveedor() {
 }
 
 function listarProveedores() {
-  /* document.innerHTML = `` */
-  /* buscador = document.getElementById("buscador"); */
-  buscador.innerHTML = ``
+  buscador.innerHTML = ``;
   buscZonaDescarga.innerHTML = ``;
+  formPreview.innerHTML = ``;
+  screenForm.innerHTML = ``;
   menuProveedores.listarProveedores();
   Toastify({
     text: "Listados OK",
@@ -130,7 +131,9 @@ function listarProveedores() {
 
 function buscarProveedor() {
   screen.innerHTML = ``;
-  buscZonaDescarga.innerHTML = ``; 
+  screenForm.innerHTML = ``;
+  formPreview.innerHTML = ``;
+  buscZonaDescarga.innerHTML = ``;
   screenBsc = document.getElementById("buscador");
   screenBsc.innerHTML = ``;
   screenBsc.innerHTML = `
@@ -140,65 +143,68 @@ function buscarProveedor() {
             <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
         </div>
       `;
-      
+
   const buscarPov = document.querySelector(`#formulario`);
   const botonBuscar = document.querySelector(`#botonBuscar`);
 
- const prefiltrar = () => {
+  const prefiltrar = () => {
     let nombreTipiado = buscarPov.value;
     menuProveedores.buscarTex(nombreTipiado);
-    console.table("LETRAS TIPIADAS en primer imput",buscarPov.value);
-  
-  }; 
-  
-  buscarPov.addEventListener(`keydown`, prefiltrar); 
-  
-  const filtrar = () => {
-    let nombreBuscado = buscarPov.value;
-    console.log("este es nombreBuscado",nombreBuscado);
-    menuProveedores.buscar(nombreBuscado);
-    /* document.getElementById("buscador").style.display = `none`; */
-    
-
+    console.table("LETRAS TIPIADAS en primer imput", buscarPov.value);
   };
 
- 
+  buscarPov.addEventListener(`keydown`, prefiltrar);
 
-  botonBuscar.addEventListener(`click`, filtrar); 
+  const filtrar = () => {
+    let nombreBuscado = buscarPov.value;
+    console.log("este es nombreBuscado", nombreBuscado);
+    menuProveedores.buscar(nombreBuscado);
+  };
+
+  botonBuscar.addEventListener(`click`, filtrar);
 }
 
 function actualizarProveedor() {
   logIn();
-  buscador.innerHTML = ``
+
+  buscador.innerHTML = ``;
   buscZonaDescarga.innerHTML = ``;
-  screen = document.getElementById("screen");
   screen.innerHTML = ``;
+  screenForm = document.getElementById("screenForm");
+  screenForm.innerHTML = ``;
   let agreProvHTML = `            
-    <section id="forProv" class="forAgreProv">
-    <h2>Complete todos los campos</h2> 
-    <p>(Modificacion de Proveedor)</p> 
-    <label for="nomAbusc">Ingrese el nombre del proveedores que desea modificar:</label>
-    <input type="text" name="nomAbusc" id="nomAbusc" placeholder="Ingrese nombre o razon social">
+  <div id="forProv" class="forAgreProv">
+                    <h2>Complete todos los campos</h2> 
+                    <p>(Modificacion de Proveedor)</p> 
+                    <label for="nomAbusc">Ingrese el nombre del proveedores que desea modificar:</label>
+                    <input type="text" name="nomAbusc" id="nomAbusc" placeholder="Ingrese nombre o razon social">
+                
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" placeholder="Ingrese nombre o razon social">
+                    <label for="direccion">Direccion:</label>
+                    <input type="text" name="ireccion" id="direccion" placeholder="Ingrese direccion">
+                    <label for="locacion">Locacion:</label>
+                    <input type="text" name="locacion" id="locacion" placeholder="Ingrese locacion GM">
+                    <label for="img">Imagen:</label>
+                    <input type="text" name="img" id="img" placeholder="adjunte imagen">
+                
+                    <button class="btn btn-primary btnAgreNuevProv" type="button" value="Agregar" id="btnAgregarProv"><span> AGREGAR </span></button>
+                   </div> `;
+  screenForm.innerHTML += agreProvHTML;
 
-    <label for="nombre">Nombre:</label>
-    <input type="text" name="nombre" id="nombre" placeholder="Ingrese nombre o razon social">
-    <label for="direccion">Direccion:</label>
-    <input type="text" name="ireccion" id="direccion" placeholder="Ingrese direccion">
-    <label for="locacion">Locacion:</label>
-    <input type="text" name="locacion" id="locacion" placeholder="Ingrese locacion GM">
-    <label for="img">Imagen:</label>
-    <input type="text" name="img" id="img" placeholder="adjunte imagen">
-
-    <button class="btn btn-primary btnAgreNuevProv" type="button" value="Agregar" id="btnAgregarProv"><span> AGREGAR </span></button>
-    </section>             
-              `;
-  screen.innerHTML += agreProvHTML;
   const nombreABuscado = document.getElementById("nomAbusc");
   const nombre = document.getElementById("nombre");
   const direccion = document.getElementById("direccion");
   const locacion = document.getElementById("locacion");
   const img = document.getElementById("img");
   const button = document.getElementById("btnAgregarProv");
+
+  const prefiltrar = () => {
+    let nombreTipiado = nombreABuscado.value;
+    menuProveedores.buscarTexAct(nombreTipiado);
+    console.table("LETRAS TIPIADAS en primer imput", nombreABuscado.value);
+  };
+  nombreABuscado.addEventListener(`keydown`, prefiltrar);
 
   button.addEventListener("click", (e) => {
     e.preventDefault();
@@ -240,10 +246,11 @@ function ordenarProveedores() {
 //Menu de Usuario
 
 //VER DONDE DESCARGA CADA PROVEEDOR
-function zonaDescarga() 
-{  
+function zonaDescarga() {
   screen.innerHTML = ``;
-  buscador.innerHTML = ``;  
+  screenForm.innerHTML = ``;
+  formPreview.innerHTML = ``;
+  buscador.innerHTML = ``;
   buscZonaDescarga = document.getElementById("buscZonaDescarga");
   buscZonaDescarga.innerHTML = `
       <div class="divBuscar">
@@ -258,30 +265,15 @@ function zonaDescarga()
   const prefiltrar = () => {
     let nombreTipiado = buscarPov.value;
     menuProveedores.buscarTex(nombreTipiado);
-    console.table("LETRAS TIPIADAS en primer imput",buscarPov.value);
-  
-  }; 
+    console.table("LETRAS TIPIADAS en primer imput", buscarPov.value);
+  };
 
   const filtrar = () => {
     let nombreBuscado = buscarPov.value.toLowerCase();
     console.log(nombreBuscado);
     menuProveedores.zona(nombreBuscado);
-    /* document.getElementById("buscZonaDescarga").style.display = `none`; */
   };
 
   buscarPov.addEventListener(`keydown`, prefiltrar);
   botonBuscar.addEventListener(`click`, filtrar);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

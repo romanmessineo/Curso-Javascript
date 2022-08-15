@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./css/main.css" />
     <script defer src="javascript/proveedor.class.js"></script>
     <script defer src="javascript/menuProveedores.class.js"></script>
@@ -20,12 +20,11 @@
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
-
-    <title>javascript</title>
+    <title>Curso javascript</title>
 </head>
 
-<body class="container-fluid">
-    <div class="header">
+<body class="container">
+    <div class="header container-fluid">
         <div class="menu-adm">
             <h2>Funciones Adm</h2>
             <button type="button" class="btnadm" onclick="listarProveedores()">
@@ -36,9 +35,11 @@
             </button>
             <button type="button" class="btnadm" onclick="agregarProveedor()">
                 <h4>Agregar<br>Proveedor</h4>
+
             </button>
             <button type="button" class="btnadm" onclick="actualizarProveedor()">
-                <h4>Actualizar<br>Proveedor</h4>
+                <!--  <a href="./index.html"> -->
+                <h4>Actualizar<br>Proveedor</h4><!-- </a> -->
             </button>
             <button type="button" class="btnadm" onclick="buscarProveedor()">
                 <h4>Buscar<br>Proveedor</h4>
@@ -58,22 +59,23 @@
                     <h4>Donde<br>descargo</h4>
                 </button>
 
-                <button type="button" class="btn-2" onclick="igresarRtos()">
-                    <h4>Ingresar<br>Remitos</h4>
-                </button>
-
                 <button type="button" class="btn-2" onclick="elementoSeguridadPersonal()">
                     <h4>Seguridad</h4>
                 </button>
             </div>
+            <!-- <button type="button" class="btn-3" onclick="igresarRtos()">
+                <h4>Ingresar Remitos</h4><br><p style=" color: red; ">"proximamente"</p>
+            </button> -->
         </div>
     </div>
 
     <div class="nav" id="clean">
-         <div id="buscador"></div>
-        
-        <div><h2>Visualizador de Eventos</h2></div>
-        
+        <div id="buscador"></div>
+
+        <div>
+            <h2>Visualizador de Eventos</h2>
+        </div>
+
         <div class="row darkmode">
             <div class="col text-center">
                 <label id="switch">
@@ -83,25 +85,33 @@
                 <p>Light</p>
             </div>
         </div>
-        <div  id="buscZonaDescarga">
-            
+        <div id="buscZonaDescarga">
+
         </div>
     </div>
     <div id="screen" class="pantalla">
-        
+
+
     </div>
-
-        <div  id="screenFooter" class="footer container-fluid">
-
+    <div id="screenFormPreview" class="pantalla2">
+        <div id="screenForm">
         </div>
 
+        <div id="formPreview">
+        </div>
+    </div>
 
-        <script defer src="https://use.fontawesome.com/releases/v6.1.2/js/all.js"
-            integrity="sha384-11X1bEJVFeFtn94r1jlvSC7tlJkV2VJctorjswdLzqOJ6ZvYBSZQkaQVXG0R4Flt"
-            crossorigin="anonymous"></script>
-            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <div id="screenFooter" class="footer container-fluid">
+
+    </div>
+
+
+    <script defer src="https://use.fontawesome.com/releases/v6.1.2/js/all.js"
+        integrity="sha384-11X1bEJVFeFtn94r1jlvSC7tlJkV2VJctorjswdLzqOJ6ZvYBSZQkaQVXG0R4Flt"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 
 </html>

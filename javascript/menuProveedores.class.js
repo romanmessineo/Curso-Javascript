@@ -7,6 +7,7 @@ class MenuProveedores {
 
   agregarProveedor(proveedor) {
     this.proveedores.push(proveedor);
+    
   }
 
   guardarNuevoProveedor(e) {
@@ -99,6 +100,7 @@ class MenuProveedores {
       screenBsc.innerHTML = ``;
       screen = document.getElementById("screen");
       screen.innerHTML = ``;
+      /* screenFormPreview.innerHTML = ``; */
       filtrado.forEach((proveedor) => {
         let proveedoresHTML = `            
             <div class="card">
@@ -128,13 +130,7 @@ class MenuProveedores {
   }
 
   buscarTex(nombreTipiado) {
-   /*  let esta = this.proveedores.some((proveedor) =>
-      proveedor.nombre.includes(nombreTipiado.toLowerCase()) !==-1
-    ); */
-
-    
-      //Swal.fire("Proveedor encontrado", "", "success");
-      let filtrado = this.proveedores.filter((proveedor) =>
+         let filtrado = this.proveedores.filter((proveedor) =>
         proveedor.nombre.toLowerCase().indexOf(nombreTipiado.toLowerCase())!==-1
         
       );
@@ -142,10 +138,10 @@ class MenuProveedores {
       console.table("VER ESTO", filtrado);
       
       if (nombreTipiado.length  !== 0) { 
-      /* newDiv = document.createElement("div"); */
-      screen = document.getElementById("screen");/* .appendChild(newDiv); */
+      
+      screen = document.getElementById("screen");
         
-      //creen.innerHTML = ``;
+      screen.innerHTML = ``;
       filtrado.map((proveedor) => {
         let proveedoresHTML = `            
             <div class="card">
@@ -159,11 +155,8 @@ class MenuProveedores {
             `;
             screen.innerHTML = proveedoresHTML;
             
-            //console.log("xxxxxxxxx" ,proveedoresHTML );
        } );
-      
-   
-   } 
+    } 
     else {
       let vaciar =``
       screen.innerHTML = vaciar;
@@ -172,6 +165,43 @@ class MenuProveedores {
       
      
   }
+
+  buscarTexAct(nombreTipiado) {
+    let filtrado = this.proveedores.filter((proveedor) =>
+   proveedor.nombre.toLowerCase().indexOf(nombreTipiado.toLowerCase())!==-1
+   
+ );
+ console.table("letra en menuProv", nombreTipiado);
+ console.table("VER ESTO", filtrado);
+ 
+ if (nombreTipiado.length  !== 0) { 
+ 
+  formPreview = document.getElementById("formPreview");
+   
+  formPreview.innerHTML = ``;
+ filtrado.map((proveedor) => {
+   let proveedoresHTML = `            
+       <div class="card">
+       <img src=${proveedor.img}  alt="...">
+       <div class="card-body">
+       <p class="card-text">
+       <b>Nombre:</b> ${proveedor.nombre} <br>
+       <b>Direccion:</b> ${proveedor.direccion} <br>
+       <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
+       </div>
+       `;
+       formPreview.innerHTML = proveedoresHTML;
+       
+  } );
+} 
+else {
+ let vaciar =``
+ formPreview.innerHTML = vaciar;
+ 
+ }
+ 
+
+}
 
   modificarProveedor(nombreABuscar, nombre, direccion, locacion, img) {
     let proveedorEncontrado = this.proveedores.find((proveedor) =>
@@ -186,7 +216,8 @@ class MenuProveedores {
 
       screen = document.getElementById("screen");
       screen.innerHTML = `<h5>Proveedor Modificado: <b> ${proveedorModificado}</b> </h5>`;
-
+      screenForm.innerHTML = ``;
+      formPreview.innerHTML = ``; 
       let nuevProvHTML = `            
       <div class="card">
       <img src=${proveedorEncontrado.img}  alt="...">
@@ -199,6 +230,7 @@ class MenuProveedores {
       </div>
     `;
       screen.innerHTML += nuevProvHTML;
+      
       let timerInterval;
       Swal.fire({
         title: `Actualizando Proveedor ${proveedorModificado}`.trim(),
@@ -271,7 +303,7 @@ class MenuProveedores {
         </div>
         <div class="container-fluid">
         <p><b>"ACA DEBE IR MAPA DE ZONA DESCARGA"</p>
-                <img src="https://www.on24.com.ar/wp-content/uploads/2019/09/GM-Alvear.png">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3342.67561628346!2d-60.628520584809856!3d-33.09131768087832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b7a7d2945a608f%3A0x4b4c30f52e4aed41!2sGeneral%20Motors%20Company!5e0!3m2!1ses!2sar!4v1660520805997!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
               `;
         screen.innerHTML += proveedoresHTML;
@@ -292,7 +324,14 @@ class MenuProveedores {
 
 //SEGURIDAD
 function elementoSeguridadPersonal() {
-  let seguridadPersonal =
+
+  Swal.fire({
+    imageUrl: 'https://pbs.twimg.com/media/DxdDvpuX0AEMZyn?format=jpg&name=4096x4096',
+    imageWidth: 800,
+    imageHeight: 800,
+    imageAlt: 'Custom image'
+  })
+  /* let seguridadPersonal =
     prompt(`Usted posee los siguientes elementos de seguridad? "si" - "no"
         Calzado de seg
         Chaleco naranja
@@ -305,7 +344,7 @@ function elementoSeguridadPersonal() {
   } else {
     alert("Comuniquese con personal de trafico");
     console.log("No cumple con normas de seguridad");
-  }
+  } */
 }
 
 //INICIAR SESION
@@ -332,7 +371,7 @@ function logIn() {
     Bienvenido ${result.value.login}!
     `.trim()
     );
-  });
+    });
 }
 
 //FUNCION PARA IGRESAR REMITOS
