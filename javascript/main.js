@@ -59,10 +59,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 function agregarProveedor() {
   buscador.innerHTML = ``;
   buscZonaDescarga.innerHTML = ``;
- 
+
   screen = document.getElementById("screen");
   screenForm.innerHTML = ``;
-  formPreview.innerHTML = ``; 
+  formPreview.innerHTML = ``;
   screen.innerHTML = ``;
   let agreProvHTML = `            
     <section id="forProv" class="forAgreProv">
@@ -165,7 +165,7 @@ function buscarProveedor() {
 }
 
 function actualizarProveedor() {
-  logIn();
+  //logIn();
 
   buscador.innerHTML = ``;
   buscZonaDescarga.innerHTML = ``;
@@ -175,20 +175,20 @@ function actualizarProveedor() {
   let agreProvHTML = `            
   <div id="forProv" class="forAgreProv">
                     <h2>Complete todos los campos</h2> 
-                    <p>(Modificacion de Proveedor)</p> 
-                    <label for="nomAbusc">Ingrese el nombre del proveedores que desea modificar:</label>
+                    <p style="color:red">(Modificacion de Proveedor)</p> 
+                    <label for="nomAbusc">Ingrese el nombre del proveedor que desea modificar:</label>
                     <input type="text" name="nomAbusc" id="nomAbusc" placeholder="Ingrese nombre o razon social">
                 
-                    <label for="nombre">Nombre:</label>
+                    <label for="nombre">Nuevo nombre:</label>
                     <input type="text" name="nombre" id="nombre" placeholder="Ingrese nombre o razon social">
-                    <label for="direccion">Direccion:</label>
+                    <label for="direccion">Nueva direccion:</label>
                     <input type="text" name="ireccion" id="direccion" placeholder="Ingrese direccion">
-                    <label for="locacion">Locacion:</label>
+                    <label for="locacion">Nueva Locacion:</label>
                     <input type="text" name="locacion" id="locacion" placeholder="Ingrese locacion GM">
-                    <label for="img">Imagen:</label>
+                    <label for="img">Nueva Imagen:</label>
                     <input type="text" name="img" id="img" placeholder="adjunte imagen">
                 
-                    <button class="btn btn-primary btnAgreNuevProv" type="button" value="Agregar" id="btnAgregarProv"><span> AGREGAR </span></button>
+                    <button class="btn btn-primary btnAgreNuevProv" type="button" value="Agregar" id="btnAgregarProv"><span> MODIFICAR </span></button>
                    </div> `;
   screenForm.innerHTML += agreProvHTML;
 

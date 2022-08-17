@@ -7,7 +7,6 @@ class MenuProveedores {
 
   agregarProveedor(proveedor) {
     this.proveedores.push(proveedor);
-    
   }
 
   guardarNuevoProveedor(e) {
@@ -41,8 +40,6 @@ class MenuProveedores {
             `;
       screen.innerHTML += proveedoresHTML;
     });
-   
-
   }
 
   listarNuevoProv(e) {
@@ -86,9 +83,9 @@ class MenuProveedores {
   }
 
   buscar(nombreBuscado) {
-    
-    let esta = this.proveedores.filter((proveedor) =>
-      proveedor.nombre.indexOf(nombreBuscado.toLowerCase()) !==-1
+    let esta = this.proveedores.filter(
+      (proveedor) =>
+        proveedor.nombre.indexOf(nombreBuscado.toLowerCase()) !== -1
     );
 
     if (esta) {
@@ -110,12 +107,41 @@ class MenuProveedores {
             <b>Nombre:</b> ${proveedor.nombre} <br>
             <b>Direccion:</b> ${proveedor.direccion} <br>
             <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
+            <button class="btn btn-primary btnBorrarProv" type="button" value="Agregar" id="btnBorrarProv"><span> Eliminar </span></button>
             </div>
             `;
         screen.innerHTML += proveedoresHTML;
-        /* let vaciar =``
-        screenFooter.innerHTML = vaciar; */
-        
+
+        const btnBorrar = document.getElementById("btnBorrarProv");
+
+        function eliminar() {
+          proveedores.splice(filtrado, 1);
+          let timerInterval;
+          Swal.fire({
+            title: `Eliminando proveedor ${proveedor.nombre}`.trim(),
+            html: "Este cuadro se cerrara en <b></b> milisegundos.",
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+              Swal.showLoading();
+              const b = Swal.getHtmlContainer().querySelector("b");
+              timerInterval = setInterval(() => {
+                b.textContent = Swal.getTimerLeft();
+              }, 100);
+            },
+            willClose: () => {
+              clearInterval(timerInterval);
+            },
+          }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+              console.log("I was closed by the timer");
+              listarProveedores();
+            }
+          });
+        }
+
+        btnBorrar.addEventListener(`click`, eliminar);
       });
 
       //
@@ -130,17 +156,18 @@ class MenuProveedores {
   }
 
   buscarTex(nombreTipiado) {
-         let filtrado = this.proveedores.filter((proveedor) =>
-        proveedor.nombre.toLowerCase().indexOf(nombreTipiado.toLowerCase())!==-1
-        
-      );
-      console.table("letra en menuProv", nombreTipiado);
-      console.table("VER ESTO", filtrado);
-      
-      if (nombreTipiado.length  !== 0) { 
-      
+    let filtrado = this.proveedores.filter(
+      (proveedor) =>
+        proveedor.nombre.toLowerCase().indexOf(nombreTipiado.toLowerCase()) !==
+        -1
+    );
+    console.table("letra en menuProv", nombreTipiado);
+    console.table("VER ESTO", filtrado);
+
+    if (nombreTipiado.length !== 0) {
       screen = document.getElementById("screen");
-        
+      screenForm.innerHTML = ``;
+      formPreview.innerHTML = ``;
       screen.innerHTML = ``;
       filtrado.map((proveedor) => {
         let proveedoresHTML = `            
@@ -153,34 +180,29 @@ class MenuProveedores {
             <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
             </div>
             `;
-            screen.innerHTML = proveedoresHTML;
-            
-       } );
-    } 
-    else {
-      let vaciar =``
+        screen.innerHTML = proveedoresHTML;
+      });
+    } else {
+      let vaciar = ``;
       screen.innerHTML = vaciar;
-      
-      }
-      
-     
+    }
   }
 
   buscarTexAct(nombreTipiado) {
-    let filtrado = this.proveedores.filter((proveedor) =>
-   proveedor.nombre.toLowerCase().indexOf(nombreTipiado.toLowerCase())!==-1
-   
- );
- console.table("letra en menuProv", nombreTipiado);
- console.table("VER ESTO", filtrado);
- 
- if (nombreTipiado.length  !== 0) { 
- 
-  formPreview = document.getElementById("formPreview");
-   
-  formPreview.innerHTML = ``;
- filtrado.map((proveedor) => {
-   let proveedoresHTML = `            
+    let filtrado = this.proveedores.filter(
+      (proveedor) =>
+        proveedor.nombre.toLowerCase().indexOf(nombreTipiado.toLowerCase()) !==
+        -1
+    );
+    console.table("letra en menuProv", nombreTipiado);
+    console.table("VER ESTO", filtrado);
+
+    if (nombreTipiado.length !== 0) {
+      formPreview = document.getElementById("formPreview");
+
+      formPreview.innerHTML = ``;
+      filtrado.map((proveedor) => {
+        let proveedoresHTML = `            
        <div class="card">
        <img src=${proveedor.img}  alt="...">
        <div class="card-body">
@@ -188,26 +210,42 @@ class MenuProveedores {
        <b>Nombre:</b> ${proveedor.nombre} <br>
        <b>Direccion:</b> ${proveedor.direccion} <br>
        <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
+       <button class="btn btn-primary btnBorrarProv" type="button" value="modificar" id="btnModfProv"><span> Modificar </span></button>
        </div>
        `;
-       formPreview.innerHTML = proveedoresHTML;
-       
-  } );
-} 
-else {
- let vaciar =``
- formPreview.innerHTML = vaciar;
- 
- }
- 
+        formPreview.innerHTML = proveedoresHTML;
 
-}
+        const btnModfProv = document.getElementById("btnModfProv");
+
+        const provElegido = () => {
+          const nombImput = (document.querySelector(`#nomAbusc`).value =
+            proveedor.nombre);
+          document.querySelector(`#nomAbusc`);
+          document.getElementById("nomAbusc").style.backgroundColor = "green";
+
+          btnModfProv.style.backgroundColor = "#6ab150";
+
+          console.log(
+            "Este es el tipo de valor del imput: ",
+            typeof proveedor.nombre
+          );
+
+          document.getElementById("nombre").focus();
+        };
+
+        btnModfProv.addEventListener(`click`, provElegido);
+      });
+    } else {
+      let vaciar = ``;
+      formPreview.innerHTML = vaciar;
+    }
+  }
 
   modificarProveedor(nombreABuscar, nombre, direccion, locacion, img) {
     let proveedorEncontrado = this.proveedores.find((proveedor) =>
       proveedor.nombre.toLowerCase().includes(nombreABuscar)
     );
-     const proveedorModificado = proveedorEncontrado.nombre;
+    const proveedorModificado = proveedorEncontrado.nombre;
     if (proveedorEncontrado.nombre) {
       proveedorEncontrado.nombre = nombre;
       proveedorEncontrado.direccion = direccion;
@@ -215,9 +253,10 @@ else {
       proveedorEncontrado.img = img;
 
       screen = document.getElementById("screen");
+      screen.innerHTML = ``;
       screen.innerHTML = `<h5>Proveedor Modificado: <b> ${proveedorModificado}</b> </h5>`;
       screenForm.innerHTML = ``;
-      formPreview.innerHTML = ``; 
+      formPreview.innerHTML = ``;
       let nuevProvHTML = `            
       <div class="card">
       <img src=${proveedorEncontrado.img}  alt="...">
@@ -230,7 +269,7 @@ else {
       </div>
     `;
       screen.innerHTML += nuevProvHTML;
-      
+
       let timerInterval;
       Swal.fire({
         title: `Actualizando Proveedor ${proveedorModificado}`.trim(),
@@ -252,7 +291,7 @@ else {
         if (result.dismiss === Swal.DismissReason.timer) {
           console.log("I was closed by the timer");
         }
-      })
+      });
 
       console.log("Proveedor Modificado con exito", proveedorEncontrado);
     } else {
@@ -324,13 +363,13 @@ else {
 
 //SEGURIDAD
 function elementoSeguridadPersonal() {
-
   Swal.fire({
-    imageUrl: 'https://pbs.twimg.com/media/DxdDvpuX0AEMZyn?format=jpg&name=4096x4096',
+    imageUrl:
+      "https://pbs.twimg.com/media/DxdDvpuX0AEMZyn?format=jpg&name=4096x4096",
     imageWidth: 800,
     imageHeight: 800,
-    imageAlt: 'Custom image'
-  })
+    imageAlt: "Custom image",
+  });
   /* let seguridadPersonal =
     prompt(`Usted posee los siguientes elementos de seguridad? "si" - "no"
         Calzado de seg
@@ -371,7 +410,7 @@ function logIn() {
     Bienvenido ${result.value.login}!
     `.trim()
     );
-    });
+  });
 }
 
 //FUNCION PARA IGRESAR REMITOS
