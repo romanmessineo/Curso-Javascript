@@ -277,3 +277,48 @@ function zonaDescarga() {
   buscarPov.addEventListener(`keydown`, prefiltrar);
   botonBuscar.addEventListener(`click`, filtrar);
 }
+
+//-----------------------------------feching
+
+function cargarTiempo() {
+  fetch(
+    "https://api.openweathermap.org/data/2.5/weather?lat=-31.6572&lon=-60.7152&appid=6e723b89495afd4593121a7ce2430bca"
+  )
+    .then((response) => response.json())
+    .then((response) => mostrarTiempo(response)) //console.log(response.name)
+    .catch((err) => console.error(err))
+    .finally(console.log("TAREA EJECUTADA"));
+  
+}
+
+function mostrarTiempo(e) {
+  const arrayClima = e;
+  console.log("arrayClima", arrayClima);
+  let fecha = new Date(arrayClima.dt * 1000);
+  console.log("Fecha", fecha);
+  let lugar = arrayClima.name;
+  console.log("Lugar", lugar);
+  let clima = arrayClima.weather[0].main;
+  console.log("Clima", clima);
+  let climaIcon = arrayClima.weather[0].icon;
+  console.log("iconClima", climaIcon);
+
+  screen = document.getElementById("screen");
+  screen.innerHTML = ``;
+  let cardClimaHTML = `
+  <div class="card">
+  
+      <img src="http://openweathermap.org/img/wn/${climaIcon}@4x.png" alt="">
+  
+  <div class="card-body">
+  <p class="card-text"> Ciudad: ${lugar}<br>
+      Tiempp: ${clima}<br>
+      Fecha: ${fecha.toDateString()}</p>
+      </div>
+  </div>
+        `;
+  screen.innerHTML += cardClimaHTML;
+
+}
+//key: 6e723b89495afd4593121a7ce2430bca
+
