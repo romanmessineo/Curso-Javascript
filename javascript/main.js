@@ -279,8 +279,8 @@ function zonaDescarga() {
 }
 
 //-----------------------------------feching
-
 function cargarTiempo() {
+  localizar();
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?lat=-31.6572&lon=-60.7152&appid=6e723b89495afd4593121a7ce2430bca"
   )
@@ -288,7 +288,6 @@ function cargarTiempo() {
     .then((response) => mostrarTiempo(response)) //console.log(response.name)
     .catch((err) => console.error(err))
     .finally(console.log("TAREA EJECUTADA"));
-  
 }
 
 function mostrarTiempo(e) {
@@ -303,6 +302,10 @@ function mostrarTiempo(e) {
   let climaIcon = arrayClima.weather[0].icon;
   console.log("iconClima", climaIcon);
 
+  screenForm.innerHTML = ``;
+  formPreview.innerHTML = ``;
+  buscador.innerHTML = ``;
+  buscZonaDescarga.innerHTML = ``;
   screen = document.getElementById("screen");
   screen.innerHTML = ``;
   let cardClimaHTML = `
@@ -313,12 +316,28 @@ function mostrarTiempo(e) {
   <div class="card-body">
   <p class="card-text"> Ciudad: ${lugar}<br>
       Tiempp: ${clima}<br>
-      Fecha: ${fecha.toDateString()}</p>
+      Fecha: ${fecha.toDateString()}</p><br>
+      <button class="btn btn-danger btnAgreNuevProv" type="button" value="Agregar" id="btnCloseClima"><span>Cerrar</span></button>
       </div>
   </div>
         `;
   screen.innerHTML += cardClimaHTML;
 
+  const btnCloseClima = document.getElementById("btnCloseClima");
+
+  btnCloseClima.addEventListener(`click`, () => (screen.innerHTML = ``));
 }
 //key: 6e723b89495afd4593121a7ce2430bca
 
+function localizar() {
+  if (navigator.geolocation) {
+    var success = function (position) {
+      var latitud = position.coords.latitude,
+        longitud = position.coords.longitude;
+      console.log("Latitud: ", latitud, "Longitud: ", longitud);
+    };
+    navigator.geolocation.getCurrentPosition(success, function (msg) {
+      console.error(msg);
+    });
+  }
+}
