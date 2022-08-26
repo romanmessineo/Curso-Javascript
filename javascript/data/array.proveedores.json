@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "nombre": "Famma",
+    "direccion": "Av Circunvalacion KM 4,5",
+    "locacion": "Body",
+    "img": "https://infoqromex.com/wp-content/uploads/2020/06/1593527592698.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Tenneco",
+    "direccion": "Calle 98 N° 1241",
+    "locacion": "Mecànica",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR59lQtDZEnMRlcoRRKCWmuKqC4DFNGmvfCAF7D5o--sj1qeWnue9U3OPWFTRKAmi7sb-Y&usqp=CAU"
+  },
+  {
+    "id": 3,
+    "nombre": "Treves",
+    "direccion": "Camino de la tradicion 140",
+    "locacion": "Patio Central",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO1tx5jSQjJAjA6TP9CNORs6_JTIP1hEjw_qqGZfnuuxeroPUFcQ8895T5n2Z06OwUVKg&usqp=CAU"
+  },
+  {
+    "id": 4,
+    "nombre": "Siderar",
+    "direccion": "Cno Gral. Belgrano km 31,5",
+    "locacion": "Prensas",
+    "img": "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/122017/untitled-1_186.png?XcD.11NMqY9QJjez55Gqi04ofNjsysNC&itok=4TncqI1Z"
+  },
+  {
+    "id": 5,
+    "nombre": "Lequipe",
+    "direccion": "El Salvador 346",
+    "locacion": "Patio Central",
+    "img": "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/112010/lequipe.png?itok=Eud4lqNX"
+  },
+  {
+    "id": 6,
+    "nombre": "Cozzuol Pco",
+    "direccion": "Av. Constituyentes 5099",
+    "locacion": "Patio Central",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoLn8cDvGZcyZQrbQwfNoybFkid8o3D3OakNnFFR5ULnt2LMDamjcC7h5DPdm_tW-Nz0E&usqp=CAU"
+  }
+]

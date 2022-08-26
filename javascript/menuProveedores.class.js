@@ -93,7 +93,7 @@ class MenuProveedores {
       let filtrado = this.proveedores.filter((proveedor) =>
         proveedor.nombre.toLowerCase().includes(nombreBuscado)
       );
-      console.table("Proveedores encontrados", filtrado);
+      console.table("Proveedores encontrados", filtrado[0].nombre);
       screenBsc.innerHTML = ``;
       screen = document.getElementById("screen");
       screen.innerHTML = ``;
@@ -113,9 +113,13 @@ class MenuProveedores {
         screen.innerHTML += proveedoresHTML;
 
         const btnBorrar = document.getElementById("btnBorrarProv");
+        btnBorrar.addEventListener(`click`, eliminar);
 
         function eliminar() {
-          proveedores.splice(filtrado, 1);
+          let filtradoEliminar = filtrado[0].id - 1;
+          proveedores.splice(filtradoEliminar, 1);
+          console.log("posicion del elemento", filtradoEliminar);
+
           let timerInterval;
           Swal.fire({
             title: `Eliminando proveedor ${proveedor.nombre}`.trim(),
@@ -135,16 +139,16 @@ class MenuProveedores {
           }).then((result) => {
             /* Read more about handling dismissals below */
             if (result.dismiss === Swal.DismissReason.timer) {
-              console.log("I was closed by the timer");
+              console.log(
+                "Proveedor eliminado con exito: ",
+                filtrado[0].nombre
+              );
               listarProveedores();
+              Swal.fire("Se elimino", filtrado[0].nombre);
             }
           });
         }
-
-        btnBorrar.addEventListener(`click`, eliminar);
       });
-
-      //
     } else {
       Swal.fire({
         icon: "error",
@@ -161,8 +165,8 @@ class MenuProveedores {
         proveedor.nombre.toLowerCase().indexOf(nombreTipiado.toLowerCase()) !==
         -1
     );
-    console.table("letra en menuProv", nombreTipiado);
-    console.table("VER ESTO", filtrado);
+    // console.table("letra en menuProv", nombreTipiado);
+    //console.table("VER ESTO", filtrado);
 
     if (nombreTipiado.length !== 0) {
       screen = document.getElementById("screen");

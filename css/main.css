@@ -32,11 +32,12 @@
     "footer footer footer footer ";
 }
 
+.container * {
+  border-radius: 10px;
+}
+
 .header {
   grid-area: header;
-
-
-
 }
 
 .nav {

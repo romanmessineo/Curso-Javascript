@@ -1,60 +1,35 @@
-const proveedores = [
-  {
-    id: 1,
-    nombre: "Famma",
-    direccion: "Av Circunvalacion KM 4,5",
-    locacion: "Body",
-    img: "https://mag-nic.com.ar/assets/archivos/images/image(7).png",
-  },
-  {
-    id: 3,
-    nombre: "Tenneco",
-    direccion: "Calle 98 N° 1241",
-    locacion: "Mecànica",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR59lQtDZEnMRlcoRRKCWmuKqC4DFNGmvfCAF7D5o--sj1qeWnue9U3OPWFTRKAmi7sb-Y&usqp=CAU",
-  },
-  {
-    id: 4,
-    nombre: "Treves",
-    direccion: "Camino de la tradicion 140",
-    locacion: "Patio Central",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO1tx5jSQjJAjA6TP9CNORs6_JTIP1hEjw_qqGZfnuuxeroPUFcQ8895T5n2Z06OwUVKg&usqp=CAU",
-  },
-  {
-    id: 5,
-    nombre: "Siderar",
-    direccion: "Cno Gral. Belgrano km 31,5",
-    locacion: "Prensas",
-    img: "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/122017/untitled-1_186.png?XcD.11NMqY9QJjez55Gqi04ofNjsysNC&itok=4TncqI1Z",
-  },
-  {
-    id: 6,
-    nombre: "Lequipe",
-    direccion: "El Salvador 346",
-    locacion: "Patio Central",
-    img: "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/112010/lequipe.png?itok=Eud4lqNX",
-  },
-  {
-    id: 7,
-    nombre: "Cozzuol Pco",
-    direccion: "Av. Constituyentes 5099",
-    locacion: "Patio Central",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoLn8cDvGZcyZQrbQwfNoybFkid8o3D3OakNnFFR5ULnt2LMDamjcC7h5DPdm_tW-Nz0E&usqp=CAU",
-  },
-];
+const proveedores = [];
 
 const menuProveedores = new MenuProveedores(proveedores);
-console.log("Lista de Proveedores originales", menuProveedores.proveedores);
 
 //Trae los proveedores storage y los pushea
-document.addEventListener("DOMContentLoaded", function (event) {
-  let newsProvArray = JSON.parse(localStorage.getItem("nuevoProv"));
-  newsProvArray.forEach(function (arrayProv) {
+if (localStorage.getItem("nuevoProv")) {
+  document.addEventListener("DOMContentLoaded", function (event) {
+    let newsProvArray = JSON.parse(localStorage.getItem("nuevoProv"));
+    newsProvArray.forEach(function (arrayProv) {
+      proveedores.push(arrayProv);
+    });
+
+    console.log("Prov cargados del local storange", newsProvArray);
+  });
+} else {
+  console.log("No hay proveedores en local storange");
+}
+
+arrayFetch();
+
+async function arrayFetch() {
+  let res = await fetch("/javascript/data/array.proveedores.json");
+  let json = await res.json();
+  provArrayJson(json);
+  console.log("Lista de Proveedores originales", json);
+}
+
+function provArrayJson(e) {
+  e.forEach(function (arrayProv) {
     proveedores.push(arrayProv);
   });
-
-  console.log("Prov cargados antes", newsProvArray);
-});
+}
 
 function agregarProveedor() {
   buscador.innerHTML = ``;
@@ -139,7 +114,7 @@ function buscarProveedor() {
   screenBsc.innerHTML = `
       <div class="divBuscar">
             <h5><b>Nombre a buscar</b><h5>
-            <input  type="text" id="formulario" placeholder="Nombre o Razon social">
+            <input type="text" id="formulario" placeholder="Nombre o Razon social">
             <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
         </div>
       `;
@@ -148,9 +123,9 @@ function buscarProveedor() {
   const botonBuscar = document.querySelector(`#botonBuscar`);
 
   const prefiltrar = () => {
-    let nombreTipiado = buscarPov.value;
-    menuProveedores.buscarTex(nombreTipiado);
-    console.table("LETRAS TIPIADAS en primer imput", buscarPov.value);
+    let nombreTipiado = document.getElementById("formulario").value;
+    menuProveedores.buscarTex(nombreTipiado.toUpperCase());
+    //console.table("LETRAS TIPIADAS en primer imput", nombreTipiado);
   };
 
   buscarPov.addEventListener(`keydown`, prefiltrar);
@@ -315,7 +290,7 @@ function mostrarTiempo(e) {
   
   <div class="card-body">
   <p class="card-text"> Ciudad: ${lugar}<br>
-      Tiempp: ${clima}<br>
+      Tiempo: ${clima}<br>
       Fecha: ${fecha.toDateString()}</p><br>
       <button class="btn btn-danger btnAgreNuevProv" type="button" value="Agregar" id="btnCloseClima"><span>Cerrar</span></button>
       </div>
