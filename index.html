@@ -24,47 +24,51 @@
 </head>
 
 <body class="container">
-  <div class="header container-fluid">
+  <div class="header">
     <div class="menu-adm">
-      <h2>Funciones Adm</h2>
-      <button type="button" class="btnadm" onclick="listarProveedores()">
-        <h4>Listar<br />Proveedor</h4>
+      <button type="button" class="btn btn-danger">
+        <i class="fa-solid fa-gear"></i><h1>MENU ADMINISTRADOR</h1>
       </button>
-      <button type="button" class="btnadm" onclick="ordenarProveedores() ">
-        <h4>Ordenar<br />Proveedores</h4>
+      <button type="button" class="btn btn-primary btn-sm"  onclick="listarProveedores()">
+        <p>Listar Proveedor</p> 
       </button>
-      <button type="button" class="btnadm" onclick="agregarProveedor()">
-        <h4>Agregar<br />Proveedor</h4>
+      <button type="button" class="btn btn-primary btn-sm" onclick="ordenarProveedores() ">
+        <p>Ordenar Proveedores</p>
       </button>
-      <button type="button" class="btnadm" onclick="actualizarProveedor()">
+      <button type="button" class="btn btn-primary btn-sm" onclick="agregarProveedor()">
+        <p>Agregar Proveedor</p>
+      </button>
+      <button type="button" class="btn btn-primary btn-sm" onclick="actualizarProveedor()">
         <!--  <a href="./index.html"> -->
-        <h4>Actualizar<br />Proveedor</h4>
+        <p>Actualizar Proveedor</p>
         <!-- </a> -->
       </button>
-      <button type="button" class="btnadm" onclick="buscarProveedor()">
-        <h4>Eliminar<br />Proveedor</h4>
+      <button type="button" class="btn btn-primary btn-sm" onclick="buscarProveedor()">
+        <p>Eliminar Proveedor</p>
       </button>
     </div>
 
     <div class="menu-user">
-      <h2>Menu de Usuario</h2>
-      <div class="btnuser">
-        <button type="button" class="btn-2" onclick="logIn()">
-          <h4>Iniciar<br />sesion</h4>
+      
+      <button type="button" class="btn btn-danger">
+        <i class="fa-solid fa-user-gear"></i><h1>MENU USUARIO</h1>
+        </button>
+      
+        <button type="button" class="btn btn-primary btn-sm" onclick="logIn()">
+          <p>Iniciar sesion</p>
         </button>
 
-        <button type="button" class="btn-2" onclick="zonaDescarga()">
-          <h4>Donde<br />descargo</h4>
+        <button type="button" class="btn btn-primary btn-sm" onclick="zonaDescarga()">
+          <p>Donde descargo</p>
         </button>
 
-        <button type="button" class="btn-2" onclick="elementoSeguridadPersonal()">
-          <h4>Seguridad</h4>
+        <button type="button" class="btn btn-primary btn-sm" onclick="elementoSeguridadPersonal()">
+          <p>Seguridad</p>
         </button>
-        <button type="button" class="btn-2clima" onclick="cargarTiempo()">
-          <h4>Mostrar Clima</h4>
-          <p>(funcion fetch)</p>
+        <button type="button" class="btn btn-primary btn-sm" onclick="cargarTiempo()">
+          <p>Mostrar Clima (funcion fetch)</p>
         </button>
-      </div>
+      
       <!-- <button type="button" class="btn-3" onclick="igresarRtos()">
                 <h4>Ingresar Remitos</h4><br><p style=" color: red; ">"proximamente"</p>
             </button> -->
@@ -72,23 +76,44 @@
   </div>
 
   <div class="nav" id="clean">
-    <div id="buscador"></div>
-
-    <div>
-      <h2>Visualizador de Eventos</h2>
+    <div id="buscador" class="buscadorProv">
+      <!-- <div class="divBuscar">
+            <p><b>Nombre a buscar</b></p>
+            <input type="text" id="formulario" placeholder="Nombre o Razon social">
+            <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
+        </div> -->
     </div>
 
-    <div class="row darkmode">
+    <div class="imgLogo">
+      <img src="./imagenes/LogoMilkrun.png" alt="logomilkrun">
+    </div>
+
+    <div id="buscZonaDescarga" class="buscadorProv">
+      <!-- <div class="divBuscar">
+        <p><b>Que Proveedor debe descargar?</b></p>
+        <input  type="text" id="formulario" placeholder="Nombre o Razon social">
+        <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
+    </div> -->
+    </div>
+    </div>
+    <!-- <div>
+      <h2>Visualizador de Eventos</h2>
+    </div> -->
+
+    <!-- <div class="row darkmode">
       <div class="col text-center">
         <label id="switch">
           <input type="checkbox" />
           <span class="slider round"></span>
         </label>
-        <p>Light</p>
+        <span>Light</span>
       </div>
-    </div>
-    <div id="buscZonaDescarga"></div>
-  </div>
+    </div> -->
+
+    
+  
+
+
   <div id="screen" class="pantalla"></div>
   <div id="screenFormPreview" class="pantalla2">
     <div id="screenForm"></div>

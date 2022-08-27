@@ -113,7 +113,7 @@ function buscarProveedor() {
   screenBsc.innerHTML = ``;
   screenBsc.innerHTML = `
       <div class="divBuscar">
-            <h5><b>Nombre a buscar</b><h5>
+            <p><b>Nombre a buscar</b></p>
             <input type="text" id="formulario" placeholder="Nombre o Razon social">
             <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
         </div>
@@ -229,10 +229,10 @@ function zonaDescarga() {
   buscZonaDescarga = document.getElementById("buscZonaDescarga");
   buscZonaDescarga.innerHTML = `
       <div class="divBuscar">
-            <h5><b>Que Proveedor debe descargar?</b><h5>
-            <input  type="text" id="formulario" placeholder="Nombre o Razon social">
-            <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
-        </div>
+        <p><b>Que Proveedor debe descargar?</b></p>
+        <input  type="text" id="formulario" placeholder="Nombre o Razon social">
+        <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
+    </div>
       `;
   const buscarPov = document.querySelector(`#formulario`);
   const botonBuscar = document.querySelector(`#botonBuscar`);
