@@ -230,7 +230,7 @@ function zonaDescarga() {
   buscZonaDescarga.innerHTML = `
       <div class="divBuscar">
         <p><b>Que Proveedor debe descargar?</b></p>
-        <input  type="text" id="formulario" placeholder="Nombre o Razon social">
+        <input  type="text" id="formulario" class="inputFormulario" placeholder="Nombre o Razon social">
         <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
     </div>
       `;
@@ -257,7 +257,7 @@ function zonaDescarga() {
 function cargarTiempo() {
   localizar();
   fetch(
-    "https://api.openweathermap.org/data/2.5/weather?lat=-31.6572&lon=-60.7152&appid=6e723b89495afd4593121a7ce2430bca"
+    "https://api.openweathermap.org/data/2.5/weather?lat=-34.5901&lon=-58.3794&appid=6e723b89495afd4593121a7ce2430bca&units=metric&lang=sp"
   )
     .then((response) => response.json())
     .then((response) => mostrarTiempo(response)) //console.log(response.name)
@@ -272,8 +272,19 @@ function mostrarTiempo(e) {
   console.log("Fecha", fecha);
   let lugar = arrayClima.name;
   console.log("Lugar", lugar);
-  let clima = arrayClima.weather[0].main;
+  let clima = arrayClima.weather[0].description;
   console.log("Clima", clima);
+  let temperatura = arrayClima.main.feels_like;
+  console.log("Esta es la Temperatura", temperatura);
+  let humedad = arrayClima.main.humidity;
+  console.log("Esta es la Humedad", humedad);
+  let visibilidad = arrayClima.visibility / 100;
+  console.log("Esta es la visibilidad", visibilidad);
+  let viento = arrayClima.wind.speed;
+  console.log("Esta es la viento", viento);
+  let coord = arrayClima.coord;
+  console.log("Coordenadas:", coord);
+
   let climaIcon = arrayClima.weather[0].icon;
   console.log("iconClima", climaIcon);
 
@@ -284,16 +295,21 @@ function mostrarTiempo(e) {
   screen = document.getElementById("screen");
   screen.innerHTML = ``;
   let cardClimaHTML = `
-  <div class="card">
-  
-      <img src="http://openweathermap.org/img/wn/${climaIcon}@4x.png" alt="">
-  
-  <div class="card-body">
-  <p class="card-text"> Ciudad: ${lugar}<br>
-      Tiempo: ${clima}<br>
-      Fecha: ${fecha.toDateString()}</p><br>
-      <button class="btn btn-danger btnAgreNuevProv" type="button" value="Agregar" id="btnCloseClima"><span>Cerrar</span></button>
-      </div>
+  <div class="card  cardClima">
+  <div class="card-body bodyClima">
+  <img src="http://openweathermap.org/img/wn/${climaIcon}@4x.png" alt="">
+    <p class="card-text">
+    <span>Fecha: ${fecha.toDateString()} Hora:${fecha.toTimeString()}</span>
+    
+    <h2>${clima}</h2>
+    Temperatura: <b>${temperatura}&deg;C</b><br>  
+    Humedad:${humedad}%<br>
+    Visibilidad: <b>${visibilidad}%</b>
+    Viento: <b>${viento}k/h</b>
+    Ciudad: <b>${lugar}</b><br></p>
+    <button class="btn btn-danger btnAgreNuevProv" type="button" value="Agregar"
+      id="btnCloseClima"><span>Cerrar</span></button>
+  </div>
   </div>
         `;
   screen.innerHTML += cardClimaHTML;

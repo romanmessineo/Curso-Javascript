@@ -198,8 +198,8 @@ class MenuProveedores {
         proveedor.nombre.toLowerCase().indexOf(nombreTipiado.toLowerCase()) !==
         -1
     );
-    console.table("letra en menuProv", nombreTipiado);
-    console.table("VER ESTO", filtrado);
+    /* console.table("letra en menuProv", nombreTipiado);
+    console.table("VER ESTO", filtrado); */
 
     if (nombreTipiado.length !== 0) {
       formPreview = document.getElementById("formPreview");
