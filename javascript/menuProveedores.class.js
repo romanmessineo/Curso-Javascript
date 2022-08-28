@@ -367,6 +367,7 @@ class MenuProveedores {
 
 //SEGURIDAD
 function elementoSeguridadPersonal() {
+  screen.innerHTML = ``;
   Swal.fire({
     imageUrl:
       "https://pbs.twimg.com/media/DxdDvpuX0AEMZyn?format=jpg&name=4096x4096",

@@ -191,7 +191,6 @@
   ;
   
   
-  
 }
 
 
@@ -241,11 +240,6 @@
   display: flex;
   padding: 0;
   margin: 0;
-}
-
-.imgLogo,
-img {
-  border-radius: 5px;
   border-width: 3px;
   border-style: solid;
   border-image: 
@@ -254,6 +248,19 @@ img {
       red, 
       rgba(0, 0, 0, 0)
     ) 1 100%;
+}
+
+.imgLogo,
+img {
+  border-radius: 5px;
+/*   border-width: 3px;
+  border-style: solid;
+  border-image: 
+    linear-gradient(
+      to bottom, 
+      red, 
+      rgba(0, 0, 0, 0)
+    ) 1 100%; */
   max-height: 100px;
   object-fit: cover;
 }
@@ -278,10 +285,12 @@ img {
 
 .card-body {
   margin: 0;
+  
 }
 
 .card img {
-  border: solid 1px;
+  border: solid 5px;
+  background-color: rgb(177, 169, 168);
   padding-bottom: 0;
   max-width: 150px;
   padding: 2%;
@@ -361,7 +370,7 @@ label {
   width: 350px;
   max-height: 400px;
   margin: 8px;  
-  background-image: radial-gradient(circle at 25.59% 32.91%, #ffffff 0, #ffffff 12.5%, #e3f9ff 25%, #c1e8fa 37.5%, #9dd5f2 50%, #78c2eb 62.5%, #53b0e5 75%, #249fe0 87.5%, #008edb 100%);
+  background-image: radial-gradient(circle at 25.59% 32.91%, #ffffff 0, #ffffff 12.5%, #e3f9ff 25%, #c1e8fa 37.5%, #e2e9ed 50%, #c9dde7 62.5%, #7abee6 75%, #5db4e3 87.5%, #008edb 100%);
   box-shadow: 10px 4px 8px 4px rgba(12, 2, 4, 0.551)  ;
 }
 
