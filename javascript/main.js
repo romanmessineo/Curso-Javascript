@@ -114,7 +114,7 @@ function buscarProveedor() {
   screenBsc.innerHTML = `
       <div class="divBuscar">
             <p><b>Nombre a buscar</b></p>
-            <input type="text" id="formulario" placeholder="Nombre o Razon social">
+            <input type="text" id="formulario" class="inputFormulario" placeholder="Nombre o Razon social">
             <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
         </div>
       `;
