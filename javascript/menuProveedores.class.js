@@ -366,15 +366,36 @@ class MenuProveedores {
 }
 
 //SEGURIDAD
-function elementoSeguridadPersonal() {
-  screen.innerHTML = ``;
+/* function elementoSeguridadPersonal() {
+  screenFormPreview = document.getElementById("screenFormPreview");
+  screenFormPreview.innerHTML = ``;
+  screenFormPreview.innerHTML = `
+    <div class="normasSeguridad">
+      <h1>NORMAS DE SEGURIDAD PARA CHOFERES</h1>
+      <div class="imgSeg1"><img src="./imagenes/elementosSeguridad.png" alt="seguridad">
+      </div>
+      <div class="imgSeg2">
+        <img src="https://pbs.twimg.com/media/DxdDvpuX0AEMZyn?format=jpg&name=4096x4096" alt="normativa">
+      </div>
+      
+      <div class="videoSeguridad">
+        <iframe src="https://www.youtube.com/embed/qRa5J5f9Ews" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p>Asegúrese de cumplir con todos los requisitos. Su seguridad es lo más importante para nosotros.</p>
+      <button class="btn btn-info btnSeguridad" id="botonSeguridad"> Estoy deacuerdo </button>
+      
+      </div>
+  ` 
+ */
+
+ /*  screen.innerHTML = ``;
   Swal.fire({
     imageUrl:
       "https://pbs.twimg.com/media/DxdDvpuX0AEMZyn?format=jpg&name=4096x4096",
     imageWidth: 800,
     imageHeight: 800,
     imageAlt: "Custom image",
-  });
+  }); */
   /* let seguridadPersonal =
     prompt(`Usted posee los siguientes elementos de seguridad? "si" - "no"
         Calzado de seg
@@ -389,7 +410,7 @@ function elementoSeguridadPersonal() {
     alert("Comuniquese con personal de trafico");
     console.log("No cumple con normas de seguridad");
   } */
-}
+/* } */
 
 //INICIAR SESION
 

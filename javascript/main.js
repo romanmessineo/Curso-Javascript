@@ -17,7 +17,6 @@ if (localStorage.getItem("nuevoProv")) {
 }
 
 arrayFetch();
-
 async function arrayFetch() {
   let res = await fetch("/javascript/data/array.proveedores.json");
   let json = await res.json();
@@ -32,6 +31,7 @@ function provArrayJson(e) {
 }
 
 function agregarProveedor() {
+  
   buscador.innerHTML = ``;
   buscZonaDescarga.innerHTML = ``;
 
@@ -55,7 +55,8 @@ function agregarProveedor() {
      </section>         
             `;
   screen.innerHTML += agreProvHTML;
-  const nombre = document.getElementById("nombre");
+  
+  const nombre = document.getElementById("nombre").focus();
   const direccion = document.getElementById("direccion");
   const locacion = document.getElementById("locacion");
   const img = document.getElementById("img");
@@ -118,9 +119,10 @@ function buscarProveedor() {
             <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
         </div>
       `;
-
+  document.getElementById("formulario").focus();
   const buscarPov = document.querySelector(`#formulario`);
   const botonBuscar = document.querySelector(`#botonBuscar`);
+
 
   const prefiltrar = () => {
     let nombreTipiado = document.getElementById("formulario").value;
@@ -220,6 +222,49 @@ function ordenarProveedores() {
 
 //Menu de Usuario
 
+//SEGURIDAD
+function elementoSeguridadPersonal() {
+  screenForm = document.getElementById("screenForm");
+  buscador.innerHTML = ``;
+  buscZonaDescarga.innerHTML = ``;
+  formPreview.innerHTML = ``;
+  screen.innerHTML = ``;
+  screenForm.innerHTML = ``;
+  screenForm.innerHTML = `
+    <div class="normasSeguridad">
+      <h1>NORMAS DE SEGURIDAD PARA CHOFERES</h1>
+      <div class="imgSeg1"><img src="./imagenes/elementosSeguridad.png" alt="seguridad">
+      </div>
+      <div class="imgSeg2">
+        <img src="https://pbs.twimg.com/media/DxdDvpuX0AEMZyn?format=jpg&name=4096x4096" alt="normativa">
+      </div>
+      
+      <div class="videoSeguridad">
+      <span>No haga ninguna de las siguientes cosas:</span>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ryuU6Lvtaqg?start=40" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p>Asegúrese de cumplir con todos los requisitos. Su seguridad es lo más importante para nosotros.</p>
+      <button class="btn btn-info btnSeguridad" id="botonSeguridad"><span>Estoy deacuerdo </span> </button>
+      
+      </div>
+  `;
+  const botonSeguridad = document.getElementById("botonSeguridad");
+
+  const msjSeg = () => {
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Gracias!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    screenForm.innerHTML = ``;
+  };
+
+  botonSeguridad.addEventListener(`click`, msjSeg);
+}
+
+
 //VER DONDE DESCARGA CADA PROVEEDOR
 function zonaDescarga() {
   screen.innerHTML = ``;
@@ -234,6 +279,7 @@ function zonaDescarga() {
         <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
     </div>
       `;
+  document.getElementById("formulario").focus();    
   const buscarPov = document.querySelector(`#formulario`);
   const botonBuscar = document.querySelector(`#botonBuscar`);
 
@@ -254,6 +300,7 @@ function zonaDescarga() {
 }
 
 //-----------------------------------feching
+
 function cargarTiempo() {
   localizar();
   fetch(
