@@ -208,6 +208,9 @@ ul {
       #3c78f2 50%,
       #002d73 100%);
 }
+/* .pantalla{
+  transition: all 0.8s;
+} */
 
 .pantalla2 {
   display: flex;

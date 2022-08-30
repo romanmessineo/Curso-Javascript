@@ -28,8 +28,9 @@ class MenuProveedores {
 
   //imprime la lista de proveedores
   listarProveedores() {
-    screen = document.getElementById("screen");
     screen.innerHTML = ``;
+    screen = document.getElementById("screen");
+    screen.style.transition = "all 3s"; 
     proveedores.forEach((proveedor) => {
       let proveedoresHTML = `            
       <div class="card"> 
@@ -50,7 +51,7 @@ class MenuProveedores {
   listarNuevoProv(e) {
     screen = document.getElementById("screen");
     screen.innerHTML = `<P>Nuevo Proveedor</P>`;
-
+    
     let nuevProvHTML = `            
     <div class="card">
     <img src=${e.img}  alt="...">
@@ -170,10 +171,10 @@ class MenuProveedores {
     );
 
     if (nombreTipiado.length !== 0) {
-      screen = document.getElementById("screen");
       screenForm.innerHTML = ``;
       formPreview.innerHTML = ``;
       screen.innerHTML = ``;
+      screen = document.getElementById("screen");
       filtrado.map((proveedor) => {
         let proveedoresHTML = `            
             <div class="card">

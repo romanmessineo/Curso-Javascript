@@ -2,6 +2,29 @@ const proveedores = [];
 
 const menuProveedores = new MenuProveedores(proveedores);
 
+//Carga el array Proveedores desde json local
+arrayFetch();
+function arrayFetch() {
+  fetch("/javascript/data/array.proveedores.json")
+    .then((response) => response.json())
+    .then((json) => provArrayJson(json))
+    .catch((err) => console.error(err))
+    .finally(console.log("Feching array local: ejecutado"));
+}
+/*metodo asincronico
+  async function arrayFetch() {
+  let res = await fetch(`/javascript/data/array.proveedores.json`);
+  let json = await res.json();
+  provArrayJson(json);
+  console.log("Lista de Proveedores originales", json);
+}  */
+function provArrayJson(e) {
+  e.forEach(function (arrayProv) {
+    proveedores.push(arrayProv);
+  });
+  console.log("Lista de Proveedores originales", e);
+}
+
 //Trae los proveedores storage y los pushea
 if (localStorage.getItem("nuevoProv")) {
   document.addEventListener("DOMContentLoaded", function (event) {
@@ -14,21 +37,6 @@ if (localStorage.getItem("nuevoProv")) {
   });
 } else {
   console.log("No hay proveedores en local storange");
-}
-
-//Carga el array Proveedores desde json local
-arrayFetch();
-async function arrayFetch() {
-  let res = await fetch("/javascript/data/array.proveedores.json");
-  let json = await res.json();
-  provArrayJson(json);
-  console.log("Lista de Proveedores originales", json);
-}
-
-function provArrayJson(e) {
-  e.forEach(function (arrayProv) {
-    proveedores.push(arrayProv);
-  });
 }
 
 //Imprime formulario para agregar nuevo proveedor
@@ -343,6 +351,7 @@ function zonaDescarga() {
 //Cargar clima desde una API
 function cargarTiempo() {
   localizar();
+
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?lat=-34.5901&lon=-58.3794&appid=6e723b89495afd4593121a7ce2430bca&units=metric&lang=sp"
   )
@@ -411,7 +420,7 @@ function mostrarTiempo(e) {
 function localizar() {
   if (navigator.geolocation) {
     var success = function (position) {
-      var latitud = position.coords.latitude,
+      const latitud = position.coords.latitude,
         longitud = position.coords.longitude;
       console.log("Latitud: ", latitud, "Longitud: ", longitud);
     };
