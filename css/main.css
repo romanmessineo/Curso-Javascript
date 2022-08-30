@@ -1,8 +1,11 @@
 html {
   background-color: #000000;
 }
-a:link, a:visited, a:active {
-  text-decoration:none;
+
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
 }
 
 * {
@@ -11,7 +14,7 @@ a:link, a:visited, a:active {
   font-family: url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
   text-decoration: none;
   list-style: none;
-  }
+}
 
 .container {
   max-width: 1200px;
@@ -42,6 +45,7 @@ a:link, a:visited, a:active {
 .pantalla {
   grid-area: pantalla;
 }
+
 .pantalla2 {
   grid-area: pantalla;
 }
@@ -122,6 +126,7 @@ ul {
   margin-bottom: 8px;
   box-shadow: 10px 4px 8px 4px rgba(12, 2, 4, 0.551);
 }
+
 .btn-sm p {
   margin: 0;
   font-weight: bolder;
@@ -136,6 +141,7 @@ ul {
   display: flex;
   justify-content: center;
 }
+
 .btn-danger h1 {
   margin: 0;
   font-weight: bolder;
@@ -196,14 +202,11 @@ ul {
   justify-content: center;
 
   border: 8px solid;
-  border-image: url(https://previews.123rf.com/images/savanno/savanno1803/savanno180300048/96879823-bot%C3%B3n-cuadrado-textura-de-metal-cepillado.jpg)
-    30 / 8px / 0px stretch;
-  background-image: radial-gradient(
-    circle at 18.86% 41.66%,
-    #aacbff 0,
-    #3c78f2 50%,
-    #002d73 100%
-  );
+  border-image: url(https://previews.123rf.com/images/savanno/savanno1803/savanno180300048/96879823-bot%C3%B3n-cuadrado-textura-de-metal-cepillado.jpg) 30 / 8px / 0px stretch;
+  background-image: radial-gradient(circle at 18.86% 41.66%,
+      #aacbff 0,
+      #3c78f2 50%,
+      #002d73 100%);
 }
 
 .pantalla2 {
@@ -228,30 +231,31 @@ ul {
   margin-right: 16px;
   margin-left: 16px;
   /* width: 60%; */
-  background-image: radial-gradient(
-    circle at 31.38% 36.96%,
-    #fbe2dd 0,
-    #e9dad6 16.67%,
-    #d6d1d0 33.33%,
-    #c3c8ca 50%,
-    #b0bec5 66.67%,
-    #9fb5c1 83.33%,
-    #8facbd 100%
-  );
+  background-image: radial-gradient(circle at 31.38% 36.96%,
+      #fbe2dd 0,
+      #e9dad6 16.67%,
+      #d6d1d0 33.33%,
+      #c3c8ca 50%,
+      #b0bec5 66.67%,
+      #9fb5c1 83.33%,
+      #8facbd 100%);
   box-shadow: 10px 4px 8px 4px rgba(12, 2, 4, 0.551);
   /*  justify-content: center;
   position: absolute; */
 }
+
 .divBuscar p {
   color: #000000;
   margin-bottom: 2px;
 }
+
 .btn-info {
   border: solid 1px;
   height: 32px;
   margin-bottom: 5px;
   margin-left: 4px;
 }
+
 .fa-magnifying-glass {
   display: flex;
   align-self: flex-start;
@@ -266,8 +270,7 @@ ul {
   border-image: linear-gradient(to bottom, red, rgba(0, 0, 0, 0)) 1 100%;
 }
 
-.imgLogo a  
-img {
+.imgLogo a img {
   border-radius: 5px;
   max-height: 100px;
   object-fit: cover;
@@ -303,16 +306,14 @@ img {
   align-self: center;
   flex-direction: column;
   padding: 20px;
-  background-image: radial-gradient(
-    circle at 31.38% 36.96%,
-    #fbe2dd 0,
-    #e9dad6 16.67%,
-    #d6d1d0 33.33%,
-    #c3c8ca 50%,
-    #b0bec5 66.67%,
-    #9fb5c1 83.33%,
-    #8facbd 100%
-  );
+  background-image: radial-gradient(circle at 31.38% 36.96%,
+      #fbe2dd 0,
+      #e9dad6 16.67%,
+      #d6d1d0 33.33%,
+      #c3c8ca 50%,
+      #b0bec5 66.67%,
+      #9fb5c1 83.33%,
+      #8facbd 100%);
   box-shadow: 10px 4px 8px 4px rgba(12, 2, 4, 0.551);
   z-index: 101;
 }
@@ -346,6 +347,7 @@ label {
   text-shadow: rgba(0, 0, 0, 0.353);
   display: flex;
 }
+
 .nav {
   display: flex;
   justify-content: space-around;
@@ -368,18 +370,16 @@ label {
   width: 350px;
   max-height: 400px;
   margin: 8px;
-  background-image: radial-gradient(
-    circle at 25.59% 32.91%,
-    #ffffff 0,
-    #ffffff 12.5%,
-    #e3f9ff 25%,
-    #c1e8fa 37.5%,
-    #e2e9ed 50%,
-    #c9dde7 62.5%,
-    #7abee6 75%,
-    #5db4e3 87.5%,
-    #008edb 100%
-  );
+  background-image: radial-gradient(circle at 25.59% 32.91%,
+      #ffffff 0,
+      #ffffff 12.5%,
+      #e3f9ff 25%,
+      #c1e8fa 37.5%,
+      #e2e9ed 50%,
+      #c9dde7 62.5%,
+      #7abee6 75%,
+      #5db4e3 87.5%,
+      #008edb 100%);
   box-shadow: 10px 4px 8px 4px rgba(12, 2, 4, 0.551);
 }
 
@@ -389,21 +389,20 @@ label {
   justify-items: center;
   padding: 0px;
   text-align: center;
-  background-image: radial-gradient(
-    circle at 37.98% 35.68%,
-    #ffffff 0,
-    #ffffff 10%,
-    #ffffff 20%,
-    #ffffea 30%,
-    #fbf0d0 40%,
-    #f2deb5 50%,
-    #eacb9b 60%,
-    #e4ba84 70%,
-    #dfa971 80%,
-    #dc9862 90%,
-    #d98956 100%
-  );
+  background-image: radial-gradient(circle at 37.98% 35.68%,
+      #ffffff 0,
+      #ffffff 10%,
+      #ffffff 20%,
+      #ffffea 30%,
+      #fbf0d0 40%,
+      #f2deb5 50%,
+      #eacb9b 60%,
+      #e4ba84 70%,
+      #dfa971 80%,
+      #dc9862 90%,
+      #d98956 100%);
 }
+
 .bodyClima img {
   border: solid 1px rgb(177, 30, 30);
   margin-bottom: 8px;
@@ -411,10 +410,12 @@ label {
   background-image: url("https://64.media.tumblr.com/94b72cab6aa567e9d46e1fb493fd69fb/320c3872216d1f99-72/s540x810/67792d5235d9fcd04d57042b8a808c8e081f92f1.gifv");
   width: 100%;
 }
+
 .card-text,
 span {
   font-size: 12px;
 }
+
 /* html Elementos de seguridad */
 .normasSeguridad {
   display: flex;
@@ -425,46 +426,54 @@ span {
   width: 100%;
   padding: 10px;
 }
-.normasSeguridad h1{
+
+.normasSeguridad h1 {
   color: #020202;
   box-shadow: 10px 4px 8px 4px rgba(12, 2, 4, 0.551);
-  
+
   margin: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bolder;
 }
+
 .imgSeg1,
 .imgSeg2 {
   margin-bottom: 8px;
   height: fit-content;
 }
-.imgSeg1 .imgSeg2, img
-{
+
+.imgSeg1 .imgSeg2,
+img {
   max-width: 100%;
   max-height: 100%;
 }
-.videoSeguridad{
- 
- height: fit-content;
- 
+
+.videoSeguridad {
+
+  height: fit-content;
+
 }
-.videoSeguridad, iframe{
+
+.videoSeguridad,
+iframe {
   height: 350px;
   width: 100%;
-  
+
 }
-.normasSeguridad p{
-  
+
+.normasSeguridad p {
+
   align-self: center;
   margin-top: 40px;
   font-size: 18px;
   font-weight: bold;
-  
+
 }
-.btnSeguridad{
+
+.btnSeguridad {
   align-self: flex-end;
   padding-bottom: 32px;
   font-weight: bold;
   box-shadow: 10px 4px 8px 4px rgba(12, 2, 4, 0.551);
-  
+
 }

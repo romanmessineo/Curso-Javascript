@@ -16,6 +16,7 @@ if (localStorage.getItem("nuevoProv")) {
   console.log("No hay proveedores en local storange");
 }
 
+//Carga el array Proveedores desde json local
 arrayFetch();
 async function arrayFetch() {
   let res = await fetch("/javascript/data/array.proveedores.json");
@@ -30,8 +31,8 @@ function provArrayJson(e) {
   });
 }
 
+//Imprime formulario para agregar nuevo proveedor
 function agregarProveedor() {
-  
   buscador.innerHTML = ``;
   buscZonaDescarga.innerHTML = ``;
 
@@ -55,7 +56,7 @@ function agregarProveedor() {
      </section>         
             `;
   screen.innerHTML += agreProvHTML;
-  
+
   const nombre = document.getElementById("nombre").focus();
   const direccion = document.getElementById("direccion");
   const locacion = document.getElementById("locacion");
@@ -86,6 +87,7 @@ function agregarProveedor() {
   });
 }
 
+//Lista proveedores y notifica
 function listarProveedores() {
   buscador.innerHTML = ``;
   buscZonaDescarga.innerHTML = ``;
@@ -105,6 +107,7 @@ function listarProveedores() {
   }).showToast();
 }
 
+//Imprime form para buscar prov
 function buscarProveedor() {
   screen.innerHTML = ``;
   screenForm.innerHTML = ``;
@@ -123,12 +126,17 @@ function buscarProveedor() {
   const buscarPov = document.querySelector(`#formulario`);
   const botonBuscar = document.querySelector(`#botonBuscar`);
 
-
   const prefiltrar = () => {
     let nombreTipiado = document.getElementById("formulario").value;
     menuProveedores.buscarTex(nombreTipiado.toUpperCase());
-    //console.table("LETRAS TIPIADAS en primer imput", nombreTipiado);
+    console.log("LETRAS TIPIADAS en primer imput", nombreTipiado);
   };
+
+  document.getElementById("formulario").addEventListener("keyup", function (e) {
+    if (e.code === "Enter") {
+      document.getElementById("botonBuscar").click();
+    }
+  });
 
   buscarPov.addEventListener(`keydown`, prefiltrar);
 
@@ -141,9 +149,9 @@ function buscarProveedor() {
   botonBuscar.addEventListener(`click`, filtrar);
 }
 
+//Imprime formulario para actualizar proveedor
 function actualizarProveedor() {
-  //logIn();
-
+  logIn();
   buscador.innerHTML = ``;
   buscZonaDescarga.innerHTML = ``;
   screen.innerHTML = ``;
@@ -181,6 +189,7 @@ function actualizarProveedor() {
     menuProveedores.buscarTexAct(nombreTipiado);
     console.table("LETRAS TIPIADAS en primer imput", nombreABuscado.value);
   };
+
   nombreABuscado.addEventListener(`keydown`, prefiltrar);
 
   button.addEventListener("click", (e) => {
@@ -205,6 +214,7 @@ function actualizarProveedor() {
   });
 }
 
+//Avisa y alerta proveedores ordenados alfabeticamente
 function ordenarProveedores() {
   menuProveedores.ordenarProveedores();
   Toastify({
@@ -221,6 +231,32 @@ function ordenarProveedores() {
 }
 
 //Menu de Usuario
+
+//INICIAR SESION
+function logIn() {
+  Swal.fire({
+    title: "Inicie sesión",
+    html: `<input type="text" id="login" class="swal2-input" placeholder="Cualquier nombre">
+  <input type="password" id="password" class="swal2-input" placeholder="Cualquier Password">`,
+    confirmButtonText: "Login",
+    focusConfirm: false,
+    preConfirm: () => {
+      const login = Swal.getPopup().querySelector("#login").value;
+      const password = Swal.getPopup().querySelector("#password").value;
+
+      if (!login || !password) {
+        Swal.showValidationMessage(`Ingrese usuario contraseña por favor`);
+      }
+      return { login: login, password: password };
+    },
+  }).then((result) => {
+    Swal.fire(
+      `
+    Bienvenido ${result.value.login}!
+    `.trim()
+    );
+  });
+}
 
 //SEGURIDAD
 function elementoSeguridadPersonal() {
@@ -264,7 +300,6 @@ function elementoSeguridadPersonal() {
   botonSeguridad.addEventListener(`click`, msjSeg);
 }
 
-
 //VER DONDE DESCARGA CADA PROVEEDOR
 function zonaDescarga() {
   screen.innerHTML = ``;
@@ -279,7 +314,7 @@ function zonaDescarga() {
         <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
     </div>
       `;
-  document.getElementById("formulario").focus();    
+  document.getElementById("formulario").focus();
   const buscarPov = document.querySelector(`#formulario`);
   const botonBuscar = document.querySelector(`#botonBuscar`);
 
@@ -288,6 +323,12 @@ function zonaDescarga() {
     menuProveedores.buscarTex(nombreTipiado);
     console.table("LETRAS TIPIADAS en primer imput", buscarPov.value);
   };
+
+  document.getElementById("formulario").addEventListener("keyup", function (e) {
+    if (e.code === "Enter") {
+      document.getElementById("botonBuscar").click();
+    }
+  });
 
   const filtrar = () => {
     let nombreBuscado = buscarPov.value.toLowerCase();
@@ -299,8 +340,7 @@ function zonaDescarga() {
   botonBuscar.addEventListener(`click`, filtrar);
 }
 
-//-----------------------------------feching
-
+//Cargar clima desde una API
 function cargarTiempo() {
   localizar();
   fetch(
@@ -367,6 +407,7 @@ function mostrarTiempo(e) {
 }
 //key: 6e723b89495afd4593121a7ce2430bca
 
+//Imprime lat-long desde navegador
 function localizar() {
   if (navigator.geolocation) {
     var success = function (position) {

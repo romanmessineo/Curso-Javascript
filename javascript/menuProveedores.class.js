@@ -5,10 +5,12 @@ class MenuProveedores {
     this.proveedores = proveedores;
   }
 
+  //agrega nuevo proveedor al array
   agregarProveedor(proveedor) {
     this.proveedores.push(proveedor);
   }
 
+  //Tre y carga nuevo prov en local storange
   guardarNuevoProveedor(e) {
     let proveArray = JSON.parse(localStorage.getItem("nuevoProv")) || [];
     proveArray.push(e);
@@ -19,10 +21,12 @@ class MenuProveedores {
     console.log("mi array local Storage", proveArray);
   }
 
+  //cantidad en array
   darCantidad() {
     return this.proveedores.length;
   }
 
+  //imprime la lista de proveedores
   listarProveedores() {
     screen = document.getElementById("screen");
     screen.innerHTML = ``;
@@ -42,6 +46,7 @@ class MenuProveedores {
     });
   }
 
+  //Imprime en pantalla el nuevo proveedor agregado
   listarNuevoProv(e) {
     screen = document.getElementById("screen");
     screen.innerHTML = `<P>Nuevo Proveedor</P>`;
@@ -74,14 +79,13 @@ class MenuProveedores {
         clearInterval(timerInterval);
       },
     }).then((result) => {
-      /* Read more about handling dismissals below */
       if (result.dismiss === Swal.DismissReason.timer) {
         console.log("I was closed by the timer");
       }
     });
-    //Swal.fire("Se agrego", e.nombre, "", "success");
   }
 
+  //Muesta en pantalla el prov seleccionado y le agrega la funcion eliminar
   buscar(nombreBuscado) {
     let esta = this.proveedores.filter(
       (proveedor) =>
@@ -97,7 +101,7 @@ class MenuProveedores {
       screenBsc.innerHTML = ``;
       screen = document.getElementById("screen");
       screen.innerHTML = ``;
-      /* screenFormPreview.innerHTML = ``; */
+
       filtrado.forEach((proveedor) => {
         let proveedoresHTML = `            
             <div class="card">
@@ -137,7 +141,6 @@ class MenuProveedores {
               clearInterval(timerInterval);
             },
           }).then((result) => {
-            /* Read more about handling dismissals below */
             if (result.dismiss === Swal.DismissReason.timer) {
               console.log(
                 "Proveedor eliminado con exito: ",
@@ -155,18 +158,16 @@ class MenuProveedores {
         title: "Oops...",
         text: "No se encuentra el Proveedor!",
       });
-      //alert("No se encuentra el Proveedor");
     }
   }
 
+  //Imprime vizualicion de la Card para Boton `eliminar` y `donde descargo`
   buscarTex(nombreTipiado) {
     let filtrado = this.proveedores.filter(
       (proveedor) =>
         proveedor.nombre.toLowerCase().indexOf(nombreTipiado.toLowerCase()) !==
         -1
     );
-    // console.table("letra en menuProv", nombreTipiado);
-    //console.table("VER ESTO", filtrado);
 
     if (nombreTipiado.length !== 0) {
       screen = document.getElementById("screen");
@@ -192,14 +193,13 @@ class MenuProveedores {
     }
   }
 
+  //Imprime vizualicion de la Card que se va a actualizar mientras se tipea
   buscarTexAct(nombreTipiado) {
     let filtrado = this.proveedores.filter(
       (proveedor) =>
         proveedor.nombre.toLowerCase().indexOf(nombreTipiado.toLowerCase()) !==
         -1
     );
-    /* console.table("letra en menuProv", nombreTipiado);
-    console.table("VER ESTO", filtrado); */
 
     if (nombreTipiado.length !== 0) {
       formPreview = document.getElementById("formPreview");
@@ -214,7 +214,7 @@ class MenuProveedores {
        <b>Nombre:</b> ${proveedor.nombre} <br>
        <b>Direccion:</b> ${proveedor.direccion} <br>
        <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
-       <button class="btn btn-primary btnBorrarProv" type="button" value="modificar" id="btnModfProv"><span> Modificar </span></button>
+       <button class="btn btn-primary btnBorrarProv" type="button" value="modificar" id="btnModfProv"><span> Seleccionar </span></button>
        </div>
        `;
         formPreview.innerHTML = proveedoresHTML;
@@ -237,6 +237,14 @@ class MenuProveedores {
           document.getElementById("nombre").focus();
         };
 
+        document
+          .getElementById("nomAbusc")
+          .addEventListener("keyup", function (e) {
+            if (e.code === "Enter") {
+              document.getElementById("btnModfProv").click();
+            }
+          });
+
         btnModfProv.addEventListener(`click`, provElegido);
       });
     } else {
@@ -245,6 +253,7 @@ class MenuProveedores {
     }
   }
 
+  //Imprime Proveedor modificado
   modificarProveedor(nombreABuscar, nombre, direccion, locacion, img) {
     let proveedorEncontrado = this.proveedores.find((proveedor) =>
       proveedor.nombre.toLowerCase().includes(nombreABuscar)
@@ -291,7 +300,6 @@ class MenuProveedores {
           clearInterval(timerInterval);
         },
       }).then((result) => {
-        /* Read more about handling dismissals below */
         if (result.dismiss === Swal.DismissReason.timer) {
           console.log("I was closed by the timer");
         }
@@ -303,6 +311,7 @@ class MenuProveedores {
     }
   }
 
+  //Ordena proveedores alfabeticamente
   ordenarProveedores() {
     this.proveedores.sort((proveedorA, proveedorB) => {
       if (proveedorA.nombre < proveedorB.nombre) {
@@ -314,10 +323,7 @@ class MenuProveedores {
     listarProveedores();
   }
 
-  //Menu de Usuario
-
-  //Boton "Donde descargo" devuelve mapa de zona descarga
-
+  //Boton "Donde descarga" devuelve mapa de zona descarga
   zona(nombreABuscar) {
     let esta = this.proveedores.some((proveedor) =>
       proveedor.nombre.toLowerCase().includes(nombreABuscar)
@@ -362,90 +368,5 @@ class MenuProveedores {
         text: "No se encuentra el Proveedor!",
       });
     }
-  }
-}
-
-//SEGURIDAD
-/* function elementoSeguridadPersonal() {
-  screenFormPreview = document.getElementById("screenFormPreview");
-  screenFormPreview.innerHTML = ``;
-  screenFormPreview.innerHTML = `
-    <div class="normasSeguridad">
-      <h1>NORMAS DE SEGURIDAD PARA CHOFERES</h1>
-      <div class="imgSeg1"><img src="./imagenes/elementosSeguridad.png" alt="seguridad">
-      </div>
-      <div class="imgSeg2">
-        <img src="https://pbs.twimg.com/media/DxdDvpuX0AEMZyn?format=jpg&name=4096x4096" alt="normativa">
-      </div>
-      
-      <div class="videoSeguridad">
-        <iframe src="https://www.youtube.com/embed/qRa5J5f9Ews" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <p>Asegúrese de cumplir con todos los requisitos. Su seguridad es lo más importante para nosotros.</p>
-      <button class="btn btn-info btnSeguridad" id="botonSeguridad"> Estoy deacuerdo </button>
-      
-      </div>
-  ` 
- */
-
- /*  screen.innerHTML = ``;
-  Swal.fire({
-    imageUrl:
-      "https://pbs.twimg.com/media/DxdDvpuX0AEMZyn?format=jpg&name=4096x4096",
-    imageWidth: 800,
-    imageHeight: 800,
-    imageAlt: "Custom image",
-  }); */
-  /* let seguridadPersonal =
-    prompt(`Usted posee los siguientes elementos de seguridad? "si" - "no"
-        Calzado de seg
-        Chaleco naranja
-        Casco
-        Gafas
-        Guantes`);
-
-  if (seguridadPersonal === "si") {
-    alert("Gracias! Esta autorizado para ingresar");
-  } else {
-    alert("Comuniquese con personal de trafico");
-    console.log("No cumple con normas de seguridad");
-  } */
-/* } */
-
-//INICIAR SESION
-
-function logIn() {
-  Swal.fire({
-    title: "Inicie sesión",
-    html: `<input type="text" id="login" class="swal2-input" placeholder="Cualquier nombre">
-  <input type="password" id="password" class="swal2-input" placeholder="Cualquier Password">`,
-    confirmButtonText: "Login",
-    focusConfirm: false,
-    preConfirm: () => {
-      const login = Swal.getPopup().querySelector("#login").value;
-      const password = Swal.getPopup().querySelector("#password").value;
-
-      if (!login || !password) {
-        Swal.showValidationMessage(`Ingrese usuario contraseña por favor`);
-      }
-      return { login: login, password: password };
-    },
-  }).then((result) => {
-    Swal.fire(
-      `
-    Bienvenido ${result.value.login}!
-    `.trim()
-    );
-  });
-}
-
-//FUNCION PARA IGRESAR REMITOS
-function igresarRtos() {
-  let cantRtos = Number(prompt("Cuantos remitos trajo?"));
-  let contador = 0;
-  while (contador < cantRtos) {
-    let numRto = Number(prompt(`Ingrese el numero del remito ${contador + 1}`));
-    console.log(`Numero Rto: ${numRto}`);
-    contador++;
   }
 }
