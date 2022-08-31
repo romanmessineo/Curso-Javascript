@@ -15,7 +15,7 @@ function arrayFetch() {
 
 /*metodo asincronico
   async function arrayFetch() {
-  let res = await fetch(`/javascript/data/array.proveedores.json`);
+  let res = await fetch(https://romanmessineo.github.io/Curso-Javascript/javascript/data/array.proveedores.json);
   let json = await res.json();
   provArrayJson(json);
   console.log("Lista de Proveedores originales", json);

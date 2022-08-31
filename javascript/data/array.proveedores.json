@@ -1,5 +1,5 @@
- [
-   {
+[
+  {
     "id": 1,
     "nombre": "Famma",
     "direccion": "Av Circunvalacion KM 4,5",
@@ -71,10 +71,10 @@
   },
   {
     "id": 11,
-    "nombre": "Industrias Guidi",
-    "direccion": "Av. H. Yrigoyen 16299",
-    "locacion": "Boddy",
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4ixnWtlhixp0oYBlX95c3mAefLtOOC0o_jbxSzVPCvSLggpichQxO-CLynIQqtRHFY3U&usqp=CAU "
+    "nombre": "C.G.R. Sociedad Anonima",
+    "direccion": "Máximo Herrera 6126",
+    "locacion": "Warehouse",
+    "img": "https://media-exp1.licdn.com/dms/image/C4D0BAQGeZI1_-9wm2Q/company-logo_100_100/0/1626031777678?e=2147483647&v=beta&t=hF65vUYMU3LXxW4KlJxOKeUYWatfi3rT9b_-H8UYHlM"
   },
   {
     "id": 12,
