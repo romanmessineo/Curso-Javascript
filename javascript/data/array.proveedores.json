@@ -40,5 +40,68 @@
     "direccion": "Av. Constituyentes 5099",
     "locacion": "Patio Central",
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoLn8cDvGZcyZQrbQwfNoybFkid8o3D3OakNnFFR5ULnt2LMDamjcC7h5DPdm_tW-Nz0E&usqp=CAU"
+  },
+  {
+    "id": 7,
+    "nombre": "Ferrosider Parts",
+    "direccion": "Estados Unidos 4715",
+    "locacion": "Boddy",
+    "img": " https://media-exp2.licdn.com/dms/image/C560BAQHedvJxTxscnA/company-logo_200_200/0/1637953218850?e=2147483647&v=beta&t=2N1VlIT-Qig6eOLu_JZV1jDoIL_YVGWUTX8XFzrgtCc "
+  },
+  {
+    "id": 8,
+    "nombre": "Fumiscor",
+    "direccion": "Av Circunvalacion KM 4,5",
+    "locacion": "Boddy",
+    "img": "http://fumiscor.com/wp-content/uploads/2016/05/logo.jpg "
+  },
+  {
+    "id": 9,
+    "nombre": "Gestamp Bs As",
+    "direccion": "Ruta 9 KM 48",
+    "locacion": "Boddy",
+    "img": "https://mexperiencia.com/wp-content/uploads/2017/03/gestamp.jpg "
+  },
+  {
+    "id": 10,
+    "nombre": "Industrias Guidi",
+    "direccion": "Av. H. Yrigoyen 16299",
+    "locacion": "Boddy",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4ixnWtlhixp0oYBlX95c3mAefLtOOC0o_jbxSzVPCvSLggpichQxO-CLynIQqtRHFY3U&usqp=CAU "
+  },
+  {
+    "id": 11,
+    "nombre": "Industrias Guidi",
+    "direccion": "Av. H. Yrigoyen 16299",
+    "locacion": "Boddy",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4ixnWtlhixp0oYBlX95c3mAefLtOOC0o_jbxSzVPCvSLggpichQxO-CLynIQqtRHFY3U&usqp=CAU "
+  },
+  {
+    "id": 12,
+    "nombre": "Irauto SA",
+    "direccion": "El Salvador 346",
+    "locacion": "Patio Central",
+    "img": "https://deplm.com.ar/wp-content/uploads/2022/01/logo-irauto.png "
+  },
+  {
+    "id": 13,
+    "nombre": "Mastropor SA",
+    "direccion": "Av. Eugenio Garzon 5945",
+    "locacion": "Patio Central",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFA4WJko59cCnxsKM4xRK6TfGg6n35GC4LT1EsSa18Ri-cFyPS7HrpJHHTZgzEqfpA7bc&usqp=CAU "
+  },
+  {
+    "id": 14,
+    "nombre": "Plastic Omnium SA",
+    "direccion": "Pte. Frondizi 1413",
+    "locacion": "Obradores",
+    "img": "https://pbs.twimg.com/profile_images/617967801412780033/UkvFLMua_400x400.jpg "
+  },
+  {
+    "id": 15,
+    "nombre": "Ti Automotive",
+    "direccion": "Uruguay 4351",
+    "locacion": "Patio Central",
+    "img": "https://i0.wp.com/caaragon.com/wp-content/uploads/2018/08/ti-automotive.jpg?w=1080&ssl=1"
   }
 ]

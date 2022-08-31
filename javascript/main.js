@@ -4,13 +4,15 @@ const menuProveedores = new MenuProveedores(proveedores);
 
 //Carga el array Proveedores desde json local
 arrayFetch();
+
 function arrayFetch() {
-  fetch("/javascript/data/array.proveedores.json")
+  fetch("https://romanmessineo.github.io/Curso-Javascript/javascript/data/array.proveedores.json")
     .then((response) => response.json())
     .then((json) => provArrayJson(json))
     .catch((err) => console.error(err))
     .finally(console.log("Feching array local: ejecutado"));
 }
+
 /*metodo asincronico
   async function arrayFetch() {
   let res = await fetch(`/javascript/data/array.proveedores.json`);
@@ -18,6 +20,7 @@ function arrayFetch() {
   provArrayJson(json);
   console.log("Lista de Proveedores originales", json);
 }  */
+
 function provArrayJson(e) {
   e.forEach(function (arrayProv) {
     proveedores.push(arrayProv);
@@ -351,9 +354,9 @@ function zonaDescarga() {
 //Cargar clima desde una API
 function cargarTiempo() {
   localizar();
-
+  
   fetch(
-    "https://api.openweathermap.org/data/2.5/weather?lat=-34.5901&lon=-58.3794&appid=6e723b89495afd4593121a7ce2430bca&units=metric&lang=sp"
+    "https://api.openweathermap.org/data/2.5/weather?lat=-32.98354850238342&lon=-60.655138342455736&appid=6e723b89495afd4593121a7ce2430bca&units=metric&lang=sp"
   )
     .then((response) => response.json())
     .then((response) => mostrarTiempo(response)) //console.log(response.name)
@@ -429,3 +432,33 @@ function localizar() {
     });
   }
 }
+
+//api google maps
+ /* function initMap(){
+  var coord = {lat:-34.5956145 ,lng: -58.4431949};
+  var map = new google.maps.Map(document.getElementById('map'),{
+    zoom: 10,
+    center: coord
+  });
+  var marker = new google.maps.Marker({
+    position: coord,
+    map: map
+  });
+}  */
+
+// Create the script tag, set the appropriate attributes
+/* var script = document.createElement('script');
+script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDMw09SfDLP8N-ZnSe3-840yfbiyuCWXEQ&callback=initMap';
+script.async = true; */
+
+// Attach your callback function to the `window` object
+/* window.initMap = function() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+  }); */
+  // JS API is loaded and available
+/* }; */
+
+// Append the 'script' element to 'head'
+//document.head.appendChild(script);
