@@ -2,7 +2,6 @@ const proveedores = [];
 
 const menuProveedores = new MenuProveedores(proveedores);
 
-
 arrayFetch();
 //Carga el array Proveedores desde json local
 /* function arrayFetch() {
@@ -20,7 +19,6 @@ async function arrayFetch() {
   );
   let json = await res.json();
   provArrayJson(json);
-  console.log("Lista de Proveedores originales", json);
 }
 
 function provArrayJson(e) {
