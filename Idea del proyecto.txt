@@ -1,0 +1,3 @@
+Messineo Román - Curso  javascript.
+La idea es realizar una aplicación para facilitar la recepción de choferes para carga / descarga en planta General Motors de Argentina. Ya que es muy complicado para un chofer nuevo seguir correctamente los pasos y normas de seguridad de planta, también les cuesta orientarse en qué zona descargan, ya que casi siempre son diferentes lugares.
+También nos demanda mucho tiempo explicarles todo. Es un tiempo mal gastado ya que los choferes se olvidan tantas instrucciones sin tener algo visual y los errores en normas de seguridad y transito ocurren frecuentemente. 
