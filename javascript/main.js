@@ -68,7 +68,7 @@ function agregarProveedor() {
             `;
   screen.innerHTML += agreProvHTML;
 
-  const nombre = document.getElementById("nombre").focus();
+  const nombre = document.getElementById("nombre");
   const direccion = document.getElementById("direccion");
   const locacion = document.getElementById("locacion");
   const img = document.getElementById("img");
@@ -163,12 +163,15 @@ function buscarProveedor() {
 //Imprime formulario para actualizar proveedor
 function actualizarProveedor() {
   logIn();
+  screen.innerHTML = ``;
+
+  screenForm = document.getElementById("screenForm");
+
   buscador.innerHTML = ``;
   buscZonaDescarga.innerHTML = ``;
-  screen.innerHTML = ``;
-  screenForm = document.getElementById("screenForm");
   screenForm.innerHTML = ``;
-  let agreProvHTML = `            
+
+  screenForm.innerHTML = `            
   <div id="forProv" class="forAgreProv">
                     <h2>Complete todos los campos</h2> 
                     <p style="color:red">(Modificacion de Proveedor)</p> 
@@ -186,7 +189,6 @@ function actualizarProveedor() {
                 
                     <button class="btn btn-primary btnAgreNuevProv" type="button" value="Agregar" id="btnAgregarProv"><span> MODIFICAR </span></button>
                    </div> `;
-  screenForm.innerHTML += agreProvHTML;
 
   const nombreABuscado = document.getElementById("nomAbusc");
   const nombre = document.getElementById("nombre");
@@ -243,7 +245,7 @@ function ordenarProveedores() {
 
 //Menu de Usuario
 
-//INICIAR SESION
+//Iniciar sesion
 function logIn() {
   Swal.fire({
     title: "Inicie sesión",
@@ -269,7 +271,7 @@ function logIn() {
   });
 }
 
-//SEGURIDAD
+//Visual de Seguridad e Higiene
 function elementoSeguridadPersonal() {
   screenForm = document.getElementById("screenForm");
   buscador.innerHTML = ``;
@@ -311,7 +313,7 @@ function elementoSeguridadPersonal() {
   botonSeguridad.addEventListener(`click`, msjSeg);
 }
 
-//VER DONDE DESCARGA CADA PROVEEDOR
+//Ver donde descarga cada Prov
 function zonaDescarga() {
   screen.innerHTML = ``;
   screenForm.innerHTML = ``;
@@ -387,11 +389,12 @@ function mostrarTiempo(e) {
   let climaIcon = arrayClima.weather[0].icon;
   console.log("iconClima", climaIcon);
 
-  screenForm.innerHTML = ``;
-  formPreview.innerHTML = ``;
   buscador.innerHTML = ``;
   buscZonaDescarga.innerHTML = ``;
-  screen = document.getElementById("screen");
+  formPreview.innerHTML = ``;
+  screen.innerHTML = ``;
+  screenForm.innerHTML = ``;
+  screen = document.getElementById("screenForm");
   screen.innerHTML = ``;
   let cardClimaHTML = `
   <div class="card  cardClima">
@@ -433,32 +436,44 @@ function localizar() {
   }
 }
 
-//api google maps
-/* function initMap(){
-  var coord = {lat:-34.5956145 ,lng: -58.4431949};
-  var map = new google.maps.Map(document.getElementById('map'),{
-    zoom: 10,
-    center: coord
-  });
-  var marker = new google.maps.Marker({
-    position: coord,
-    map: map
-  });
-}  */
+//Muestra ubicaciondel usuario API Maps
+function initMap() {
+  if (navigator.geolocation) {
+    var success = function (position) {
+      var myLat = position.coords.latitude;
+      var myLong = position.coords.longitude;
 
-// Create the script tag, set the appropriate attributes
-/* var script = document.createElement('script');
-script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDMw09SfDLP8N-ZnSe3-840yfbiyuCWXEQ&callback=initMap';
-script.async = true; */
+      var coords = new google.maps.LatLng(myLat, myLong);
 
-// Attach your callback function to the `window` object
-/* window.initMap = function() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8
-  }); */
-// JS API is loaded and available
-/* }; */
+      var mapOptions = {
+        zoom: 16,
+        center: coords,
+        maptypeId: google.maps.MapTypeId.ROADMAP,
+      };
 
-// Append the 'script' element to 'head'
-//document.head.appendChild(script);
+      formPreview.innerHTML = ``;
+      buscador.innerHTML = ``;
+      buscZonaDescarga.innerHTML = ``;
+      screen.innerHTML = ``;
+      var map = new google.maps.Map(
+        document.getElementById("screenForm"),
+        mapOptions
+      );
+      var marker = new google.maps.Marker({ map: map, position: coords });
+
+      console.log("Se cargaron coordenadas");
+    };
+    navigator.geolocation.getCurrentPosition(success, function (msg) {
+      console.error(msg);
+    });
+  }
+}
+
+//Carga scrpts cuando se solicita la ubicacion
+function cargarScriptMaps() {
+  var script = document.createElement("script");
+  script.src =
+    "https://maps.googleapis.com/maps/api/js?key=AIzaSyDMw09SfDLP8N-ZnSe3-840yfbiyuCWXEQ&callback=initMap&v=weekly";
+  script.async = true;
+  document.head.appendChild(script);
+}

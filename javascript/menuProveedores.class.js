@@ -28,9 +28,8 @@ class MenuProveedores {
 
   //imprime la lista de proveedores
   listarProveedores() {
-    screen.innerHTML = ``;
     screen = document.getElementById("screen");
-    screen.style.transition = "all 3s"; 
+    screen.innerHTML = ``;
     proveedores.forEach((proveedor) => {
       let proveedoresHTML = `            
       <div class="card"> 
@@ -51,7 +50,7 @@ class MenuProveedores {
   listarNuevoProv(e) {
     screen = document.getElementById("screen");
     screen.innerHTML = `<P>Nuevo Proveedor</P>`;
-    
+
     let nuevProvHTML = `            
     <div class="card">
     <img src=${e.img}  alt="...">
@@ -98,9 +97,11 @@ class MenuProveedores {
       let filtrado = this.proveedores.filter((proveedor) =>
         proveedor.nombre.toLowerCase().includes(nombreBuscado)
       );
+      screenForm.innerHTML = ``;
       console.table("Proveedores encontrados", filtrado[0].nombre);
+      screenForm = document.getElementById("screenForm");
       screenBsc.innerHTML = ``;
-      screen = document.getElementById("screen");
+
       screen.innerHTML = ``;
 
       filtrado.forEach((proveedor) => {
@@ -115,7 +116,7 @@ class MenuProveedores {
             <button class="btn btn-primary btnBorrarProv" type="button" value="Agregar" id="btnBorrarProv"><span> Eliminar </span></button>
             </div>
             `;
-        screen.innerHTML += proveedoresHTML;
+        screenForm.innerHTML += proveedoresHTML;
 
         const btnBorrar = document.getElementById("btnBorrarProv");
         btnBorrar.addEventListener(`click`, eliminar);
