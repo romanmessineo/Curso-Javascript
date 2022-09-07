@@ -46,7 +46,6 @@ if (localStorage.getItem("nuevoProv")) {
 function agregarProveedor() {
   buscador.innerHTML = ``;
   buscZonaDescarga.innerHTML = ``;
-
   screen = document.getElementById("screen");
   screenForm.innerHTML = ``;
   formPreview.innerHTML = ``;
@@ -77,6 +76,7 @@ function agregarProveedor() {
   button.addEventListener("click", (e) => {
     e.preventDefault();
     let data = {
+      id: proveedores.length +1,
       nombre: nombre.value,
       direccion: direccion.value,
       locacion: locacion.value,
@@ -472,8 +472,7 @@ function initMap() {
 //Carga scrpts cuando se solicita la ubicacion
 function cargarScriptMaps() {
   var script = document.createElement("script");
-  script.src =
-    "https://maps.googleapis.com/maps/api/js?key=AIzaSyDMw09SfDLP8N-ZnSe3-840yfbiyuCWXEQ&callback=initMap&v=weekly";
+  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDMw09SfDLP8N-ZnSe3-840yfbiyuCWXEQ&callback=initMap&v=weekly`;
   script.async = true;
   document.head.appendChild(script);
 }
