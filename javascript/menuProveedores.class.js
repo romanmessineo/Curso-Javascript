@@ -98,7 +98,7 @@ class MenuProveedores {
         proveedor.nombre.toLowerCase().includes(nombreBuscado)
       );
       screenForm.innerHTML = ``;
-      console.log("Proveedores encontrados", filtrado[0].id);
+      console.log("Proveedores encontrados", filtrado[0].nombre);
       screenForm = document.getElementById("screenForm");
       screenBsc.innerHTML = ``;
 
@@ -122,7 +122,7 @@ class MenuProveedores {
         btnBorrar.addEventListener(`click`, eliminar);
 
         function eliminar() {
-          let filtradoEliminar = filtrado[0].id;
+          let filtradoEliminar = filtrado[0].id -1;
           proveedores.splice(filtradoEliminar, 1);
           console.log("posicion del elemento", filtradoEliminar);
 
