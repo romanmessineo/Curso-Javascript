@@ -209,14 +209,16 @@ ul {
       #002d73 100%);
 }
 /* .pantalla{
-  transition: all 0.8s;
-} */
+  opacity: 0;
+  animation: fade-in 3s forwards
+}  */
 
 .pantalla2 {
   display: flex;
   flex-direction: row;
   padding: 10px;
-}
+  opacity: 0;
+  animation: fade-in 5s forwards;}
 
 .buscadorProv {
   width: 30%;
@@ -243,6 +245,8 @@ ul {
       #9fb5c1 83.33%,
       #8facbd 100%);
   box-shadow: 10px 4px 8px 4px rgba(12, 2, 4, 0.551);
+  opacity: 0;
+  animation: fade-in 1s forwards
   /*  justify-content: center;
   position: absolute; */
 }
@@ -309,6 +313,7 @@ ul {
   align-self: center;
   flex-direction: column;
   padding: 20px;
+  max-width: 100%;
   background-image: radial-gradient(circle at 31.38% 36.96%,
       #fbe2dd 0,
       #e9dad6 16.67%,
@@ -319,7 +324,9 @@ ul {
       #8facbd 100%);
   box-shadow: 10px 4px 8px 4px rgba(12, 2, 4, 0.551);
   z-index: 101;
-}
+  opacity: 0;
+  animation: fade-in 3s forwards;
+  }
 
 .forAgreProv h2 {
   text-align: center;
@@ -384,13 +391,20 @@ label {
       #5db4e3 87.5%,
       #008edb 100%);
   box-shadow: 10px 4px 8px 4px rgba(12, 2, 4, 0.551);
+  opacity: 0;
+  animation: fade-in 3s forwards
 }
 
 .cardClima {
+  display: flex;
   align-self: center;
-  width: fit-content;
+  flex-direction: column;
+  padding: 20px;
+  width: max-content;
   justify-items: center;
+  position: relative;
   padding: 0px;
+  margin: auto;
   text-align: center;
   background-image: radial-gradient(circle at 37.98% 35.68%,
       #ffffff 0,
@@ -427,8 +441,7 @@ span {
   align-items: center;
   background-color: white;
   height: fit-content;
-  width: 100%;
-  padding: 10px;
+  
 }
 
 .normasSeguridad h1 {
@@ -480,5 +493,11 @@ iframe {
   font-weight: bold;
   box-shadow: 10px 4px 8px 4px rgba(12, 2, 4, 0.551);
 
+}
+
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
