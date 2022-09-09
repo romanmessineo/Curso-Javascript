@@ -76,7 +76,7 @@ function agregarProveedor() {
   button.addEventListener("click", (e) => {
     e.preventDefault();
     let data = {
-      id: proveedores.length +1,
+      id: proveedores.length + 1,
       nombre: nombre.value,
       direccion: direccion.value,
       locacion: locacion.value,
@@ -119,7 +119,7 @@ function listarProveedores() {
 }
 
 //Imprime form para buscar prov
-function buscarProveedor() {
+function eliminarProveedor() {
   screen.innerHTML = ``;
   screenForm.innerHTML = ``;
   formPreview.innerHTML = ``;
@@ -129,7 +129,9 @@ function buscarProveedor() {
   screenBsc.innerHTML = `
       <div class="divBuscar">
             <p><b>Nombre a buscar</b></p>
-            <input type="text" id="formulario" class="inputFormulario" placeholder="Nombre o Razon social">
+            <input type="text" id="formulario" list="nomProvs" class="inputFormulario" placeholder="Nombre o Razon social">
+            <datalist id="nomProvs" >
+            </datalist>
             <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
         </div>
       `;
@@ -137,12 +139,24 @@ function buscarProveedor() {
   const buscarPov = document.querySelector(`#formulario`);
   const botonBuscar = document.querySelector(`#botonBuscar`);
 
+  //Listar nombres en input
+  const listNomProvee = () => {
+    var lista = "";
+    for (i = 0; i < proveedores.length; ++i) {
+      lista += '<option value="' + proveedores[i].nombre + '" />'; // Storing options in variable
+    }
+    var nomProvsLista = document.getElementById("nomProvs");
+    nomProvsLista.innerHTML = `${lista}`;
+  };
+  listNomProvee();
+
+  //Prefiltar por letras
   const prefiltrar = () => {
     let nombreTipiado = document.getElementById("formulario").value;
     menuProveedores.buscarTex(nombreTipiado.toUpperCase());
-    console.log("LETRAS TIPIADAS en primer imput", nombreTipiado);
   };
 
+  //click con tecla Enter
   document.getElementById("formulario").addEventListener("keyup", function (e) {
     if (e.code === "Enter") {
       document.getElementById("botonBuscar").click();
@@ -151,10 +165,11 @@ function buscarProveedor() {
 
   buscarPov.addEventListener(`keydown`, prefiltrar);
 
+  //Buscar el proveedor a eliminar
   const filtrar = () => {
     let nombreBuscado = buscarPov.value;
     console.log("este es nombreBuscado", nombreBuscado);
-    menuProveedores.buscar(nombreBuscado);
+    menuProveedores.buscar(nombreBuscado.toLowerCase());
   };
 
   botonBuscar.addEventListener(`click`, filtrar);
@@ -323,7 +338,9 @@ function zonaDescarga() {
   buscZonaDescarga.innerHTML = `
       <div class="divBuscar">
         <p><b>Que Proveedor debe descargar?</b></p>
-        <input  type="text" id="formulario" class="inputFormulario" placeholder="Nombre o Razon social">
+        <input  type="text" id="formulario" list="nomProvs" class="inputFormulario" placeholder="Nombre o Razon social">
+        <datalist id="nomProvs" >
+        </datalist>
         <button class="btn btn-info" id="botonBuscar"> <i class="fa-solid fa-magnifying-glass"></i> </button>
     </div>
       `;
@@ -331,25 +348,40 @@ function zonaDescarga() {
   const buscarPov = document.querySelector(`#formulario`);
   const botonBuscar = document.querySelector(`#botonBuscar`);
 
+  //Listar nombres en input
+  const listNomProvee = () => {
+    var lista = "";
+    for (i = 0; i < proveedores.length; ++i) {
+      lista += '<option value="' + proveedores[i].nombre + '" />'; // Storing options in variable
+    }
+    var nomProvsLista = document.getElementById("nomProvs");
+    nomProvsLista.innerHTML = `${lista}`;
+  };
+  listNomProvee();
+
+  //Prefiltar por letras
   const prefiltrar = () => {
-    let nombreTipiado = buscarPov.value;
-    menuProveedores.buscarTex(nombreTipiado);
-    console.table("LETRAS TIPIADAS en primer imput", buscarPov.value);
+    let nombreTipiado = document.getElementById("formulario").value;
+    menuProveedores.buscarTex(nombreTipiado.toUpperCase());
   };
 
+  //click con tecla Enter
   document.getElementById("formulario").addEventListener("keyup", function (e) {
     if (e.code === "Enter") {
       document.getElementById("botonBuscar").click();
     }
   });
 
+  buscarPov.addEventListener(`keydown`, prefiltrar);
+
+  //Buscar zona de descarga del proveedor
   const filtrar = () => {
     let nombreBuscado = buscarPov.value.toLowerCase();
     console.log(nombreBuscado);
     menuProveedores.zona(nombreBuscado);
   };
 
-  buscarPov.addEventListener(`keydown`, prefiltrar);
+  
   botonBuscar.addEventListener(`click`, filtrar);
 }
 
