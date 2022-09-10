@@ -29,7 +29,7 @@
   },
   {
     "id": 5,
-    "nombre": "Lequipe",
+    "nombre": "Lequipe Bs As",
     "direccion": "El Salvador 346",
     "locacion": "Patio Central",
     "img": "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/112010/lequipe.png?itok=Eud4lqNX"
@@ -103,5 +103,33 @@
     "direccion": "Uruguay 4351",
     "locacion": "Patio Central",
     "img": "https://i0.wp.com/caaragon.com/wp-content/uploads/2018/08/ti-automotive.jpg?w=1080&ssl=1"
+  },
+  {
+    "id": 16,
+    "nombre": "SMRC Automotive Tech Argentina S.A.",
+    "direccion": "Otto Krause 4602",
+    "locacion": "Warehouse",
+    "img": "http://logosandbrands.directory/wp-content/themes/directorypress/thumbs/SMRC-logo.jpg"
+  },
+  {
+    "id": 17,
+    "nombre": "ZF Argentina S.A.",
+    "direccion": "Av. Universidad N°51",
+    "locacion": "Familia 1",
+    "img": "https://repuestoszf.com.ar/wp-content/uploads/2014/07/ZF.png"
+  },
+  {
+    "id": 18,
+    "nombre": "NEXT PRINT",
+    "direccion": "Portela 1137",
+    "locacion": "Patio Central",
+    "img": "http://nextprint.heycomunicacion.com/assets/images/nextprint.jpg"
+  },
+  {
+    "id": 19,
+    "nombre": "Tiberina",
+    "direccion": "Av. Gral. Savio 4880",
+    "locacion": "Boddy",
+    "img": "https://res.cloudinary.com/dunsguide/image/upload/b_white,c_pad,d_defaults:default_company_logo.png,dpr_auto,h_180,w_180/v1/logos/1564424887_nWuC9k7Fo8.JPG"
   }
 ]
