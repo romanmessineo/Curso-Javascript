@@ -15,6 +15,7 @@
   <script defer src="javascript/proveedor.class.js"></script>
   <script defer src="javascript/menuProveedores.class.js"></script>
   <script defer src="javascript/reloaded.class.js"></script>
+  <script defer src="javascript/btnScroll.class.js"></script>
   <script defer src="javascript/main.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
@@ -26,9 +27,20 @@
 </head>
 
 <body class="containerGrid">
+  <!-- contiene el preload -->
   <div id="contenedorCarga">
     <div id="carga"></div>
   </div>
+  <!-- contine desplazador -->
+  <div class="contenedorIndicador">
+    <div class="indicadorScroll">
+    </div>
+  </div>
+  <div id="irArribaBtn" class="ocultar">
+    <i class="fa fa-angle-up fa-4x"></i>
+  </div>
+
+  <!-- Aplicacion -->
   <div class="header">
     <div class="menu-adm">
       <button type="button" class="btn btn-danger">
