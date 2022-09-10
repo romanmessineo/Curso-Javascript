@@ -603,6 +603,7 @@ iframe {
   text-align: center;
   border-radius: 50%;
   transition: all 0.2s;
+  box-shadow: 1px 1px 1px 1px rgba(12, 2, 4, 0.551);
 }
 #irArribaBtn:hover {
   cursor: pointer;
@@ -615,13 +616,12 @@ iframe {
   top: 0;
   height: 7px;
   z-index: 1001;
-}
+  }
 .indicadorScroll {
   height: 100%;
   width: 0;
   background-color: #0052ce;
-  box-shadow: 1px 1px 1px 1px rgba(12, 2, 4, 0.551);
-}
+  }
 .ocultar {
   opacity: 0;
   visibility: hidden;
