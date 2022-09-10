@@ -177,7 +177,7 @@ function eliminarProveedor() {
 
 //Imprime formulario para actualizar proveedor
 function actualizarProveedor() {
-  logIn();
+  //logIn();
   screen.innerHTML = ``;
 
   screenForm = document.getElementById("screenForm");
@@ -191,7 +191,9 @@ function actualizarProveedor() {
                     <h2>Complete todos los campos</h2> 
                     <p style="color:red">(Modificacion de Proveedor)</p> 
                     <label for="nomAbusc">Ingrese el nombre del proveedor que desea modificar:</label>
-                    <input type="text" name="nomAbusc" id="nomAbusc" placeholder="Ingrese nombre o razon social">
+                    <input type="text" name="nomAbusc" id="nomAbusc" list="nomProvs" placeholder="Ingrese nombre o razon social">
+                    <datalist id="nomProvs" >
+                    </datalist>
                 
                     <label for="nombre">Nuevo nombre:</label>
                     <input type="text" name="nombre" id="nombre" placeholder="Ingrese nombre o razon social">
@@ -212,9 +214,20 @@ function actualizarProveedor() {
   const img = document.getElementById("img");
   const button = document.getElementById("btnAgregarProv");
 
+  //Listar nombres en input
+  const listNomProvee = () => {
+    var lista = "";
+    for (i = 0; i < proveedores.length; ++i) {
+      lista += '<option value="' + proveedores[i].nombre + '" />'; // Storing options in variable
+    }
+    var nomProvsLista = document.getElementById("nomProvs");
+    nomProvsLista.innerHTML = `${lista}`;
+  };
+  listNomProvee();
+
   const prefiltrar = () => {
     let nombreTipiado = nombreABuscado.value;
-    menuProveedores.buscarTexAct(nombreTipiado);
+    menuProveedores.buscarTexAct(nombreTipiado.toUpperCase());
     console.table("LETRAS TIPIADAS en primer imput", nombreABuscado.value);
   };
 
