@@ -394,7 +394,6 @@ function zonaDescarga() {
     menuProveedores.zona(nombreBuscado);
   };
 
-  
   botonBuscar.addEventListener(`click`, filtrar);
 }
 
