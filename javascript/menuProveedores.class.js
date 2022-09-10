@@ -232,11 +232,6 @@ class MenuProveedores {
 
           btnModfProv.style.backgroundColor = "#6ab150";
 
-          console.log(
-            "Este es el tipo de valor del imput: ",
-            typeof proveedor.nombre
-          );
-
           document.getElementById("nombre").focus();
         };
 

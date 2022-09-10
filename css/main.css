@@ -218,6 +218,7 @@ ul {
 
 .pantalla2 {
   display: flex;
+  justify-content: center;
   flex-direction: row;
   padding: 10px;
   opacity: 0;
@@ -320,10 +321,11 @@ ul {
   border-style: outset;
   border-radius: 5px;
   display: flex;
-  align-self: center;
   flex-direction: column;
   padding: 20px;
-  max-width: 100%;
+  margin: 8px;
+  width: 80%;
+  height: fit-content;
   background-image: radial-gradient(
     circle at 31.38% 36.96%,
     #fbe2dd 0,
@@ -351,6 +353,32 @@ ul {
 label {
   text-shadow: 1px 1px 2px black;
   margin-bottom: 4px;
+}
+
+/*Formulario actualizar proveedor*/
+.forActProv{
+  border: solid 1px black;
+  border-style: outset;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 8px;
+  width: 100%;
+  background-image: radial-gradient(
+    circle at 31.38% 36.96%,
+    #fbe2dd 0,
+    #e9dad6 16.67%,
+    #d6d1d0 33.33%,
+    #c3c8ca 50%,
+    #b0bec5 66.67%,
+    #9fb5c1 83.33%,
+    #8facbd 100%
+  );
+  box-shadow: 10px 4px 8px 4px rgba(12, 2, 4, 0.551);
+  z-index: 101;
+  opacity: 0;
+  animation: fade-in 3s forwards;
 }
 
 .btnAgreNuevProv {
@@ -411,14 +439,13 @@ label {
 
 .cardClima {
   display: flex;
-  align-self: center;
   flex-direction: column;
   padding: 20px;
   width: max-content;
   justify-items: center;
-  position: relative;
   padding: 0px;
   margin: auto;
+  z-index: 2000;
   text-align: center;
   background-image: radial-gradient(
     circle at 37.98% 35.68%,
@@ -603,3 +630,4 @@ iframe {
   opacity: 1;
   visibility: visible;
 }
+

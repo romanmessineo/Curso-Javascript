@@ -179,6 +179,9 @@ function eliminarProveedor() {
 function actualizarProveedor() {
   //logIn();
   screen.innerHTML = ``;
+  document
+    .getElementById("screenForm")
+    .removeAttribute("class", "container mapa");
 
   screenForm = document.getElementById("screenForm");
 
@@ -187,7 +190,7 @@ function actualizarProveedor() {
   screenForm.innerHTML = ``;
 
   screenForm.innerHTML = `            
-  <div id="forProv" class="forAgreProv">
+  <div id="forProv" class="forActProv">
                     <h2>Complete todos los campos</h2> 
                     <p style="color:red">(Modificacion de Proveedor)</p> 
                     <label for="nomAbusc">Ingrese el nombre del proveedor que desea modificar:</label>
@@ -228,7 +231,6 @@ function actualizarProveedor() {
   const prefiltrar = () => {
     let nombreTipiado = nombreABuscado.value;
     menuProveedores.buscarTexAct(nombreTipiado.toUpperCase());
-    console.table("LETRAS TIPIADAS en primer imput", nombreABuscado.value);
   };
 
   nombreABuscado.addEventListener(`keydown`, prefiltrar);
@@ -438,7 +440,7 @@ function mostrarTiempo(e) {
   formPreview.innerHTML = ``;
   screen.innerHTML = ``;
   screenForm.innerHTML = ``;
-  screen = document.getElementById("screenForm");
+  screen = document.getElementById("screen");
   screen.innerHTML = ``;
   let cardClimaHTML = `
   <div class="card  cardClima">
@@ -482,6 +484,7 @@ function localizar() {
 
 //Muestra ubicaciondel usuario API Maps
 function initMap() {
+  document.getElementById("screenForm").setAttribute("class", "container");
   if (navigator.geolocation) {
     var success = function (position) {
       var myLat = position.coords.latitude;
