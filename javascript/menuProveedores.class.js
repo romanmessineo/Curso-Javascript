@@ -62,6 +62,11 @@ class MenuProveedores {
     </div>
     `;
     screen.innerHTML += nuevProvHTML;
+    let refresh;
+    refresh = setInterval(() => {
+      window.location.reload();
+    }, 5000);
+
     let timerInterval;
     Swal.fire({
       title: `Cargando Proveedor ${e.nombre}`.trim(),
@@ -123,8 +128,7 @@ class MenuProveedores {
         const btnCancel = document.getElementById("btnCancel");
 
         btnBorrar.addEventListener(`click`, eliminar);
-        btnCancel.addEventListener(`click`, ()=> window.location.reload());
-
+        btnCancel.addEventListener(`click`, () => window.location.reload());
 
         function eliminar() {
           const filtradoEliminar = filtrado[0].id;
@@ -360,7 +364,6 @@ class MenuProveedores {
               `;
         screen.innerHTML += proveedoresHTML;
       });
-           
     } else {
       Swal.fire({
         icon: "error",
