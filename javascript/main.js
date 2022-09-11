@@ -143,7 +143,7 @@ function eliminarProveedor() {
   const listNomProvee = () => {
     var lista = "";
     for (i = 0; i < proveedores.length; ++i) {
-      lista += '<option value="' + proveedores[i].nombre + '" />'; 
+      lista += '<option value="' + proveedores[i].nombre + '" />';
     }
     var nomProvsLista = document.getElementById("nomProvs");
     nomProvsLista.innerHTML = `${lista}`;
@@ -401,15 +401,24 @@ function zonaDescarga() {
 
 //Cargar clima desde una API
 function cargarTiempo() {
-  localizar();
+  if (navigator.geolocation) {
+    var success = function (position) {
+      const latitud = position.coords.latitude,
+        longitud = position.coords.longitude;
+      console.log("Latitud: ", latitud, "Longitud: ", longitud);
 
-  fetch(
-    "https://api.openweathermap.org/data/2.5/weather?lat=-32.98354850238342&lon=-60.655138342455736&appid=6e723b89495afd4593121a7ce2430bca&units=metric&lang=sp"
-  )
-    .then((response) => response.json())
-    .then((response) => mostrarTiempo(response)) //console.log(response.name)
-    .catch((err) => console.error(err))
-    .finally(console.log("TAREA EJECUTADA"));
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitud}&lon=${longitud}&appid=6e723b89495afd4593121a7ce2430bca&units=metric&lang=sp`
+      )
+        .then((response) => response.json())
+        .then((response) => mostrarTiempo(response)) //console.log(response.name)
+        .catch((err) => console.error(err))
+        .finally(console.log("TAREA EJECUTADA"));
+    };
+    navigator.geolocation.getCurrentPosition(success, function (msg) {
+      console.error(msg);
+    });
+  }
 }
 
 function mostrarTiempo(e) {
@@ -468,19 +477,7 @@ function mostrarTiempo(e) {
 }
 //key: 6e723b89495afd4593121a7ce2430bca
 
-//Imprime lat-long desde navegador
-function localizar() {
-  if (navigator.geolocation) {
-    var success = function (position) {
-      const latitud = position.coords.latitude,
-        longitud = position.coords.longitude;
-      console.log("Latitud: ", latitud, "Longitud: ", longitud);
-    };
-    navigator.geolocation.getCurrentPosition(success, function (msg) {
-      console.error(msg);
-    });
-  }
-}
+
 
 //Muestra ubicaciondel usuario API Maps
 function initMap() {
