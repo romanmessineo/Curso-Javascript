@@ -122,9 +122,9 @@ class MenuProveedores {
         btnBorrar.addEventListener(`click`, eliminar);
 
         function eliminar() {
-          let filtradoEliminar = filtrado[0].id - 1;
-          proveedores.splice(filtradoEliminar, 1);
-          console.log("posicion del elemento", filtradoEliminar);
+          const filtradoEliminar = filtrado[0].id;
+          const index = proveedores.findIndex((x) => x.id === filtradoEliminar);
+          proveedores.splice(index, 1);
           console.log("nuevo array Prov", proveedores);
 
           let timerInterval;

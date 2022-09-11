@@ -143,7 +143,7 @@ function eliminarProveedor() {
   const listNomProvee = () => {
     var lista = "";
     for (i = 0; i < proveedores.length; ++i) {
-      lista += '<option value="' + proveedores[i].nombre + '" />'; // Storing options in variable
+      lista += '<option value="' + proveedores[i].nombre + '" />'; 
     }
     var nomProvsLista = document.getElementById("nomProvs");
     nomProvsLista.innerHTML = `${lista}`;
