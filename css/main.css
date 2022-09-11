@@ -631,3 +631,11 @@ iframe {
   visibility: visible;
 }
 
+/* Boton eliminar porv */
+.btnBorrarProv{
+  margin-right: 20px;
+}
+.btnCancel{
+  background-color: #16780b !important;
+}
+

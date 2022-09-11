@@ -114,12 +114,17 @@ class MenuProveedores {
             <b>Direccion:</b> ${proveedor.direccion} <br>
             <b>Ubicacion GM:</b> ${proveedor.locacion}</p>
             <button class="btn btn-primary btnBorrarProv" type="button" value="Agregar" id="btnBorrarProv"><span> Eliminar </span></button>
+            <button class="btn btn-primary btnCancel" type="button" value="cancelar" id="btnCancel"><span>Cancelar</span></button>
             </div>
             `;
         screenForm.innerHTML += proveedoresHTML;
 
         const btnBorrar = document.getElementById("btnBorrarProv");
+        const btnCancel = document.getElementById("btnCancel");
+
         btnBorrar.addEventListener(`click`, eliminar);
+        btnCancel.addEventListener(`click`, ()=> window.location.reload());
+
 
         function eliminar() {
           const filtradoEliminar = filtrado[0].id;
@@ -346,7 +351,7 @@ class MenuProveedores {
                     <b>Nombre:</b> ${proveedor.nombre} <br>
                     <b>DESCARGA EN:</h4> "${proveedor.locacion}"</h4><br>
                 </p>
-            </div>
+                </div>
         </div>
         <div class="container-fluid">
         <p><b>"ACA DEBE IR MAPA DE ZONA DESCARGA"</p>
@@ -355,10 +360,7 @@ class MenuProveedores {
               `;
         screen.innerHTML += proveedoresHTML;
       });
-
-      //
-
-      //
+           
     } else {
       Swal.fire({
         icon: "error",
