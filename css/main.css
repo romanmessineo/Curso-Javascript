@@ -381,22 +381,26 @@ label {
   animation: fade-in 3s forwards;
 }
 
-.btnAgreNuevProv {
-  text-shadow: 2px 2px 6px black;
+.btnsAgregarProv{
   display: flex;
-  width: 30%;
-  align-self: flex-end;
-  justify-content: center;
-  box-sizing: content-box;
-  margin-top: 4%;
+  justify-content: end;
+  margin-top: 15px;
+}
+.btnsAgregarProv button{
+  margin-left: 15px;
+  height: fit-content;
+}
+.btnAgreNuevProv .btnCancelNueProv {
+  text-shadow: 2px 2px 6px black;
+  
+  
 }
 
-.btnAgreNuevProv span {
+.btnAgreNuevProv .btnCancelNueProv span {
   margin-bottom: 0;
   box-sizing: border-box;
   text-shadow: rgba(0, 0, 0, 0.353);
-  display: flex;
-}
+  }
 
 .nav {
   display: flex;

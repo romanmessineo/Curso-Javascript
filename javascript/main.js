@@ -61,9 +61,11 @@ function agregarProveedor() {
             <input type="text" name="locacion" id="locacion" placeholder="Ingrese locacion GM">
             <label for="img">Imagen:</label>
             <input type="text" name="img" id="img" placeholder="adjunte imagen">
-        
-            <button class="btn btn-primary btnAgreNuevProv" type="button" value="Agregar" id="btnAgregarProv"><span> AGREGAR </span></button>
-     </section>         
+            <div class="btnsAgregarProv">
+            <button class="btn btn-success btnAgreNuevProv" type="button" value="Agregar" id="btnAgregarProv"><span>Agregar</span></button>
+            <button class="btn btn-danger btnCancelNueProv" type="button" value="cancelar" id="btnCancel"><span>Cancelar</span></button>
+            </div>
+            </section>         
             `;
   screen.innerHTML += agreProvHTML;
 
@@ -72,6 +74,7 @@ function agregarProveedor() {
   const locacion = document.getElementById("locacion");
   const img = document.getElementById("img");
   const button = document.getElementById("btnAgregarProv");
+  const btnCancel = document.getElementById("btnCancel");
 
   button.addEventListener("click", (e) => {
     e.preventDefault();
@@ -96,6 +99,8 @@ function agregarProveedor() {
     menuProveedores.listarNuevoProv(proveedor);
     menuProveedores.guardarNuevoProveedor(proveedor);
   });
+
+  btnCancel.addEventListener(`click`, () => window.location.reload());
 }
 
 //Lista proveedores y notifica
@@ -476,8 +481,6 @@ function mostrarTiempo(e) {
   btnCloseClima.addEventListener(`click`, () => (screen.innerHTML = ``));
 }
 //key: 6e723b89495afd4593121a7ce2430bca
-
-
 
 //Muestra ubicaciondel usuario API Maps
 function initMap() {
