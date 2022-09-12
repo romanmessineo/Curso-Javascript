@@ -534,6 +534,8 @@ iframe {
   padding-bottom: 32px;
   font-weight: bold;
   box-shadow: 10px 4px 8px 4px rgba(12, 2, 4, 0.551);
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 @keyframes fade-in {
@@ -642,4 +644,16 @@ iframe {
 .btnCancel{
   background-color: #16780b !important;
 }
+
+.mostrarZona{
+  display: flex;
+  align-items: flex-start;
+  
+  }
+.zonaMapa{
+  margin-left: 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(12, 2, 4, 0.551);
+}
+
 

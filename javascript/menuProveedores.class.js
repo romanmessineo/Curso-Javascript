@@ -348,19 +348,21 @@ class MenuProveedores {
       screen.innerHTML = ``;
       filtrado.forEach((proveedor) => {
         let proveedoresHTML = `            
-        <div class="card">
-            <img src=${proveedor.img} alt="...">
-            <div class="card-body">
-                <p class="card-text">
-                    <b>Nombre:</b> ${proveedor.nombre} <br>
-                    <b>DESCARGA EN:</h4> "${proveedor.locacion}"</h4><br>
-                </p>
-                </div>
+        <div class="mostrarZona">
+      <div class="card">
+        <img src=${proveedor.img} alt="...">
+        <div class="card-body">
+          <p class="card-text">
+            <b>Nombre:</b> ${proveedor.nombre} <br>
+            <b>DESCARGA EN:</h4> "${proveedor.locacion}"</h4><br>
+          </p>
         </div>
-        <div class="container-fluid">
+      </div>
+      <div>
         <p><b>"ACA DEBE IR MAPA DE ZONA DESCARGA"</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3342.67561628346!2d-60.628520584809856!3d-33.09131768087832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b7a7d2945a608f%3A0x4b4c30f52e4aed41!2sGeneral%20Motors%20Company!5e0!3m2!1ses!2sar!4v1660520805997!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+        <img class="zonaMapa"src="./imagenes/mapa.png" />
+      </div>
+    </div>
               `;
         screen.innerHTML += proveedoresHTML;
       });

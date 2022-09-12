@@ -211,9 +211,11 @@ function actualizarProveedor() {
                     <input type="text" name="locacion" id="locacion" placeholder="Ingrese locacion GM">
                     <label for="img">Nueva Imagen:</label>
                     <input type="text" name="img" id="img" placeholder="adjunte imagen">
-                
-                    <button class="btn btn-primary btnAgreNuevProv" type="button" value="Agregar" id="btnAgregarProv"><span> MODIFICAR </span></button>
-                   </div> `;
+                    <div class="btnsAgregarProv">
+                    <button class="btn btn-success btnAgreNuevProv" type="button" value="Agregar" id="btnAgregarProv"><span>Modificar</span></button>
+                    <button class="btn btn-danger btnCancelNueProv" type="button" value="cancelar" id="btnCancel"><span>Cancelar</span></button>
+                    </div>
+                    </div> `;
 
   const nombreABuscado = document.getElementById("nomAbusc");
   const nombre = document.getElementById("nombre");
@@ -260,6 +262,8 @@ function actualizarProveedor() {
       data.img
     );
   });
+
+  btnCancel.addEventListener(`click`, () => window.location.reload());
 }
 
 //Avisa y alerta proveedores ordenados alfabeticamente
@@ -328,7 +332,7 @@ function elementoSeguridadPersonal() {
       <iframe width="560" height="315" src="https://www.youtube.com/embed/ryuU6Lvtaqg?start=40" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <p>Asegúrese de cumplir con todos los requisitos. Su seguridad es lo más importante para nosotros.</p>
-      <button class="btn btn-info btnSeguridad" id="botonSeguridad"><span>Estoy deacuerdo </span> </button>
+      <button class="btn btn-success btnSeguridad" id="botonSeguridad"><span>Estoy deacuerdo </span> </button>
       
       </div>
   `;
@@ -475,9 +479,10 @@ function mostrarTiempo(e) {
   </div>
         `;
   screen.innerHTML += cardClimaHTML;
+  
 
   const btnCloseClima = document.getElementById("btnCloseClima");
-
+  
   btnCloseClima.addEventListener(`click`, () => (screen.innerHTML = ``));
 }
 //key: 6e723b89495afd4593121a7ce2430bca
